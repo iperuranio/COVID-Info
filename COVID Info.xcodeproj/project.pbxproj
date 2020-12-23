@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		2467EB552591120C00595939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB542591120C00595939 /* AppDelegate.swift */; };
 		2467EB572591120C00595939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB562591120C00595939 /* SceneDelegate.swift */; };
-		2467EB592591120C00595939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB582591120C00595939 /* ViewController.swift */; };
+		2467EB592591120C00595939 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB582591120C00595939 /* MainScreenController.swift */; };
 		2467EB5C2591120C00595939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2467EB5A2591120C00595939 /* Main.storyboard */; };
 		2467EB5E2591120D00595939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2467EB5D2591120D00595939 /* Assets.xcassets */; };
 		2467EB612591120D00595939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2467EB5F2591120D00595939 /* LaunchScreen.storyboard */; };
+		2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB6E259178E300595939 /* FirstLaunchController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2467EB512591120C00595939 /* COVID Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2467EB542591120C00595939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2467EB562591120C00595939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2467EB582591120C00595939 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2467EB582591120C00595939 /* MainScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenController.swift; sourceTree = "<group>"; };
 		2467EB5B2591120C00595939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2467EB5D2591120D00595939 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2467EB602591120D00595939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2467EB622591120D00595939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2467EB6E259178E300595939 /* FirstLaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		2467EB532591120C00595939 /* COVID Info */ = {
 			isa = PBXGroup;
 			children = (
-				2467EB542591120C00595939 /* AppDelegate.swift */,
-				2467EB562591120C00595939 /* SceneDelegate.swift */,
-				2467EB582591120C00595939 /* ViewController.swift */,
-				2467EB5A2591120C00595939 /* Main.storyboard */,
+				2467EB6B259152B700595939 /* Delegates */,
+				2467EB6A259152AC00595939 /* Controllers */,
+				2467EB692591529B00595939 /* Storyboards */,
 				2467EB5D2591120D00595939 /* Assets.xcassets */,
-				2467EB5F2591120D00595939 /* LaunchScreen.storyboard */,
 				2467EB622591120D00595939 /* Info.plist */,
 			);
 			path = "COVID Info";
+			sourceTree = "<group>";
+		};
+		2467EB692591529B00595939 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2467EB5A2591120C00595939 /* Main.storyboard */,
+				2467EB5F2591120D00595939 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2467EB6A259152AC00595939 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2467EB582591120C00595939 /* MainScreenController.swift */,
+				2467EB6E259178E300595939 /* FirstLaunchController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2467EB6B259152B700595939 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				2467EB542591120C00595939 /* AppDelegate.swift */,
+				2467EB562591120C00595939 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2467EB592591120C00595939 /* ViewController.swift in Sources */,
+				2467EB592591120C00595939 /* MainScreenController.swift in Sources */,
+				2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */,
 				2467EB552591120C00595939 /* AppDelegate.swift in Sources */,
 				2467EB572591120C00595939 /* SceneDelegate.swift in Sources */,
 			);
@@ -289,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD72DVYR7U;
 				INFOPLIST_FILE = "COVID Info/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.claxon007.COVID-Info";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +337,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD72DVYR7U;
 				INFOPLIST_FILE = "COVID Info/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +345,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.claxon007.COVID-Info";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
