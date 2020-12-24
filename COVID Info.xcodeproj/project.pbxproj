@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243846F52594CD8A0016F6B8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846F42594CD8A0016F6B8 /* HomeViewController.swift */; };
+		243846F92594CD940016F6B8 /* DatiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846F82594CD940016F6B8 /* DatiViewController.swift */; };
+		243846FD2594CE030016F6B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846FC2594CE030016F6B8 /* SettingsViewController.swift */; };
+		243847012594D25F0016F6B8 /* DecretiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243847002594D25F0016F6B8 /* DecretiViewController.swift */; };
 		2467EB552591120C00595939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB542591120C00595939 /* AppDelegate.swift */; };
 		2467EB572591120C00595939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB562591120C00595939 /* SceneDelegate.swift */; };
 		2467EB592591120C00595939 /* MainScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB582591120C00595939 /* MainScreenController.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243846F42594CD8A0016F6B8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		243846F82594CD940016F6B8 /* DatiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatiViewController.swift; sourceTree = "<group>"; };
+		243846FC2594CE030016F6B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		243847002594D25F0016F6B8 /* DecretiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecretiViewController.swift; sourceTree = "<group>"; };
 		2467EB512591120C00595939 /* COVID Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "COVID Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2467EB542591120C00595939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2467EB562591120C00595939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		243846F32594CD6F0016F6B8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				243846F42594CD8A0016F6B8 /* HomeViewController.swift */,
+				243846F82594CD940016F6B8 /* DatiViewController.swift */,
+				243846FC2594CE030016F6B8 /* SettingsViewController.swift */,
+				243847002594D25F0016F6B8 /* DecretiViewController.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		2467EB482591120C00595939 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +119,7 @@
 		2467EB6A259152AC00595939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				243846F32594CD6F0016F6B8 /* App */,
 				248151852592EB2100CC18DE /* First Open Pages */,
 				2467EB582591120C00595939 /* MainScreenController.swift */,
 				2467EB6E259178E300595939 /* FirstLaunchController.swift */,
@@ -219,11 +239,15 @@
 				2467EB592591120C00595939 /* MainScreenController.swift in Sources */,
 				24C702F62592F49F004AC78F /* FirstOpenLaunchPage3.swift in Sources */,
 				24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */,
+				243846F92594CD940016F6B8 /* DatiViewController.swift in Sources */,
 				2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */,
+				243846F52594CD8A0016F6B8 /* HomeViewController.swift in Sources */,
+				243847012594D25F0016F6B8 /* DecretiViewController.swift in Sources */,
 				2467EB552591120C00595939 /* AppDelegate.swift in Sources */,
 				248151872592EB4800CC18DE /* GeneralPage.swift in Sources */,
 				2467EB572591120C00595939 /* SceneDelegate.swift in Sources */,
 				2491B44F2592F56700F74C6A /* FirstOpenLaunchPage4.swift in Sources */,
+				243846FD2594CE030016F6B8 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

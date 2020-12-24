@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ECl-ck-tYf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Oo8-ar-MQl">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +24,7 @@
                 <pageViewController storyboardIdentifier="FIRST_OPEN_PAGE_0" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="PYI-3A-0rh" customClass="FirstLaunchController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8n-b2-RZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-97" y="493"/>
+            <point key="canvasLocation" x="-93" y="253"/>
         </scene>
         <!--VC1-->
         <scene sceneID="tne-QT-ifu">
@@ -278,32 +279,76 @@
             </objects>
             <point key="canvasLocation" x="1387.8504672897195" y="101.72786177105833"/>
         </scene>
-        <!--Main Screen Controller-->
-        <scene sceneID="Wuu-hU-Vrt">
+        <!--Navigation Controller-->
+        <scene sceneID="5C8-Xb-zar">
             <objects>
-                <viewController id="ECl-ck-tYf" customClass="MainScreenController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z4l-l5-gxB">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OhW-PY-AjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="KG0-ST-AdR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="heart.text.square.fill" catalog="system" id="Do4-KO-Dqr"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="wYT-Mg-Ums">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Rb2-j4-Por" kind="relationship" relationship="rootViewController" id="ghO-Zh-U4m"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1089" y="-1864"/>
+        </scene>
+        <!--Dati-->
+        <scene sceneID="hDg-8E-gEt">
+            <objects>
+                <viewController id="Rb2-j4-Por" customClass="DatiViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6S0-ym-smj">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TESTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6x-lO-Wfn">
-                                <rect key="frame" x="170" y="362" width="53" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R90-Vj-grV">
+                                <rect key="frame" x="104" y="421" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Ypo-Ts-QAI"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <viewLayoutGuide key="safeArea" id="u9n-9z-8WQ"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                     </view>
-                    <connections>
-                        <segue destination="PYI-3A-0rh" kind="presentation" identifier="FIRST_APP_OPEN" id="xUf-MQ-RgZ"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Dati" id="5N4-6u-c8v"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cK6-Dc-uI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DpX-ld-Jyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-875" y="102"/>
+            <point key="canvasLocation" x="-102.33644859813083" y="-1864.1468682505401"/>
+        </scene>
+        <!--Main Screen Controller-->
+        <scene sceneID="rJK-jS-zv3">
+            <objects>
+                <tabBarController id="Oo8-ar-MQl" customClass="MainScreenController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Rqb-Mz-eK1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="AccentColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" name="BarButtonColors"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" name="Verdino-1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
+                    <connections>
+                        <segue destination="PYI-3A-0rh" kind="presentation" identifier="FIRST_APP_OPEN" id="ant-lW-JsO"/>
+                        <segue destination="W0L-hS-HVu" kind="relationship" relationship="viewControllers" id="VeQ-4L-ghC"/>
+                        <segue destination="KG0-ST-AdR" kind="relationship" relationship="viewControllers" id="oi0-t0-jdw"/>
+                        <segue destination="dua-GW-vgU" kind="relationship" relationship="viewControllers" id="pWW-ui-XbQ"/>
+                        <segue destination="ndI-Wi-q5c" kind="relationship" relationship="viewControllers" id="6Lu-PE-Mon"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Bs-DZ-Y0b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1914" y="-782"/>
         </scene>
         <!--VC3-->
         <scene sceneID="pbe-f1-195">
@@ -555,8 +600,135 @@
             </objects>
             <point key="canvasLocation" x="2753.2710280373831" y="101.72786177105833"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OyP-9n-vE7">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Imo-38-W37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="ndI-Wi-q5c" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="gearshape.fill" catalog="system" id="D2X-jJ-GT4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="IZX-zi-acp">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Piv-1R-nRg" kind="relationship" relationship="rootViewController" id="xGu-SP-Mug"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1089" y="-544"/>
+        </scene>
+        <!--Impostazioni-->
+        <scene sceneID="ER8-ZG-ySd">
+            <objects>
+                <viewController id="Piv-1R-nRg" customClass="SettingsViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tdu-KH-FXX">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-5F-Ppl">
+                                <rect key="frame" x="104" y="421" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Csx-Qe-h6d"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Impostazioni" id="LPm-KE-aAX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KsW-cT-Sy0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-102" y="-544"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eD8-cm-bCH">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZYi-vK-DD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="dua-GW-vgU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="applescript.fill" catalog="system" id="tbq-Tt-4a5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="E2g-Ou-ajx">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JyF-mT-086">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="vj1-Kn-Ldb" kind="relationship" relationship="rootViewController" id="Yhd-uN-XxK"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1079" y="-1200"/>
+        </scene>
+        <!--Norme e disposizioni-->
+        <scene sceneID="hBl-ef-VR6">
+            <objects>
+                <viewController id="vj1-Kn-Ldb" customClass="DecretiViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nXl-XQ-rWS">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DECRETI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esX-H9-9JU">
+                                <rect key="frame" x="104" y="421" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Srg-oo-BI3"/>
+                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Norme e disposizioni" id="9rx-p1-DG1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPo-pb-kdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-92.523364485981304" y="-1200"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xsd-WF-qNl">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SHA-Fe-Gpu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="W0L-hS-HVu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="biH-g2-C9v"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="f7Z-ug-IH1">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SmG-Va-C8c" kind="relationship" relationship="rootViewController" id="5Mi-iY-jdN"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1089" y="-2544"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="SGv-G8-cUC">
+            <objects>
+                <viewController id="SmG-Va-C8c" customClass="HomeViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r5N-oV-K5m">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4L-7U-YES">
+                                <rect key="frame" x="104" y="421" width="49" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hzb-yt-lYb"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="dm2-e0-38j"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LdW-cp-2Dc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-102" y="-2544"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="applescript.fill" catalog="system" width="98" height="128"/>
         <image name="bg-azzurro" width="1250" height="1250"/>
         <image name="bg-blue" width="1250" height="1250"/>
         <image name="bg-verdino" width="1250" height="1250"/>
@@ -566,13 +738,34 @@
         <image name="covid-rosa-outlined-cut" width="676.66668701171875" height="713.66668701171875"/>
         <image name="covid-rosa-outlined-cut copia-1" width="713.66668701171875" height="676.66668701171875"/>
         <image name="foglio" width="1250" height="1079"/>
+        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="mask2" width="256" height="256"/>
         <image name="pisa" width="1250" height="1250"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BarButtonColors">
+            <color red="0.73333333333333328" green="0.74901960784313726" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Verdino-1">
+            <color red="0.0" green="0.90200001001358032" blue="0.81199997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
