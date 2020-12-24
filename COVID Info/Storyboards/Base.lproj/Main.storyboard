@@ -10,24 +10,32 @@
     </dependencies>
     <scenes>
         <!--First Launch Controller-->
+        <scene sceneID="iqw-9c-LUk">
+            <objects>
+                <pageViewController storyboardIdentifier="FIRST_OPEN_PAGE_0" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="PYI-3A-0rh" customClass="FirstLaunchController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8n-b2-RZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-97" y="493"/>
+        </scene>
+        <!--VC1-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FirstLaunchController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FIRST_OPEN_PAGE_1" title="VC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="FirstOpenLaunchPage1" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient1" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-Iy-rFc" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2R6-4v-q8T">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWq-o2-EO3" userLabel="Top">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="290.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="COVID-1-Cut-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="da1-Of-T8J">
-                                                <rect key="frame" x="0.0" y="0.0" width="253" height="271"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="da1-Of-T8J">
+                                                <rect key="frame" x="0.0" y="0.0" width="253" height="289"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -38,70 +46,62 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75m-9G-h4x" userLabel="Mid">
-                                        <rect key="frame" x="0.0" y="290.66666666666663" width="428" height="290.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="COVID-1-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="Sdr-3i-eFa" userLabel="IMAGE">
-                                                <rect key="frame" x="147.66666666666666" y="109" width="132.99999999999997" height="73"/>
+                                                <rect key="frame" x="147.66666666666666" y="118" width="132.99999999999997" height="73"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="73" id="Y89-1E-f8f"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-O9-LST" userLabel="TEXT3">
-                                                <rect key="frame" x="25.666666666666657" y="208.66666666666663" width="376.66666666666674" height="61"/>
+                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" ambiguous="YES" text="Benvenuto in COVID Info!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
-                                                <rect key="frame" x="118" y="64.666666666666629" width="192" height="20.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
+                                                <rect key="frame" x="112" y="52" width="204" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" ambiguous="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="23" width="234.66666666666663" height="41.666666666666657"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
+                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="trailing" constant="118" id="0DQ-N5-Ugj"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="4pL-LE-ynu"/>
+                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" secondItem="75m-9G-h4x" secondAttribute="top" constant="10" id="88m-SG-q9Y"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="top" secondItem="kYX-DY-jNL" secondAttribute="bottom" id="92l-mU-hYj"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="But-ZL-89A"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="top" constant="23" id="C7H-ma-QSp"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="21" id="CbW-Ii-pAk"/>
+                                            <constraint firstAttribute="bottom" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="5" id="CbW-Ii-pAk"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="trailing" id="Gxd-4o-YNR"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="trailing" id="H11-sc-pvi"/>
+                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="5" id="IXC-H0-BR7"/>
                                             <constraint firstItem="kYX-DY-jNL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="JpJ-jx-Mgk"/>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kYX-DY-jNL" secondAttribute="trailing" constant="96.670000000000002" id="LIC-Mc-Bwy"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="Vtm-Bt-h5N"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="lessThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="24" id="Y2M-Ry-G5B"/>
                                             <constraint firstItem="kzI-O9-LST" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="10" id="Zvo-TM-ks3"/>
                                             <constraint firstItem="kYX-DY-jNL" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="bB5-5Z-ohn"/>
-                                            <constraint firstItem="kzI-O9-LST" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="bottom" id="chc-uC-OVf"/>
+                                            <constraint firstItem="kzI-O9-LST" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="bottom" constant="5" id="chc-uC-OVf"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kYX-DY-jNL" secondAttribute="trailing" id="kBw-JD-ndl"/>
                                             <constraint firstItem="kzI-O9-LST" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="lew-rS-RFC"/>
                                             <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="nEO-9a-EYw"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="23.670000000000002" id="pBX-2B-y5V"/>
                                             <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerY" secondItem="75m-9G-h4x" secondAttribute="centerY" id="r1X-rx-RW0"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="trailing" constant="10" id="s8O-FG-WlE"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="leading" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="96.670000000000002" id="vo4-tG-t8Z"/>
-                                            <constraint firstItem="auK-4Y-r8W" firstAttribute="leading" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="118" id="wvL-fF-4br"/>
-                                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="21" id="yKM-e3-xSa"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loY-fA-W9K" userLabel="Bottom">
-                                        <rect key="frame" x="0.0" y="581.33333333333337" width="428" height="290.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="COVID-2-Cut-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="toz-ex-LSx">
-                                                <rect key="frame" x="183" y="49.999999999999986" width="245" height="240.66666666666663"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="toz-ex-LSx">
+                                                <rect key="frame" x="183" y="33" width="245" height="275.66666666666669"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="toz-ex-LSx" secondAttribute="trailing" id="2S3-kD-Lb6"/>
-                                            <constraint firstItem="toz-ex-LSx" firstAttribute="top" secondItem="loY-fA-W9K" secondAttribute="top" constant="50" id="glr-c4-S3f"/>
+                                            <constraint firstItem="toz-ex-LSx" firstAttribute="top" secondItem="loY-fA-W9K" secondAttribute="top" constant="33" id="glr-c4-S3f"/>
                                             <constraint firstAttribute="bottom" secondItem="toz-ex-LSx" secondAttribute="bottom" id="j6X-2b-IgK"/>
                                             <constraint firstItem="toz-ex-LSx" firstAttribute="leading" secondItem="loY-fA-W9K" secondAttribute="leading" constant="183" id="mBd-wE-3Kz"/>
                                         </constraints>
@@ -136,11 +136,134 @@
                             <constraint firstAttribute="bottom" secondItem="2R6-4v-q8T" secondAttribute="bottom" id="kw3-Eu-W6m"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BXL-kr-5Es"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340.65420560747663" y="101.72786177105833"/>
+            <point key="canvasLocation" x="691" y="102"/>
+        </scene>
+        <!--VC2-->
+        <scene sceneID="Fu8-jH-OKM">
+            <objects>
+                <viewController storyboardIdentifier="FIRST_OPEN_PAGE_2" title="VC2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rlj-Lc-Ox5" customClass="FirstOpenLaunchPage2" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gG5-4W-nLh">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-azzurro" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-oh-qoi" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-nq-lBV">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGl-gH-qqp" userLabel="Top">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-v9-59q">
+                                                <rect key="frame" x="175" y="0.0" width="253" height="289"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="uF3-v9-59q" secondAttribute="trailing" id="Y7o-hR-XU9"/>
+                                            <constraint firstItem="uF3-v9-59q" firstAttribute="leading" secondItem="bGl-gH-qqp" secondAttribute="leading" constant="175" id="YMF-xi-uwe"/>
+                                            <constraint firstItem="uF3-v9-59q" firstAttribute="top" secondItem="bGl-gH-qqp" secondAttribute="top" id="e83-ue-KOn"/>
+                                            <constraint firstAttribute="bottom" secondItem="uF3-v9-59q" secondAttribute="bottom" constant="19.670000000000002" id="xuQ-3E-pPD"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZV-zQ-KFB" userLabel="Mid">
+                                        <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="COVID-1-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="bBX-bP-ZfL" userLabel="IMAGE">
+                                                <rect key="frame" x="147.66666666666666" y="118" width="132.99999999999997" height="73"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="73" id="NVp-aa-RAH"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-4L-WCL" userLabel="TEXT3">
+                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-IR-Gfs" userLabel="TEXT2">
+                                                <rect key="frame" x="111.00000000000001" y="52" width="206.33333333333337" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-iT-CTP" userLabel="TEXT1">
+                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="kqi-4L-WCL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XZV-zQ-KFB" secondAttribute="leading" constant="10" id="3ut-gF-toc"/>
+                                            <constraint firstItem="bBX-bP-ZfL" firstAttribute="centerY" secondItem="XZV-zQ-KFB" secondAttribute="centerY" id="72k-3p-xKQ"/>
+                                            <constraint firstItem="bBX-bP-ZfL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ILA-IR-Gfs" secondAttribute="bottom" constant="5" id="AKH-Qa-j2l"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hRl-iT-CTP" secondAttribute="trailing" id="B25-Gv-IhN"/>
+                                            <constraint firstItem="ILA-IR-Gfs" firstAttribute="centerX" secondItem="XZV-zQ-KFB" secondAttribute="centerX" id="BVK-e8-RaL"/>
+                                            <constraint firstItem="ILA-IR-Gfs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XZV-zQ-KFB" secondAttribute="leading" id="C5M-d6-7wn"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kqi-4L-WCL" secondAttribute="trailing" constant="10" id="GKi-FB-Bj2"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ILA-IR-Gfs" secondAttribute="trailing" id="I4O-PL-33V"/>
+                                            <constraint firstItem="hRl-iT-CTP" firstAttribute="centerX" secondItem="XZV-zQ-KFB" secondAttribute="centerX" id="bbV-nX-Q9s"/>
+                                            <constraint firstItem="hRl-iT-CTP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XZV-zQ-KFB" secondAttribute="leading" id="cFV-de-bYf"/>
+                                            <constraint firstItem="hRl-iT-CTP" firstAttribute="top" secondItem="XZV-zQ-KFB" secondAttribute="top" constant="10" id="cdu-hc-0Bw"/>
+                                            <constraint firstItem="kqi-4L-WCL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bBX-bP-ZfL" secondAttribute="bottom" constant="5" id="gLi-ED-6gi"/>
+                                            <constraint firstItem="ILA-IR-Gfs" firstAttribute="top" secondItem="hRl-iT-CTP" secondAttribute="bottom" id="gtc-yx-aJ4"/>
+                                            <constraint firstItem="bBX-bP-ZfL" firstAttribute="centerX" secondItem="XZV-zQ-KFB" secondAttribute="centerX" id="h5p-Ad-NFh"/>
+                                            <constraint firstAttribute="bottom" secondItem="kqi-4L-WCL" secondAttribute="bottom" constant="5" id="s40-V4-6JO"/>
+                                            <constraint firstItem="kqi-4L-WCL" firstAttribute="centerX" secondItem="XZV-zQ-KFB" secondAttribute="centerX" id="sbS-1E-ScG"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-R9-PFq" userLabel="Bottom">
+                                        <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="Apo-TT-RtO">
+                                                <rect key="frame" x="0.0" y="33" width="245" height="275.66666666666669"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Apo-TT-RtO" firstAttribute="leading" secondItem="bpO-R9-PFq" secondAttribute="leading" id="5Br-l8-oWc"/>
+                                            <constraint firstAttribute="bottom" secondItem="Apo-TT-RtO" secondAttribute="bottom" id="LhB-NP-Jea"/>
+                                            <constraint firstAttribute="trailing" secondItem="Apo-TT-RtO" secondAttribute="trailing" constant="183" id="qWk-Sv-RpN"/>
+                                            <constraint firstItem="Apo-TT-RtO" firstAttribute="top" secondItem="bpO-R9-PFq" secondAttribute="top" constant="33" id="rld-ug-eBY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XZV-zQ-KFB" firstAttribute="top" secondItem="bGl-gH-qqp" secondAttribute="bottom" id="2bG-I9-Z9d"/>
+                                    <constraint firstItem="bpO-R9-PFq" firstAttribute="leading" secondItem="OLZ-nq-lBV" secondAttribute="leading" id="46n-qT-UIc"/>
+                                    <constraint firstItem="bGl-gH-qqp" firstAttribute="top" secondItem="OLZ-nq-lBV" secondAttribute="top" id="4gH-wD-8pk"/>
+                                    <constraint firstAttribute="bottom" secondItem="bpO-R9-PFq" secondAttribute="bottom" id="6Uc-Hl-Ma8"/>
+                                    <constraint firstItem="bGl-gH-qqp" firstAttribute="leading" secondItem="OLZ-nq-lBV" secondAttribute="leading" id="BUM-9Q-hff"/>
+                                    <constraint firstItem="XZV-zQ-KFB" firstAttribute="leading" secondItem="OLZ-nq-lBV" secondAttribute="leading" id="Bfg-1L-BFO"/>
+                                    <constraint firstItem="XZV-zQ-KFB" firstAttribute="top" secondItem="bGl-gH-qqp" secondAttribute="bottom" id="ZiP-FT-FFj"/>
+                                    <constraint firstItem="bpO-R9-PFq" firstAttribute="top" secondItem="XZV-zQ-KFB" secondAttribute="bottom" id="cko-M5-CJZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bGl-gH-qqp" secondAttribute="trailing" id="hNE-Gr-ibY"/>
+                                    <constraint firstAttribute="trailing" secondItem="bpO-R9-PFq" secondAttribute="trailing" id="pcP-jA-uQ7"/>
+                                    <constraint firstAttribute="trailing" secondItem="XZV-zQ-KFB" secondAttribute="trailing" id="wsk-gk-8NZ"/>
+                                    <constraint firstItem="bpO-R9-PFq" firstAttribute="top" secondItem="XZV-zQ-KFB" secondAttribute="bottom" id="zxR-MS-wWt"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0fs-Rl-f7G"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nsP-oh-qoi" firstAttribute="trailing" secondItem="gG5-4W-nLh" secondAttribute="trailing" id="5Zh-IA-FKV"/>
+                            <constraint firstItem="OLZ-nq-lBV" firstAttribute="trailing" secondItem="0fs-Rl-f7G" secondAttribute="trailing" id="Cip-It-BNR"/>
+                            <constraint firstItem="OLZ-nq-lBV" firstAttribute="top" secondItem="gG5-4W-nLh" secondAttribute="top" id="Ec4-9J-mNx"/>
+                            <constraint firstItem="nsP-oh-qoi" firstAttribute="leading" secondItem="gG5-4W-nLh" secondAttribute="leading" id="XDq-kc-bWe"/>
+                            <constraint firstAttribute="bottom" secondItem="OLZ-nq-lBV" secondAttribute="bottom" id="YcA-GQ-WUC"/>
+                            <constraint firstItem="nsP-oh-qoi" firstAttribute="top" secondItem="gG5-4W-nLh" secondAttribute="top" id="fHT-rX-0A1"/>
+                            <constraint firstAttribute="bottom" secondItem="nsP-oh-qoi" secondAttribute="bottom" id="rEE-KD-kg6"/>
+                            <constraint firstItem="OLZ-nq-lBV" firstAttribute="leading" secondItem="0fs-Rl-f7G" secondAttribute="leading" id="vIh-Py-OD7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hDZ-3f-MRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1387.8504672897195" y="101.72786177105833"/>
         </scene>
         <!--Main Screen Controller-->
         <scene sceneID="Wuu-hU-Vrt">
@@ -149,25 +272,290 @@
                     <view key="view" contentMode="scaleToFill" id="Z4l-l5-gxB">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TESTO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6x-lO-Wfn">
+                                <rect key="frame" x="170" y="362" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ypo-Ts-QAI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </view>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="FIRST_APP_OPEN" id="O96-xG-jb7"/>
+                        <segue destination="PYI-3A-0rh" kind="presentation" identifier="FIRST_APP_OPEN" id="xUf-MQ-RgZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cK6-Dc-uI7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-875" y="102"/>
         </scene>
+        <!--VC3-->
+        <scene sceneID="pbe-f1-195">
+            <objects>
+                <viewController storyboardIdentifier="FIRST_OPEN_PAGE_3" title="VC3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J2z-yy-wbD" customClass="FirstOpenLaunchPage3" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Oim-lb-gBc">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-verdino" translatesAutoresizingMaskIntoConstraints="NO" id="evW-cD-ZgM" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1MI-qX-AIb">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="irK-Ws-PQ1" userLabel="Top">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="Era-06-W7B">
+                                                <rect key="frame" x="0.0" y="0.0" width="253" height="289"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Era-06-W7B" secondAttribute="bottom" constant="19.670000000000002" id="0HY-eY-1R6"/>
+                                            <constraint firstItem="Era-06-W7B" firstAttribute="leading" secondItem="irK-Ws-PQ1" secondAttribute="leading" id="TZp-R3-HES"/>
+                                            <constraint firstItem="Era-06-W7B" firstAttribute="top" secondItem="irK-Ws-PQ1" secondAttribute="top" id="h7Q-ML-bXz"/>
+                                            <constraint firstAttribute="trailing" secondItem="Era-06-W7B" secondAttribute="trailing" constant="175" id="kaI-5y-Gkw"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-hG-pEH" userLabel="Mid">
+                                        <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="COVID-1-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="meO-tK-QSQ" userLabel="IMAGE">
+                                                <rect key="frame" x="147.66666666666666" y="118" width="132.99999999999997" height="73"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="73" id="C2t-rS-U1l"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VeT-S5-MCd" userLabel="TEXT3">
+                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ya9-Nh-4yZ" userLabel="TEXT2">
+                                                <rect key="frame" x="110.66666666666667" y="52" width="206.66666666666663" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ism-eg-ELG" userLabel="TEXT1">
+                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="VeT-S5-MCd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="meO-tK-QSQ" secondAttribute="bottom" constant="5" id="182-FE-sJI"/>
+                                            <constraint firstItem="Ism-eg-ELG" firstAttribute="centerX" secondItem="Y5i-hG-pEH" secondAttribute="centerX" id="KLd-ZT-AbX"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VeT-S5-MCd" secondAttribute="trailing" constant="10" id="L1e-wL-qDZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="VeT-S5-MCd" secondAttribute="bottom" constant="5" id="OF5-1u-RTi"/>
+                                            <constraint firstItem="ya9-Nh-4yZ" firstAttribute="top" secondItem="Ism-eg-ELG" secondAttribute="bottom" id="QAI-DH-eFK"/>
+                                            <constraint firstItem="ya9-Nh-4yZ" firstAttribute="centerX" secondItem="Y5i-hG-pEH" secondAttribute="centerX" id="Ufg-qd-ce7"/>
+                                            <constraint firstItem="VeT-S5-MCd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5i-hG-pEH" secondAttribute="leading" constant="10" id="ZQM-Jy-Rvi"/>
+                                            <constraint firstItem="ya9-Nh-4yZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5i-hG-pEH" secondAttribute="leading" id="cFh-q5-k2L"/>
+                                            <constraint firstItem="meO-tK-QSQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ya9-Nh-4yZ" secondAttribute="bottom" constant="5" id="d6R-ax-gv2"/>
+                                            <constraint firstItem="VeT-S5-MCd" firstAttribute="centerX" secondItem="Y5i-hG-pEH" secondAttribute="centerX" id="es3-pI-ujJ"/>
+                                            <constraint firstItem="meO-tK-QSQ" firstAttribute="centerY" secondItem="Y5i-hG-pEH" secondAttribute="centerY" id="f6h-Y0-QXs"/>
+                                            <constraint firstItem="Ism-eg-ELG" firstAttribute="top" secondItem="Y5i-hG-pEH" secondAttribute="top" constant="10" id="jQ8-7P-WrZ"/>
+                                            <constraint firstItem="Ism-eg-ELG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y5i-hG-pEH" secondAttribute="leading" id="no0-Ew-SIG"/>
+                                            <constraint firstItem="meO-tK-QSQ" firstAttribute="centerX" secondItem="Y5i-hG-pEH" secondAttribute="centerX" id="oCr-rS-ypS"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ya9-Nh-4yZ" secondAttribute="trailing" id="sys-U5-m5G"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ism-eg-ELG" secondAttribute="trailing" id="u6W-yt-9qo"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCG-D2-KcU" userLabel="Bottom">
+                                        <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="Xjl-uB-Sb9">
+                                                <rect key="frame" x="183" y="33" width="245" height="275.66666666666669"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Xjl-uB-Sb9" secondAttribute="bottom" id="7Hg-fm-Hog"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xjl-uB-Sb9" secondAttribute="trailing" id="7Uf-HC-ZRS"/>
+                                            <constraint firstItem="Xjl-uB-Sb9" firstAttribute="top" secondItem="eCG-D2-KcU" secondAttribute="top" constant="33" id="Tfz-2h-54j"/>
+                                            <constraint firstItem="Xjl-uB-Sb9" firstAttribute="leading" secondItem="eCG-D2-KcU" secondAttribute="leading" constant="183" id="VXL-3T-rWc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Y5i-hG-pEH" firstAttribute="top" secondItem="irK-Ws-PQ1" secondAttribute="bottom" id="6uS-tS-5dV"/>
+                                    <constraint firstItem="Y5i-hG-pEH" firstAttribute="top" secondItem="irK-Ws-PQ1" secondAttribute="bottom" id="BR0-KR-oiB"/>
+                                    <constraint firstItem="irK-Ws-PQ1" firstAttribute="top" secondItem="1MI-qX-AIb" secondAttribute="top" id="BUl-Vs-hGN"/>
+                                    <constraint firstAttribute="trailing" secondItem="irK-Ws-PQ1" secondAttribute="trailing" id="FHG-Kc-fmf"/>
+                                    <constraint firstItem="eCG-D2-KcU" firstAttribute="top" secondItem="Y5i-hG-pEH" secondAttribute="bottom" id="GCx-ln-cAX"/>
+                                    <constraint firstItem="eCG-D2-KcU" firstAttribute="top" secondItem="Y5i-hG-pEH" secondAttribute="bottom" id="GSy-pK-Emo"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y5i-hG-pEH" secondAttribute="trailing" id="Oa7-UW-7s2"/>
+                                    <constraint firstAttribute="bottom" secondItem="eCG-D2-KcU" secondAttribute="bottom" id="Ps4-gf-6A4"/>
+                                    <constraint firstItem="eCG-D2-KcU" firstAttribute="leading" secondItem="1MI-qX-AIb" secondAttribute="leading" id="bUg-lK-jCP"/>
+                                    <constraint firstItem="irK-Ws-PQ1" firstAttribute="leading" secondItem="1MI-qX-AIb" secondAttribute="leading" id="gfm-Rh-YJC"/>
+                                    <constraint firstItem="Y5i-hG-pEH" firstAttribute="leading" secondItem="1MI-qX-AIb" secondAttribute="leading" id="j9H-kl-5te"/>
+                                    <constraint firstAttribute="trailing" secondItem="eCG-D2-KcU" secondAttribute="trailing" id="luV-fC-dAx"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="43e-qJ-6US"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1MI-qX-AIb" firstAttribute="trailing" secondItem="43e-qJ-6US" secondAttribute="trailing" id="4qJ-0O-rXH"/>
+                            <constraint firstAttribute="bottom" secondItem="evW-cD-ZgM" secondAttribute="bottom" id="9uo-oM-kO2"/>
+                            <constraint firstItem="evW-cD-ZgM" firstAttribute="leading" secondItem="Oim-lb-gBc" secondAttribute="leading" id="Gf6-3c-zEG"/>
+                            <constraint firstItem="1MI-qX-AIb" firstAttribute="top" secondItem="Oim-lb-gBc" secondAttribute="top" id="WSI-37-b0H"/>
+                            <constraint firstItem="evW-cD-ZgM" firstAttribute="trailing" secondItem="Oim-lb-gBc" secondAttribute="trailing" id="Xyr-UI-g3J"/>
+                            <constraint firstAttribute="bottom" secondItem="1MI-qX-AIb" secondAttribute="bottom" id="hfO-mU-qGZ"/>
+                            <constraint firstItem="evW-cD-ZgM" firstAttribute="top" secondItem="Oim-lb-gBc" secondAttribute="top" id="hiR-8B-Lxh"/>
+                            <constraint firstItem="1MI-qX-AIb" firstAttribute="leading" secondItem="43e-qJ-6US" secondAttribute="leading" id="qkT-gu-QQr"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VCB-BV-1HA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2072" y="102"/>
+        </scene>
+        <!--VC4-->
+        <scene sceneID="Aw0-c5-qzb">
+            <objects>
+                <viewController storyboardIdentifier="FIRST_OPEN_PAGE_4" title="VC4" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jgZ-Lo-77E" customClass="FirstOpenLaunchPage4" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M3U-hY-mSo">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="uWm-ej-GdE" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tde-if-s6w">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a99-R8-dek" userLabel="Top">
+                                        <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="RRM-hS-lM7">
+                                                <rect key="frame" x="175" y="0.0" width="253" height="289"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="RRM-hS-lM7" secondAttribute="trailing" id="C2F-yA-ABf"/>
+                                            <constraint firstItem="RRM-hS-lM7" firstAttribute="leading" secondItem="a99-R8-dek" secondAttribute="leading" constant="175" id="EIg-05-kvm"/>
+                                            <constraint firstItem="RRM-hS-lM7" firstAttribute="top" secondItem="a99-R8-dek" secondAttribute="top" id="V0D-ji-DuW"/>
+                                            <constraint firstAttribute="bottom" secondItem="RRM-hS-lM7" secondAttribute="bottom" constant="19.670000000000002" id="el5-BJ-smK"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85N-Xx-PUj" userLabel="Mid">
+                                        <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="COVID-1-Outlined" translatesAutoresizingMaskIntoConstraints="NO" id="Zep-oL-sJ3" userLabel="IMAGE">
+                                                <rect key="frame" x="147.66666666666666" y="118" width="132.99999999999997" height="73"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="73" id="fA2-f0-Rt8"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-VM-gvw" userLabel="TEXT3">
+                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-vy-KJS" userLabel="TEXT2">
+                                                <rect key="frame" x="110.66666666666669" y="52" width="207" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKN-HK-h8S" userLabel="TEXT1">
+                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TOD-vy-KJS" firstAttribute="centerX" secondItem="85N-Xx-PUj" secondAttribute="centerX" id="5cp-pm-Jvj"/>
+                                            <constraint firstItem="Zep-oL-sJ3" firstAttribute="centerX" secondItem="85N-Xx-PUj" secondAttribute="centerX" id="6ms-1u-uIc"/>
+                                            <constraint firstItem="Zep-oL-sJ3" firstAttribute="centerY" secondItem="85N-Xx-PUj" secondAttribute="centerY" id="B4x-5W-gM0"/>
+                                            <constraint firstItem="AXb-VM-gvw" firstAttribute="centerX" secondItem="85N-Xx-PUj" secondAttribute="centerX" id="F8g-b4-WNM"/>
+                                            <constraint firstItem="AXb-VM-gvw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zep-oL-sJ3" secondAttribute="bottom" constant="5" id="FL0-H8-6HD"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hKN-HK-h8S" secondAttribute="trailing" id="FzP-8m-PLH"/>
+                                            <constraint firstItem="hKN-HK-h8S" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="85N-Xx-PUj" secondAttribute="leading" id="IVm-cN-5sg"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AXb-VM-gvw" secondAttribute="trailing" constant="10" id="Ma5-Co-4nH"/>
+                                            <constraint firstItem="hKN-HK-h8S" firstAttribute="centerX" secondItem="85N-Xx-PUj" secondAttribute="centerX" id="UOb-UB-LlR"/>
+                                            <constraint firstItem="hKN-HK-h8S" firstAttribute="top" secondItem="85N-Xx-PUj" secondAttribute="top" constant="10" id="Vl5-XU-LIh"/>
+                                            <constraint firstItem="Zep-oL-sJ3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TOD-vy-KJS" secondAttribute="bottom" constant="5" id="W8V-4c-Oze"/>
+                                            <constraint firstItem="TOD-vy-KJS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="85N-Xx-PUj" secondAttribute="leading" id="X7c-UZ-WEP"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TOD-vy-KJS" secondAttribute="trailing" id="uEZ-d2-GVh"/>
+                                            <constraint firstAttribute="bottom" secondItem="AXb-VM-gvw" secondAttribute="bottom" constant="5" id="vGR-GB-dO4"/>
+                                            <constraint firstItem="TOD-vy-KJS" firstAttribute="top" secondItem="hKN-HK-h8S" secondAttribute="bottom" id="vyy-eC-WUF"/>
+                                            <constraint firstItem="AXb-VM-gvw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="85N-Xx-PUj" secondAttribute="leading" constant="10" id="yLG-4Q-bRc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JH-H4-8JP" userLabel="Bottom">
+                                        <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-dJ-kWl">
+                                                <rect key="frame" x="0.0" y="33" width="245" height="275.66666666666669"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Q3K-dJ-kWl" secondAttribute="bottom" id="bMo-Wx-4Ph"/>
+                                            <constraint firstItem="Q3K-dJ-kWl" firstAttribute="leading" secondItem="8JH-H4-8JP" secondAttribute="leading" id="j4J-Yz-sYK"/>
+                                            <constraint firstItem="Q3K-dJ-kWl" firstAttribute="top" secondItem="8JH-H4-8JP" secondAttribute="top" constant="33" id="lQE-3r-3KY"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q3K-dJ-kWl" secondAttribute="trailing" constant="183" id="rIS-jY-iIH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="85N-Xx-PUj" secondAttribute="trailing" id="01V-lg-90z"/>
+                                    <constraint firstItem="a99-R8-dek" firstAttribute="top" secondItem="Tde-if-s6w" secondAttribute="top" id="Cwy-A3-JYy"/>
+                                    <constraint firstAttribute="trailing" secondItem="a99-R8-dek" secondAttribute="trailing" id="GcA-Ck-7On"/>
+                                    <constraint firstItem="8JH-H4-8JP" firstAttribute="top" secondItem="85N-Xx-PUj" secondAttribute="bottom" id="KpH-cG-RX7"/>
+                                    <constraint firstItem="8JH-H4-8JP" firstAttribute="top" secondItem="85N-Xx-PUj" secondAttribute="bottom" id="QYz-n2-PIo"/>
+                                    <constraint firstItem="8JH-H4-8JP" firstAttribute="leading" secondItem="Tde-if-s6w" secondAttribute="leading" id="RTT-72-OXr"/>
+                                    <constraint firstItem="85N-Xx-PUj" firstAttribute="top" secondItem="a99-R8-dek" secondAttribute="bottom" id="T6E-SO-aZ2"/>
+                                    <constraint firstAttribute="bottom" secondItem="8JH-H4-8JP" secondAttribute="bottom" id="TTb-IY-ywd"/>
+                                    <constraint firstItem="a99-R8-dek" firstAttribute="leading" secondItem="Tde-if-s6w" secondAttribute="leading" id="b3Z-e1-FuE"/>
+                                    <constraint firstItem="85N-Xx-PUj" firstAttribute="top" secondItem="a99-R8-dek" secondAttribute="bottom" id="kiy-LW-4PI"/>
+                                    <constraint firstAttribute="trailing" secondItem="8JH-H4-8JP" secondAttribute="trailing" id="z32-r8-UJY"/>
+                                    <constraint firstItem="85N-Xx-PUj" firstAttribute="leading" secondItem="Tde-if-s6w" secondAttribute="leading" id="zb8-42-xVV"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NKf-Zb-igW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="uWm-ej-GdE" secondAttribute="bottom" id="2kU-tG-EGb"/>
+                            <constraint firstItem="Tde-if-s6w" firstAttribute="trailing" secondItem="NKf-Zb-igW" secondAttribute="trailing" id="79d-1h-olf"/>
+                            <constraint firstItem="Tde-if-s6w" firstAttribute="leading" secondItem="NKf-Zb-igW" secondAttribute="leading" id="9QU-5Z-b77"/>
+                            <constraint firstItem="uWm-ej-GdE" firstAttribute="leading" secondItem="M3U-hY-mSo" secondAttribute="leading" id="EyA-tc-ZDv"/>
+                            <constraint firstAttribute="bottom" secondItem="Tde-if-s6w" secondAttribute="bottom" id="HQA-In-HP7"/>
+                            <constraint firstItem="uWm-ej-GdE" firstAttribute="top" secondItem="M3U-hY-mSo" secondAttribute="top" id="USw-hm-uqw"/>
+                            <constraint firstItem="Tde-if-s6w" firstAttribute="top" secondItem="M3U-hY-mSo" secondAttribute="top" id="dDN-Kq-TxY"/>
+                            <constraint firstItem="uWm-ej-GdE" firstAttribute="trailing" secondItem="M3U-hY-mSo" secondAttribute="trailing" id="eok-Qv-Aqt"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gXA-rN-YfN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2753.2710280373831" y="101.72786177105833"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="COVID-1-Cut-Outlined" width="78.666664123535156" height="90"/>
         <image name="COVID-1-Outlined" width="133" height="133"/>
-        <image name="COVID-2-Cut-Outlined" width="71" height="75"/>
         <image name="Gradient1" width="1250" height="1250"/>
+        <image name="bg-azzurro" width="1250" height="1250"/>
+        <image name="bg-blue" width="1250" height="1250"/>
+        <image name="bg-verdino" width="1250" height="1250"/>
+        <image name="covid-red-outlined-cut" width="584.33331298828125" height="658"/>
+        <image name="covid-red-outlined-cut-rotated" width="658" height="584.33331298828125"/>
+        <image name="covid-rosa-outlined-cut" width="676.66668701171875" height="713.66668701171875"/>
+        <image name="covid-rosa-outlined-cut-rotated" width="713.66668701171875" height="676.66668701171875"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -14,6 +14,11 @@
 		2467EB5E2591120D00595939 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2467EB5D2591120D00595939 /* Assets.xcassets */; };
 		2467EB612591120D00595939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2467EB5F2591120D00595939 /* LaunchScreen.storyboard */; };
 		2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2467EB6E259178E300595939 /* FirstLaunchController.swift */; };
+		248151872592EB4800CC18DE /* GeneralPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248151862592EB4800CC18DE /* GeneralPage.swift */; };
+		2481518B2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */; };
+		2491B44F2592F56700F74C6A /* FirstOpenLaunchPage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */; };
+		24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */; };
+		24C702F62592F49F004AC78F /* FirstOpenLaunchPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		2467EB602591120D00595939 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2467EB622591120D00595939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2467EB6E259178E300595939 /* FirstLaunchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchController.swift; sourceTree = "<group>"; };
+		248151862592EB4800CC18DE /* GeneralPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPage.swift; sourceTree = "<group>"; };
+		2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage1.swift; sourceTree = "<group>"; };
+		2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage4.swift; sourceTree = "<group>"; };
+		24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage2.swift; sourceTree = "<group>"; };
+		24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		2467EB6A259152AC00595939 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				248151852592EB2100CC18DE /* First Open Pages */,
 				2467EB582591120C00595939 /* MainScreenController.swift */,
 				2467EB6E259178E300595939 /* FirstLaunchController.swift */,
 			);
@@ -92,6 +103,18 @@
 				2467EB562591120C00595939 /* SceneDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		248151852592EB2100CC18DE /* First Open Pages */ = {
+			isa = PBXGroup;
+			children = (
+				248151862592EB4800CC18DE /* GeneralPage.swift */,
+				2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */,
+				24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */,
+				24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */,
+				2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */,
+			);
+			path = "First Open Pages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,10 +187,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2481518B2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift in Sources */,
 				2467EB592591120C00595939 /* MainScreenController.swift in Sources */,
+				24C702F62592F49F004AC78F /* FirstOpenLaunchPage3.swift in Sources */,
+				24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */,
 				2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */,
 				2467EB552591120C00595939 /* AppDelegate.swift in Sources */,
+				248151872592EB4800CC18DE /* GeneralPage.swift in Sources */,
 				2467EB572591120C00595939 /* SceneDelegate.swift in Sources */,
+				2491B44F2592F56700F74C6A /* FirstOpenLaunchPage4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD72DVYR7U;
 				INFOPLIST_FILE = "COVID Info/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,7 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RD72DVYR7U;
 				INFOPLIST_FILE = "COVID Info/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
