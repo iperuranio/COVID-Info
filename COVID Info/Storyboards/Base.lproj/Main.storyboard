@@ -59,36 +59,30 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" ambiguous="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="23" width="234.66666666666663" height="41.666666666666657"/>
+                                                <rect key="frame" x="96.666666666666671" y="22.666666666666629" width="234.66666666666663" height="42"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="trailing" constant="118" id="0DQ-N5-Ugj"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="4pL-LE-ynu"/>
+                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="top" constant="22.670000000000002" id="6Ol-DT-Umg"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="top" secondItem="kYX-DY-jNL" secondAttribute="bottom" id="92l-mU-hYj"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="But-ZL-89A"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="top" constant="23" id="C7H-ma-QSp"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="21" id="CbW-Ii-pAk"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="trailing" id="Gxd-4o-YNR"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="trailing" id="H11-sc-pvi"/>
+                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" id="IXC-H0-BR7"/>
                                             <constraint firstItem="kYX-DY-jNL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="JpJ-jx-Mgk"/>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kYX-DY-jNL" secondAttribute="trailing" constant="96.670000000000002" id="LIC-Mc-Bwy"/>
                                             <constraint firstItem="auK-4Y-r8W" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="Vtm-Bt-h5N"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="lessThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="24" id="Y2M-Ry-G5B"/>
                                             <constraint firstItem="kzI-O9-LST" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="10" id="Zvo-TM-ks3"/>
                                             <constraint firstItem="kYX-DY-jNL" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="bB5-5Z-ohn"/>
                                             <constraint firstItem="kzI-O9-LST" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="bottom" id="chc-uC-OVf"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kYX-DY-jNL" secondAttribute="trailing" id="kBw-JD-ndl"/>
                                             <constraint firstItem="kzI-O9-LST" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="lew-rS-RFC"/>
                                             <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="nEO-9a-EYw"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="23.670000000000002" id="pBX-2B-y5V"/>
+                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="top" id="phL-C2-aik"/>
                                             <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerY" secondItem="75m-9G-h4x" secondAttribute="centerY" id="r1X-rx-RW0"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="trailing" constant="10" id="s8O-FG-WlE"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="leading" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="96.670000000000002" id="vo4-tG-t8Z"/>
-                                            <constraint firstItem="auK-4Y-r8W" firstAttribute="leading" relation="lessThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="118" id="wvL-fF-4br"/>
                                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="21" id="yKM-e3-xSa"/>
                                         </constraints>
                                     </view>
