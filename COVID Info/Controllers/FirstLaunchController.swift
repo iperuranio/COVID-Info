@@ -113,12 +113,15 @@ class FirstLaunchController: UIViewController {
     }
     
     private func setupPageController() {
-        if let instance = MainScreenController.instance {
+        if let _ = MainScreenController.instance {
             self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
             self.pageController?.dataSource = self
             self.pageController?.delegate = self
             self.pageController?.view.backgroundColor = .clear
-            self.pageController?.view.frame = instance.fullscreenFrame
+            self.pageController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
+            self.pageController?.view.layer.masksToBounds = true
+            self.pageController?.view.layer.cornerRadius = 20
+            self.pageController?.view.layer.cornerCurve = .continuous
             
             self.addChild(self.pageController!)
             self.view.addSubview(self.pageController!.view)
@@ -183,4 +186,22 @@ extension FirstLaunchController: UIPageViewControllerDataSource, UIPageViewContr
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return self.currentIndex
     }
+}
+
+extension UIPageControl {
+
+    func customPageControl(dotFillColor:UIColor, dotBorderColor:UIColor, dotBorderWidth:CGFloat) {
+        for (pageIndex, dotView) in self.subviews.enumerated() {
+            if self.currentPage == pageIndex {
+                dotView.backgroundColor = dotFillColor
+                dotView.layer.cornerRadius = dotView.frame.size.height / 2
+            }else{
+                dotView.backgroundColor = .clear
+                dotView.layer.cornerRadius = dotView.frame.size.height / 2
+                dotView.layer.borderColor = dotBorderColor.cgColor
+                dotView.layer.borderWidth = dotBorderWidth
+            }
+        }
+    }
+
 }

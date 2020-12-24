@@ -12,6 +12,8 @@ class FirstOpenLaunchPage1: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print("called")
 //        view.addSubview(storyboardUI.instantiateViewController(withIdentifier: "FIRST_OPEN_PAGE_1").view)
     }
 }
