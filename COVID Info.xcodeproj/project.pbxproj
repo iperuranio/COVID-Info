@@ -17,6 +17,11 @@
 		248151872592EB4800CC18DE /* GeneralPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248151862592EB4800CC18DE /* GeneralPage.swift */; };
 		2481518B2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */; };
 		2491B44F2592F56700F74C6A /* FirstOpenLaunchPage4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */; };
+		24B1110B259457790054BD73 /* EuclidCircularB-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 24B111082594575F0054BD73 /* EuclidCircularB-Bold.otf */; };
+		24B1110D2594577C0054BD73 /* EuclidCircularB-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 24B1110A2594575F0054BD73 /* EuclidCircularB-Medium.otf */; };
+		24B1110F2594577E0054BD73 /* EuclidCircularB-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 24B111072594575F0054BD73 /* EuclidCircularB-Semibold.otf */; };
+		24B11111259457800054BD73 /* SourceCodePro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24B111092594575F0054BD73 /* SourceCodePro-Bold.ttf */; };
+		24B11114259458F10054BD73 /* EuclidCircularB-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24B11113259458F10054BD73 /* EuclidCircularB-Light.ttf */; };
 		24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */; };
 		24C702F62592F49F004AC78F /* FirstOpenLaunchPage3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +39,11 @@
 		248151862592EB4800CC18DE /* GeneralPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPage.swift; sourceTree = "<group>"; };
 		2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage1.swift; sourceTree = "<group>"; };
 		2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage4.swift; sourceTree = "<group>"; };
+		24B111072594575F0054BD73 /* EuclidCircularB-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidCircularB-Semibold.otf"; sourceTree = "<group>"; };
+		24B111082594575F0054BD73 /* EuclidCircularB-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidCircularB-Bold.otf"; sourceTree = "<group>"; };
+		24B111092594575F0054BD73 /* SourceCodePro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceCodePro-Bold.ttf"; sourceTree = "<group>"; };
+		24B1110A2594575F0054BD73 /* EuclidCircularB-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidCircularB-Medium.otf"; sourceTree = "<group>"; };
+		24B11113259458F10054BD73 /* EuclidCircularB-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EuclidCircularB-Light.ttf"; sourceTree = "<group>"; };
 		24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage2.swift; sourceTree = "<group>"; };
 		24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOpenLaunchPage3.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +78,7 @@
 		2467EB532591120C00595939 /* COVID Info */ = {
 			isa = PBXGroup;
 			children = (
+				24B111062594574D0054BD73 /* Fonts */,
 				2467EB6B259152B700595939 /* Delegates */,
 				2467EB6A259152AC00595939 /* Controllers */,
 				2467EB692591529B00595939 /* Storyboards */,
@@ -115,6 +126,18 @@
 				2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */,
 			);
 			path = "First Open Pages";
+			sourceTree = "<group>";
+		};
+		24B111062594574D0054BD73 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				24B11113259458F10054BD73 /* EuclidCircularB-Light.ttf */,
+				24B111082594575F0054BD73 /* EuclidCircularB-Bold.otf */,
+				24B1110A2594575F0054BD73 /* EuclidCircularB-Medium.otf */,
+				24B111072594575F0054BD73 /* EuclidCircularB-Semibold.otf */,
+				24B111092594575F0054BD73 /* SourceCodePro-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,8 +198,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2467EB612591120D00595939 /* LaunchScreen.storyboard in Resources */,
+				24B1110D2594577C0054BD73 /* EuclidCircularB-Medium.otf in Resources */,
+				24B11111259457800054BD73 /* SourceCodePro-Bold.ttf in Resources */,
+				24B1110F2594577E0054BD73 /* EuclidCircularB-Semibold.otf in Resources */,
 				2467EB5E2591120D00595939 /* Assets.xcassets in Resources */,
+				24B1110B259457790054BD73 /* EuclidCircularB-Bold.otf in Resources */,
 				2467EB5C2591120C00595939 /* Main.storyboard in Resources */,
+				24B11114259458F10054BD73 /* EuclidCircularB-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

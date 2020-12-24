@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="EuclidCircularB-Bold.otf">
+            <string>EuclidCircularB-Bold</string>
+        </array>
+        <array key="EuclidCircularB-Light.ttf">
+            <string>EuclidCircularB-Light</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--First Launch Controller-->
         <scene sceneID="iqw-9c-LUk">
@@ -25,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient1" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-Iy-rFc" userLabel="Background">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-Iy-rFc" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2R6-4v-q8T">
@@ -55,20 +63,20 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-O9-LST" userLabel="TEXT3">
-                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="17" y="238.66666666666669" width="394" height="65"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
-                                                <rect key="frame" x="112" y="52" width="204" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
+                                                <rect key="frame" x="112.66666666666669" y="50.666666666666629" width="203" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -136,6 +144,11 @@
                             <constraint firstAttribute="bottom" secondItem="2R6-4v-q8T" secondAttribute="bottom" id="kw3-Eu-W6m"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="text1" destination="auK-4Y-r8W" id="rjI-WF-Zx9"/>
+                        <outlet property="text2" destination="kzI-O9-LST" id="AUD-zn-xZB"/>
+                        <outlet property="titleLabel" destination="kYX-DY-jNL" id="Mj8-c0-ws6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -158,7 +171,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGl-gH-qqp" userLabel="Top">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-v9-59q">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut copia-1" translatesAutoresizingMaskIntoConstraints="NO" id="uF3-v9-59q">
                                                 <rect key="frame" x="175" y="0.0" width="253" height="289"/>
                                             </imageView>
                                         </subviews>
@@ -178,21 +191,21 @@
                                                     <constraint firstAttribute="height" constant="73" id="NVp-aa-RAH"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-4L-WCL" userLabel="TEXT3">
-                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L'app riporta i dati che fornisce la Protezione Civile Italiana e li organizza per migliorare l'esperienza dell'utente." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-4L-WCL" userLabel="TEXT3">
+                                                <rect key="frame" x="10.666666666666657" y="238.66666666666669" width="407" height="65"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-IR-Gfs" userLabel="TEXT2">
-                                                <rect key="frame" x="111.00000000000001" y="52" width="206.33333333333337" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="App italiana, dati italiani." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-IR-Gfs" userLabel="TEXT2">
+                                                <rect key="frame" x="113.33333333333333" y="50.666666666666629" width="201.33333333333337" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-iT-CTP" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -219,7 +232,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-R9-PFq" userLabel="Bottom">
                                         <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="Apo-TT-RtO">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut copia-1" translatesAutoresizingMaskIntoConstraints="NO" id="Apo-TT-RtO">
                                                 <rect key="frame" x="0.0" y="33" width="245" height="275.66666666666669"/>
                                             </imageView>
                                         </subviews>
@@ -329,21 +342,22 @@
                                                     <constraint firstAttribute="height" constant="73" id="C2t-rS-U1l"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VeT-S5-MCd" userLabel="TEXT3">
-                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VeT-S5-MCd" userLabel="TEXT3">
+                                                <rect key="frame" x="23.666666666666657" y="217.33333333333334" width="380.66666666666674" height="86.333333333333343"/>
+                                                <string key="text">Selezionando la regione di appartenenza, l'app mostrerà le disposizioni in vigore e cercherà di evidenziare eventuali raccomandazioni, limiti o divieti.</string>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ya9-Nh-4yZ" userLabel="TEXT2">
-                                                <rect key="frame" x="110.66666666666667" y="52" width="206.66666666666663" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tiene conto delle disposizioni in vigore." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ya9-Nh-4yZ" userLabel="TEXT2">
+                                                <rect key="frame" x="59.333333333333343" y="50.666666666666629" width="309.33333333333326" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ism-eg-ELG" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -433,7 +447,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a99-R8-dek" userLabel="Top">
                                         <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="RRM-hS-lM7">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut copia-1" translatesAutoresizingMaskIntoConstraints="NO" id="RRM-hS-lM7">
                                                 <rect key="frame" x="175" y="0.0" width="253" height="289"/>
                                             </imageView>
                                         </subviews>
@@ -448,26 +462,27 @@
                                         <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="campana" translatesAutoresizingMaskIntoConstraints="NO" id="Zep-oL-sJ3" userLabel="IMAGE">
-                                                <rect key="frame" x="-368.33333333333337" y="118" width="1164.6666666666667" height="73"/>
+                                                <rect key="frame" x="-368.33333333333331" y="118" width="1164.6666666666667" height="73"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="73" id="fA2-f0-Rt8"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-VM-gvw" userLabel="TEXT3">
-                                                <rect key="frame" x="25.666666666666657" y="242.66666666666669" width="376.66666666666674" height="61"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-VM-gvw" userLabel="TEXT3">
+                                                <rect key="frame" x="10.666666666666657" y="217.33333333333334" width="406.66666666666674" height="86.333333333333343"/>
+                                                <string key="text">Una volta che avrai consentito all'applicazione di mandarti delle notifiche, essa ti avvertirà qualora i dati dovessero essere stati aggiornati o nel caso in cui dovessero cambiare le disposizioni.</string>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info! 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-vy-KJS" userLabel="TEXT2">
-                                                <rect key="frame" x="110.66666666666669" y="52" width="207" height="20.333333333333329"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Ti avvisa ad ogni cambiamento." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-vy-KJS" userLabel="TEXT2">
+                                                <rect key="frame" x="86.666666666666686" y="50.666666666666629" width="255" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKN-HK-h8S" userLabel="TEXT1">
-                                                <rect key="frame" x="96.666666666666671" y="10" width="234.66666666666663" height="42"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                                <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
+                                                <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -494,7 +509,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8JH-H4-8JP" userLabel="Bottom">
                                         <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut-rotated" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-dJ-kWl">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut copia-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q3K-dJ-kWl">
                                                 <rect key="frame" x="0.0" y="33" width="245" height="275.66666666666669"/>
                                             </imageView>
                                         </subviews>
@@ -542,15 +557,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Gradient1" width="1250" height="1250"/>
         <image name="bg-azzurro" width="1250" height="1250"/>
         <image name="bg-blue" width="1250" height="1250"/>
         <image name="bg-verdino" width="1250" height="1250"/>
         <image name="campana" width="1164.6666259765625" height="1221"/>
         <image name="covid-red-outlined-cut" width="584.33331298828125" height="658"/>
-        <image name="covid-red-outlined-cut-rotated" width="658" height="584.33331298828125"/>
+        <image name="covid-red-outlined-cut copia-1" width="658" height="584.33331298828125"/>
         <image name="covid-rosa-outlined-cut" width="676.66668701171875" height="713.66668701171875"/>
-        <image name="covid-rosa-outlined-cut-rotated" width="713.66668701171875" height="676.66668701171875"/>
+        <image name="covid-rosa-outlined-cut copia-1" width="713.66668701171875" height="676.66668701171875"/>
         <image name="foglio" width="1250" height="1079"/>
         <image name="mask2" width="256" height="256"/>
         <image name="pisa" width="1250" height="1250"/>
