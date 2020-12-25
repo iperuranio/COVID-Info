@@ -62,9 +62,9 @@ class FirstOpenLaunchPage1: UIViewController {
     
     func setupTitle() {
 //        let x = 0.15 * midFrame.width
-        let y = (0.03 * midFrame.height) //non c'è bisogno di aggiungere nulla perché è dentro la view e x e y di CGRect sono relativi alla view di appartenenza
-        let width = 0.7 * midFrame.width
-        let height = (0.1 * midFrame.height)
+        let y = (0 * midFrame.height) //non c'è bisogno di aggiungere nulla perché è dentro la view e x e y di CGRect sono relativi alla view di appartenenza
+        let width = 0.65 * midFrame.width
+        let height = (0.25 * midFrame.height)
 
         titleLabel.frame = CGRect(x: 0, y: y, width: width, height: height)
         titleLabel.center.x = self.view.center.x
@@ -74,7 +74,7 @@ class FirstOpenLaunchPage1: UIViewController {
     }
     
     func setupSubtitle() {
-        let y = (0.12 * midFrame.height)
+        let y = (0.16 * midFrame.height)
         let width = 0.6 * midFrame.width
         let height = (0.05 * midFrame.height)
 
@@ -84,7 +84,7 @@ class FirstOpenLaunchPage1: UIViewController {
     }
     
     func setupImage() {
-        let y = (0.275 * midFrame.height)
+        let y = (0.285 * midFrame.height)
         let width = 0.6 * midFrame.width
         let height = (0.2 * midFrame.height)
 

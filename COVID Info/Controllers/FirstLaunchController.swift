@@ -115,7 +115,7 @@ class FirstLaunchController: UIViewController {
         FirstLaunchController.frame = view.bounds //sono messi qui perché in questa funzione frame assume un valore diverso di quello in viewDidLoad
         MainScreenController.instance?.blurScreen()
         
-        Page.initialize() //initialize pages
+        Page.initialize()
         self.setupPageController()
     }
     
