@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,7 +25,7 @@
                 <pageViewController storyboardIdentifier="FIRST_OPEN_PAGE_0" autoresizesArchivedViewToFullSize="NO" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="PYI-3A-0rh" customClass="FirstLaunchController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U8n-b2-RZJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-93" y="253"/>
+            <point key="canvasLocation" x="-1915" y="247"/>
         </scene>
         <!--VC1-->
         <scene sceneID="tne-QT-ifu">
@@ -34,126 +35,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-Iy-rFc" userLabel="Background">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="6G7-Iy-rFc" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2R6-4v-q8T">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eq8-et-Rw0" userLabel="Top">
+                                <rect key="frame" x="0.0" y="337" width="428" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75m-9G-h4x" userLabel="Mid">
+                                <rect key="frame" x="0.0" y="247" width="428" height="431"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XWq-o2-EO3" userLabel="Top">
-                                        <rect key="frame" x="0.0" y="0.0" width="428" height="308.66666666666669"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-red-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="da1-Of-T8J">
-                                                <rect key="frame" x="0.0" y="0.0" width="253" height="289"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="da1-Of-T8J" secondAttribute="bottom" constant="19.670000000000002" id="02e-fN-mpK"/>
-                                            <constraint firstItem="da1-Of-T8J" firstAttribute="top" secondItem="XWq-o2-EO3" secondAttribute="top" id="UIQ-kO-1AT"/>
-                                            <constraint firstAttribute="trailing" secondItem="da1-Of-T8J" secondAttribute="trailing" constant="175" id="WS3-Kw-bNa"/>
-                                            <constraint firstItem="da1-Of-T8J" firstAttribute="leading" secondItem="XWq-o2-EO3" secondAttribute="leading" id="hb9-cE-PoG"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75m-9G-h4x" userLabel="Mid">
-                                        <rect key="frame" x="0.0" y="308.66666666666663" width="428" height="308.66666666666663"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" image="mask2" translatesAutoresizingMaskIntoConstraints="NO" id="Sdr-3i-eFa" userLabel="IMAGE">
-                                                <rect key="frame" x="86" y="118" width="256" height="73"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="73" id="Y89-1E-f8f"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-O9-LST" userLabel="TEXT3">
-                                                <rect key="frame" x="17" y="238.66666666666669" width="394" height="65"/>
-                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Benvenuto in COVID Info!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
-                                                <rect key="frame" x="112.66666666666669" y="50.666666666666629" width="203" height="21.666666666666671"/>
-                                                <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
-                                                <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
-                                                <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="auK-4Y-r8W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="4pL-LE-ynu"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="top" secondItem="75m-9G-h4x" secondAttribute="top" constant="10" id="88m-SG-q9Y"/>
-                                            <constraint firstItem="auK-4Y-r8W" firstAttribute="top" secondItem="kYX-DY-jNL" secondAttribute="bottom" id="92l-mU-hYj"/>
-                                            <constraint firstAttribute="bottom" secondItem="kzI-O9-LST" secondAttribute="bottom" constant="5" id="CbW-Ii-pAk"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="trailing" id="Gxd-4o-YNR"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="auK-4Y-r8W" secondAttribute="bottom" constant="5" id="IXC-H0-BR7"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" id="JpJ-jx-Mgk"/>
-                                            <constraint firstItem="auK-4Y-r8W" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="Vtm-Bt-h5N"/>
-                                            <constraint firstItem="kzI-O9-LST" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="75m-9G-h4x" secondAttribute="leading" constant="10" id="Zvo-TM-ks3"/>
-                                            <constraint firstItem="kYX-DY-jNL" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="bB5-5Z-ohn"/>
-                                            <constraint firstItem="kzI-O9-LST" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Sdr-3i-eFa" secondAttribute="bottom" constant="5" id="chc-uC-OVf"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kYX-DY-jNL" secondAttribute="trailing" id="kBw-JD-ndl"/>
-                                            <constraint firstItem="kzI-O9-LST" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="lew-rS-RFC"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerX" secondItem="75m-9G-h4x" secondAttribute="centerX" id="nEO-9a-EYw"/>
-                                            <constraint firstItem="Sdr-3i-eFa" firstAttribute="centerY" secondItem="75m-9G-h4x" secondAttribute="centerY" id="r1X-rx-RW0"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kzI-O9-LST" secondAttribute="trailing" constant="10" id="s8O-FG-WlE"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="loY-fA-W9K" userLabel="Bottom">
-                                        <rect key="frame" x="0.0" y="617.33333333333337" width="428" height="308.66666666666663"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid-rosa-outlined-cut" translatesAutoresizingMaskIntoConstraints="NO" id="toz-ex-LSx">
-                                                <rect key="frame" x="183" y="33" width="245" height="275.66666666666669"/>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="toz-ex-LSx" secondAttribute="trailing" id="2S3-kD-Lb6"/>
-                                            <constraint firstItem="toz-ex-LSx" firstAttribute="top" secondItem="loY-fA-W9K" secondAttribute="top" constant="33" id="glr-c4-S3f"/>
-                                            <constraint firstAttribute="bottom" secondItem="toz-ex-LSx" secondAttribute="bottom" id="j6X-2b-IgK"/>
-                                            <constraint firstItem="toz-ex-LSx" firstAttribute="leading" secondItem="loY-fA-W9K" secondAttribute="leading" constant="183" id="mBd-wE-3Kz"/>
-                                        </constraints>
-                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kzI-O9-LST" userLabel="TEXT3">
+                                        <rect key="frame" x="18" y="242" width="392" height="127"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="25"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Benvenuto in COVID Info!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="auK-4Y-r8W" userLabel="TEXT2">
+                                        <rect key="frame" x="94" y="60" width="240" height="25.666666666666657"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" fixedFrame="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYX-DY-jNL" userLabel="TEXT1">
+                                        <rect key="frame" x="80" y="8" width="268" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="40"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="mask2" translatesAutoresizingMaskIntoConstraints="NO" id="Sdr-3i-eFa" userLabel="IMAGE">
+                                        <rect key="frame" x="170" y="125" width="88.999999999999972" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="XWq-o2-EO3" secondAttribute="trailing" id="0FX-3o-AZo"/>
-                                    <constraint firstItem="XWq-o2-EO3" firstAttribute="top" secondItem="2R6-4v-q8T" secondAttribute="top" id="50j-vG-huu"/>
-                                    <constraint firstAttribute="trailing" secondItem="75m-9G-h4x" secondAttribute="trailing" id="6ij-um-t89"/>
-                                    <constraint firstAttribute="trailing" secondItem="loY-fA-W9K" secondAttribute="trailing" id="J8C-AA-79i"/>
-                                    <constraint firstItem="loY-fA-W9K" firstAttribute="top" secondItem="75m-9G-h4x" secondAttribute="bottom" id="UMy-WB-oDT"/>
-                                    <constraint firstItem="75m-9G-h4x" firstAttribute="top" secondItem="XWq-o2-EO3" secondAttribute="bottom" id="aDm-DM-5Qe"/>
-                                    <constraint firstItem="75m-9G-h4x" firstAttribute="top" secondItem="XWq-o2-EO3" secondAttribute="bottom" id="aY7-cB-Lkx"/>
-                                    <constraint firstItem="loY-fA-W9K" firstAttribute="leading" secondItem="2R6-4v-q8T" secondAttribute="leading" id="c72-Y4-T6o"/>
-                                    <constraint firstItem="XWq-o2-EO3" firstAttribute="leading" secondItem="2R6-4v-q8T" secondAttribute="leading" id="cKW-OI-gmr"/>
-                                    <constraint firstItem="75m-9G-h4x" firstAttribute="leading" secondItem="2R6-4v-q8T" secondAttribute="leading" id="kyN-9K-CRX"/>
-                                    <constraint firstItem="loY-fA-W9K" firstAttribute="top" secondItem="75m-9G-h4x" secondAttribute="bottom" id="nuf-4E-i2x"/>
-                                    <constraint firstAttribute="bottom" secondItem="loY-fA-W9K" secondAttribute="bottom" id="rRo-zZ-eL6"/>
-                                </constraints>
-                            </stackView>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="meo-pG-wuL" userLabel="Bot">
+                                <rect key="frame" x="0.0" y="341" width="428" height="244"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="2R6-4v-q8T" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ArG-pN-KWA"/>
-                            <constraint firstItem="2R6-4v-q8T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DSi-Pm-gYz"/>
-                            <constraint firstItem="6G7-Iy-rFc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="N9v-Lr-lx6"/>
-                            <constraint firstItem="6G7-Iy-rFc" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="SgF-X1-G1I"/>
-                            <constraint firstItem="6G7-Iy-rFc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wds-PB-0nQ"/>
-                            <constraint firstAttribute="bottom" secondItem="6G7-Iy-rFc" secondAttribute="bottom" id="eHz-Xu-XnZ"/>
-                            <constraint firstItem="2R6-4v-q8T" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eNf-0X-eA1"/>
-                            <constraint firstAttribute="bottom" secondItem="2R6-4v-q8T" secondAttribute="bottom" id="kw3-Eu-W6m"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="botView" destination="meo-pG-wuL" id="McQ-V8-Y6a"/>
+                        <outlet property="midView" destination="75m-9G-h4x" id="Uih-J8-lV4"/>
                         <outlet property="text1" destination="auK-4Y-r8W" id="rjI-WF-Zx9"/>
                         <outlet property="text2" destination="kzI-O9-LST" id="AUD-zn-xZB"/>
                         <outlet property="titleLabel" destination="kYX-DY-jNL" id="Mj8-c0-ws6"/>
+                        <outlet property="topView" destination="eq8-et-Rw0" id="nAC-QP-7CR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="102"/>
+            <point key="canvasLocation" x="-1249.0654205607475" y="246.86825053995682"/>
         </scene>
         <!--VC2-->
         <scene sceneID="Fu8-jH-OKM">
@@ -163,7 +104,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-azzurro" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-oh-qoi" userLabel="Background">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-oh-qoi" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-nq-lBV">
@@ -277,14 +218,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDZ-3f-MRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387.8504672897195" y="101.72786177105833"/>
+            <point key="canvasLocation" x="-551" y="247"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Dati-->
         <scene sceneID="5C8-Xb-zar">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OhW-PY-AjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="KG0-ST-AdR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="heart.text.square.fill" catalog="system" id="Do4-KO-Dqr"/>
+                    <tabBarItem key="tabBarItem" title="Dati" id="Do4-KO-Dqr">
+                        <imageReference key="image" image="heart.text.square.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="wYT-Mg-Ums">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -300,7 +243,7 @@
             <objects>
                 <viewController id="Rb2-j4-Por" customClass="DatiViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6S0-ym-smj">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R90-Vj-grV">
@@ -324,11 +267,10 @@
         <scene sceneID="rJK-jS-zv3">
             <objects>
                 <tabBarController id="Oo8-ar-MQl" customClass="MainScreenController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Rqb-Mz-eK1">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rqb-Mz-eK1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" name="AccentColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
                                 <color key="value" name="BarButtonColors"/>
@@ -339,6 +281,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
+                        <outlet property="tabBarUI" destination="Rqb-Mz-eK1" id="1r0-qz-MhI"/>
                         <segue destination="PYI-3A-0rh" kind="presentation" identifier="FIRST_APP_OPEN" id="ant-lW-JsO"/>
                         <segue destination="W0L-hS-HVu" kind="relationship" relationship="viewControllers" id="VeQ-4L-ghC"/>
                         <segue destination="KG0-ST-AdR" kind="relationship" relationship="viewControllers" id="oi0-t0-jdw"/>
@@ -348,7 +291,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Bs-DZ-Y0b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1914" y="-782"/>
+            <point key="canvasLocation" x="-2110" y="-1110"/>
         </scene>
         <!--VC3-->
         <scene sceneID="pbe-f1-195">
@@ -358,7 +301,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-verdino" translatesAutoresizingMaskIntoConstraints="NO" id="evW-cD-ZgM" userLabel="Background">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="evW-cD-ZgM" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1MI-qX-AIb">
@@ -473,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCB-BV-1HA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2072" y="102"/>
+            <point key="canvasLocation" x="133" y="247"/>
         </scene>
         <!--VC4-->
         <scene sceneID="Aw0-c5-qzb">
@@ -598,14 +541,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXA-rN-YfN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2753.2710280373831" y="101.72786177105833"/>
+            <point key="canvasLocation" x="770" y="247"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Impostazioni-->
         <scene sceneID="OyP-9n-vE7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Imo-38-W37" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="ndI-Wi-q5c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="gearshape.fill" catalog="system" id="D2X-jJ-GT4"/>
+                    <tabBarItem key="tabBarItem" title="Impostazioni" id="D2X-jJ-GT4">
+                        <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="IZX-zi-acp">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -621,7 +566,7 @@
             <objects>
                 <viewController id="Piv-1R-nRg" customClass="SettingsViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tdu-KH-FXX">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SETTINGS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOa-5F-Ppl">
@@ -641,12 +586,15 @@
             </objects>
             <point key="canvasLocation" x="-102" y="-544"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Disposizioni-->
         <scene sceneID="eD8-cm-bCH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZYi-vK-DD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="dua-GW-vgU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="applescript.fill" catalog="system" id="tbq-Tt-4a5"/>
+                    <tabBarItem key="tabBarItem" title="Disposizioni" id="tbq-Tt-4a5">
+                        <imageReference key="image" image="text.book.closed.fill" catalog="system" symbolScale="large"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="1"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="E2g-Ou-ajx">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -665,7 +613,7 @@
             <objects>
                 <viewController id="vj1-Kn-Ldb" customClass="DecretiViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nXl-XQ-rWS">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DECRETI" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esX-H9-9JU">
@@ -685,12 +633,14 @@
             </objects>
             <point key="canvasLocation" x="-92.523364485981304" y="-1200"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="Xsd-WF-qNl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SHA-Fe-Gpu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="W0L-hS-HVu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="biH-g2-C9v"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="biH-g2-C9v">
+                        <imageReference key="image" image="house.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="f7Z-ug-IH1">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -706,7 +656,7 @@
             <objects>
                 <viewController id="SmG-Va-C8c" customClass="HomeViewController" customModule="COVID_Info" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5N-oV-K5m">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="843"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="HOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4L-7U-YES">
@@ -728,10 +678,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="applescript.fill" catalog="system" width="98" height="128"/>
-        <image name="bg-azzurro" width="1250" height="1250"/>
         <image name="bg-blue" width="1250" height="1250"/>
-        <image name="bg-verdino" width="1250" height="1250"/>
         <image name="campana" width="1164.6666259765625" height="1221"/>
         <image name="covid-red-outlined-cut" width="584.33331298828125" height="658"/>
         <image name="covid-red-outlined-cut copia-1" width="658" height="584.33331298828125"/>
@@ -743,9 +690,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="mask2" width="256" height="256"/>
         <image name="pisa" width="1250" height="1250"/>
-        <namedColor name="AccentColor">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="text.book.closed.fill" catalog="system" width="115" height="128"/>
         <namedColor name="BarButtonColors">
             <color red="0.73333333333333328" green="0.74901960784313726" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

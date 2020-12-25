@@ -10,6 +10,7 @@ import UIKit
 class MainScreenController: UITabBarController {
     static var instance: MainScreenController?
     let storyboardUI = UIStoryboard(name: "Main", bundle: nil)
+    @IBOutlet weak var tabBarUI: UITabBar!
     var fullscreenFrame = CGRect()
     
     var blurEffectView: UIVisualEffectView?
@@ -23,8 +24,16 @@ class MainScreenController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fullscreenFrame = UIScreen.main.bounds
         
-        fullscreenFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        tabBarUI.backgroundColor = .clear
+
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        blur.frame = tabBarUI.correctBounds()
+        blur.autoresizingMask = .flexibleWidth
+        tabBarUI.insertSubview(blur, at: 0)
+        
+        
 //        preview()
 //        print("a")
 //        _ = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { timer in
@@ -36,11 +45,11 @@ class MainScreenController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        blur()
+        blurScreen()
         self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
     }
     
-    func blur() {
+    func blurScreen() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
         blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView?.frame = view.bounds
@@ -50,6 +59,17 @@ class MainScreenController: UITabBarController {
     
     func removeBlur() {
         blurEffectView!.removeFromSuperview()
+    }
+}
+
+extension UITabBar {
+    func correctBounds() -> CGRect {
+        let X = bounds.maxX
+        let Y = bounds.maxY
+        let width = bounds.width
+        let height = bounds.height
+        
+        return CGRect(x: X, y: Y, width: width, height: height)
     }
 }
 
