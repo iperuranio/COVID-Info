@@ -82,11 +82,12 @@ class FirstLaunchController: UIViewController {
     private var pages: [Pages] = Pages.allCases
     private var currentIndex: Int = 0
     
+    static var frame = MainScreenController.instance?.fullscreenFrame
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Page.initialize() //initialize pages
         
-        self.setupPageController()
+        //if primo avvio?
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,7 +99,7 @@ class FirstLaunchController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 //        DispatchQueue.main.async {
 //            self.present(FirstOpenLaunchPage1(coder: NSCoder()), animated: true, completion: nil)
 //        }
@@ -110,6 +111,12 @@ class FirstLaunchController: UIViewController {
 //             self.modalPresentationStyle = .fullScreen
 //             topController.present(vc, animated: true, completion: nil)
 //        }
+        
+        FirstLaunchController.frame = view.bounds //sono messi qui perché in questa funzione frame assume un valore diverso di quello in viewDidLoad
+        MainScreenController.instance?.blurScreen()
+        
+        Page.initialize() //initialize pages
+        self.setupPageController()
     }
     
     private func setupPageController() {

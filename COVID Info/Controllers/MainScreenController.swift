@@ -45,7 +45,6 @@ class MainScreenController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        blurScreen()
         self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
     }
     
@@ -90,27 +89,3 @@ extension UIFont {
     return UIFont(name: "SourceCodePro-Bold", size: size)!
   }
 }
-
-extension UIImage {
-    func tabBarImageWithCustomTint(tintColor: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        let context: CGContext = UIGraphicsGetCurrentContext()!
-
-        context.translateBy(x: 0, y: self.size.height)
-        context.scaleBy(x: 1.0, y: -1.0)
-        context.setBlendMode(CGBlendMode.normal)
-        let rect: CGRect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-
-        context.clip(to: rect, mask: self.cgImage!)
-
-        tintColor.setFill()
-        context.fill(rect)
-
-        var newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-
-        newImage = newImage.withRenderingMode(.alwaysOriginal)
-        return newImage
-    }
-}
-

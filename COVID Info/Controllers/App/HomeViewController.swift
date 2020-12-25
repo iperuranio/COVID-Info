@@ -12,12 +12,11 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.yellow], for:.selected)
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.tabBarItem.selectedImage = self.tabBarItem.selectedImage?.tabBarImageWithCustomTint(tintColor: .red)
+
     }
     
 

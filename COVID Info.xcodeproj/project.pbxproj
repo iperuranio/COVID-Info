@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		241582AC25958C0000F27E0C /* GeneralPageUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241582AB25958C0000F27E0C /* GeneralPageUI.swift */; };
+		2415C90C25958A6400E01479 /* FrameEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415C90B25958A6400E01479 /* FrameEditor.swift */; };
 		243846F52594CD8A0016F6B8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846F42594CD8A0016F6B8 /* HomeViewController.swift */; };
 		243846F92594CD940016F6B8 /* DatiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846F82594CD940016F6B8 /* DatiViewController.swift */; };
 		243846FD2594CE030016F6B8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243846FC2594CE030016F6B8 /* SettingsViewController.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		241582AB25958C0000F27E0C /* GeneralPageUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPageUI.swift; sourceTree = "<group>"; };
+		2415C90B25958A6400E01479 /* FrameEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameEditor.swift; sourceTree = "<group>"; };
 		243846F42594CD8A0016F6B8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		243846F82594CD940016F6B8 /* DatiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatiViewController.swift; sourceTree = "<group>"; };
 		243846FC2594CE030016F6B8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2415C90A25958A4A00E01479 /* ScreenEditor */ = {
+			isa = PBXGroup;
+			children = (
+				2415C90B25958A6400E01479 /* FrameEditor.swift */,
+			);
+			path = ScreenEditor;
+			sourceTree = "<group>";
+		};
 		243846F32594CD6F0016F6B8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +109,7 @@
 		2467EB532591120C00595939 /* COVID Info */ = {
 			isa = PBXGroup;
 			children = (
+				2415C90A25958A4A00E01479 /* ScreenEditor */,
 				24B111062594574D0054BD73 /* Fonts */,
 				2467EB6B259152B700595939 /* Delegates */,
 				2467EB6A259152AC00595939 /* Controllers */,
@@ -140,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				248151862592EB4800CC18DE /* GeneralPage.swift */,
+				241582AB25958C0000F27E0C /* GeneralPageUI.swift */,
 				2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */,
 				24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */,
 				24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */,
@@ -237,6 +251,7 @@
 			files = (
 				2481518B2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift in Sources */,
 				2467EB592591120C00595939 /* MainScreenController.swift in Sources */,
+				241582AC25958C0000F27E0C /* GeneralPageUI.swift in Sources */,
 				24C702F62592F49F004AC78F /* FirstOpenLaunchPage3.swift in Sources */,
 				24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */,
 				243846F92594CD940016F6B8 /* DatiViewController.swift in Sources */,
@@ -244,6 +259,7 @@
 				243846F52594CD8A0016F6B8 /* HomeViewController.swift in Sources */,
 				243847012594D25F0016F6B8 /* DecretiViewController.swift in Sources */,
 				2467EB552591120C00595939 /* AppDelegate.swift in Sources */,
+				2415C90C25958A6400E01479 /* FrameEditor.swift in Sources */,
 				248151872592EB4800CC18DE /* GeneralPage.swift in Sources */,
 				2467EB572591120C00595939 /* SceneDelegate.swift in Sources */,
 				2491B44F2592F56700F74C6A /* FirstOpenLaunchPage4.swift in Sources */,
