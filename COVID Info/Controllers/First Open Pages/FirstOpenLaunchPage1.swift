@@ -62,29 +62,28 @@ class FirstOpenLaunchPage1: UIViewController {
     
     func setupTitle() {
         let viewEditor = ViewEditor(titleLabel, midView)
-        print("\(midFrame.maxX) \(midFrame.maxY) \(midFrame.width) \(midFrame.height)")
-        viewEditor.percentageFrameMaxX(0).percentageFrameRelativeY(0).percentageFrameWidth(0.65).percentageFrameHeight(0.25).centerX().build()
-        print(titleLabel.frame)
-//
-//        let y = (0 * midFrame.height) //non c'è bisogno di aggiungere nulla perché è dentro la view e x e y di CGRect sono relativi alla view di appartenenza
-//        let width = 0.65 * midFrame.width
-//        let height = (0.25 * midFrame.height)
-//
-//        titleLabel.frame = CGRect(x: 0, y: y, width: width, height: height)
-//        titleLabel.center.x = self.view.center.x
-        titleLabel.textAlignment = .center
         
-//        self.view.addSubview(a)
+        viewEditor.percentageFrameMaxX(0)
+            .percentageFrameRelativeY(0)
+            .percentageFrameWidth(0.65)
+            .percentageFrameHeight(0.25)
+            .centerX()
+            .labelEditor()
+            .textAlignment(.center)
+            .upperEditor()
+            .voidBuild()
     }
     
     func setupSubtitle() {
-        let y = (0.16 * midFrame.height)
-        let width = 0.6 * midFrame.width
-        let height = (0.05 * midFrame.height)
-
-        text1.textAlignment = .center
-        text1.frame = CGRect(x: 0, y: y, width: width, height: height)
-        text1.center.x = self.view.center.x
+        let viewEditor = ViewEditor(text1, midView)
+        viewEditor.percentageFrameRelativeY(0.16)
+            .percentageFrameWidth(0.6)
+            .percentageFrameHeight(0.05)
+            .centerX()
+            .labelEditor()
+            .textAlignment(.center)
+            .upperEditor()
+            .voidBuild()
     }
     
     func setupImage() {

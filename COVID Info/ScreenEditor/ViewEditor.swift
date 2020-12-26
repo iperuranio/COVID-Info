@@ -13,8 +13,17 @@
 import UIKit
 
 class ViewEditor {
-    var view: UIView
-    private var mainView: UIView
+    
+    enum FramePosition: Int {
+        case x
+        case y
+        case width
+        case height
+    }
+    
+    
+    var view: UIView = UIView()
+    private var mainView: UIView = UIView()
     private var frameToApply = CGRect()
     private var shouldApplyFrameOnBounds = false
     
@@ -22,14 +31,25 @@ class ViewEditor {
     private var absoluteFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
     
+    private var innerLabelEditor: LabelEditor? = nil
+    
+    init() {
+        
+    }
+    
     init(_ view: UIView, _ mainView: UIView) {
         self.view = view
         frameToApply = view.frame
         self.mainView = mainView
         
         absoluteFrameMeasures = [mainView.frame.maxX, mainView.frame.maxY, mainView.frame.width, mainView.frame.height]
+        innerLabelEditor = LabelEditor(view as! UILabel, self)
     }
     
+    func labelEditor() -> LabelEditor {
+        return innerLabelEditor!
+    }
+
     private func updateFrame() {
         frameToApply = CGRect(x: frameMeasures[0], y: frameMeasures[1], width: frameMeasures[2], height: frameMeasures[3])
     }
@@ -128,10 +148,38 @@ class ViewEditor {
         return view
     }
     
-    enum FramePosition: Int {
-        case x
-        case y
-        case width
-        case height
+    func voidBuild() {
+        let _ = build()
+    }
+    
+    class SubEditor {
+        init() {
+            
+        }
+        
+        func upperEditor() -> ViewEditor {
+            preconditionFailure("must be overrided")
+        }
+    }
+    
+    class LabelEditor: SubEditor {
+        private var label: UILabel
+        private var mainInstance: ViewEditor
+        
+        init(_ label: UILabel, _ mainInstance: ViewEditor) {
+            self.label = label
+            self.mainInstance = mainInstance
+            
+            super.init()
+        }
+        
+        override func upperEditor() -> ViewEditor {
+            return mainInstance
+        }
+        
+        func textAlignment(_ alignment: NSTextAlignment) -> LabelEditor {
+            label.textAlignment = alignment
+            return self
+        }
     }
 }
