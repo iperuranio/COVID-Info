@@ -152,6 +152,16 @@
                         <viewLayoutGuide key="safeArea" id="0fs-Rl-f7G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="botView" destination="bpO-R9-PFq" id="OCO-MT-96U"/>
+                        <outlet property="imageCenter" destination="bBX-bP-ZfL" id="eQF-gb-zJ2"/>
+                        <outlet property="mainView" destination="gG5-4W-nLh" id="fk0-Bs-BAE"/>
+                        <outlet property="midView" destination="XZV-zQ-KFB" id="Y8t-LR-nRq"/>
+                        <outlet property="text1" destination="ILA-IR-Gfs" id="rwR-eC-aVJ"/>
+                        <outlet property="text2" destination="kqi-4L-WCL" id="Qfu-3F-z8V"/>
+                        <outlet property="titleLabel" destination="hRl-iT-CTP" id="HWZ-49-3L3"/>
+                        <outlet property="topView" destination="bGl-gH-qqp" id="qd2-7y-ZwC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDZ-3f-MRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,6 +296,16 @@
                         <viewLayoutGuide key="safeArea" id="43e-qJ-6US"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="botView" destination="eCG-D2-KcU" id="ovS-W7-82w"/>
+                        <outlet property="imageCenter" destination="meO-tK-QSQ" id="Qpd-bj-35u"/>
+                        <outlet property="mainView" destination="Oim-lb-gBc" id="tta-0K-9lg"/>
+                        <outlet property="midView" destination="Y5i-hG-pEH" id="EcN-ts-YxT"/>
+                        <outlet property="text1" destination="ya9-Nh-4yZ" id="hFN-zO-GzF"/>
+                        <outlet property="text2" destination="VeT-S5-MCd" id="9s3-jx-PNW"/>
+                        <outlet property="titleLabel" destination="Ism-eg-ELG" id="AcO-to-JXP"/>
+                        <outlet property="topView" destination="irK-Ws-PQ1" id="8ro-zg-xRo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCB-BV-1HA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -347,6 +367,16 @@
                         <viewLayoutGuide key="safeArea" id="NKf-Zb-igW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="botView" destination="8JH-H4-8JP" id="3qb-8f-ypY"/>
+                        <outlet property="imageCenter" destination="Zep-oL-sJ3" id="6MR-de-Xf8"/>
+                        <outlet property="mainView" destination="M3U-hY-mSo" id="Zkd-1j-ECN"/>
+                        <outlet property="midView" destination="85N-Xx-PUj" id="0rO-NI-JaE"/>
+                        <outlet property="text1" destination="TOD-vy-KJS" id="4rs-7y-pj9"/>
+                        <outlet property="text2" destination="AXb-VM-gvw" id="35m-NR-2MG"/>
+                        <outlet property="titleLabel" destination="hKN-HK-h8S" id="V1b-WH-GjH"/>
+                        <outlet property="topView" destination="a99-R8-dek" id="8kf-N5-hxu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXA-rN-YfN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -24,6 +24,8 @@ class FirstOpenLaunchPage1: UIViewController {
     var frame = CGRect()
     var midFrame = CGRect()
     
+    var initialized: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,10 +37,13 @@ class FirstOpenLaunchPage1: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        let topFrame = topView.frame
+        if(initialized) { //ricordarsi sta roba
+            return
+        }
+        
         frame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
         
-        let _ = GeneralPageUI(topView, midView, botView, true) //debug mode con true
+        let _ = GeneralPageUI(topView, midView, botView, false) //debug mode con true
         midFrame = midView.frame
         
         setupTitle()
@@ -46,6 +51,7 @@ class FirstOpenLaunchPage1: UIViewController {
         setupImage()
         setupBottomTitle()
         
+        initialized = true
 //        titleLabel.frame =
         
 //        print(startingBotPoint + startingMidPoint + startingTopPoint)
@@ -62,6 +68,7 @@ class FirstOpenLaunchPage1: UIViewController {
     
     func setupTitle() {
         let viewEditor = ViewEditor(titleLabel, midView)
+        let text = "COVID-Info" //prendere dal file translate
         
         viewEditor.percentageFrameMaxX(0)
             .percentageFrameRelativeY(0)
@@ -69,42 +76,54 @@ class FirstOpenLaunchPage1: UIViewController {
             .percentageFrameHeight(0.25)
             .centerX()
             .labelEditor()
+            .text("")
             .textAlignment(.center)
+            .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .voidBuild()
     }
     
     func setupSubtitle() {
         let viewEditor = ViewEditor(text1, midView)
-        viewEditor.percentageFrameRelativeY(0.16)
-            .percentageFrameWidth(0.6)
+        let text = "Benvenuto in COVID Info!"
+        
+        viewEditor.percentageFrameRelativeY(0.17)
+            .percentageFrameWidth(0.58)
             .percentageFrameHeight(0.05)
             .centerX()
             .labelEditor()
+            .text("")
             .textAlignment(.center)
+            .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .voidBuild()
     }
     
     func setupImage() {
-        let y = (0.285 * midFrame.height)
-        let width = 0.6 * midFrame.width
-        let height = (0.2 * midFrame.height)
-
-        imageCenter.frame = CGRect(x: 0, y: y, width: width, height: height)
-        imageCenter.center.x = self.view.center.x
+        let viewEditor = ViewEditor(imageCenter, midView)
+        
+        viewEditor.percentageFrameRelativeY(0.285)
+            .percentageFrameWidth(0.6)
+            .percentageFrameHeight(0.2)
+            .centerX()
+            .voidBuild()
     }
     
     func setupBottomTitle() {
-        let y = (0.57 * midFrame.height)
-        let width = 0.9 * midFrame.width
-        let height = (0.30 * midFrame.height)
-
-        text2.frame = CGRect(x: 0, y: y, width: width, height: height)
-        text2.center.x = self.view.center.x
-        text2.textAlignment = .center
+        let viewEditor = ViewEditor(text2, midView)
+        let text = "All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)."
+        
+        viewEditor.percentageFrameRelativeY(0.57)
+            .percentageFrameWidth(0.9)
+            .percentageFrameHeight(0.30)
+            .centerX()
+            .labelEditor()
+            .text("")
+            .textAlignment(.center)
+            .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
+            .upperEditor()
+            .voidBuild()
     }
     
     //fare un configuratore a cascata
-    
 }

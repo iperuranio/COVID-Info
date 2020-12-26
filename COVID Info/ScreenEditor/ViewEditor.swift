@@ -20,8 +20,7 @@ class ViewEditor {
         case width
         case height
     }
-    
-    
+
     var view: UIView = UIView()
     private var mainView: UIView = UIView()
     private var frameToApply = CGRect()
@@ -43,7 +42,10 @@ class ViewEditor {
         self.mainView = mainView
         
         absoluteFrameMeasures = [mainView.frame.maxX, mainView.frame.maxY, mainView.frame.width, mainView.frame.height]
-        innerLabelEditor = LabelEditor(view as! UILabel, self)
+        
+        if let label = view as? UILabel {
+            innerLabelEditor = LabelEditor(label, self)
+        }
     }
     
     func labelEditor() -> LabelEditor {
@@ -179,6 +181,24 @@ class ViewEditor {
         
         func textAlignment(_ alignment: NSTextAlignment) -> LabelEditor {
             label.textAlignment = alignment
+            return self
+        }
+        
+        func text(_ text: String) -> LabelEditor {
+            label.text = text
+            return self
+        }
+        
+        func transitionText(_ after: TimeInterval, _ repeats: Bool, _ duration: TimeInterval, _ options: UIView.AnimationOptions, _ resultText: String /*(() -> Void)?*/, completion: ((Bool) -> Void)? = nil) -> LabelEditor {
+            _ = Timer.scheduledTimer(withTimeInterval: after, repeats: repeats) { timer in
+                UIView.transition(with: self.label,
+                                  duration: duration,
+                                  options: options,
+                            animations: { [weak self] in
+                                self?.label.text = resultText
+                            }, completion: completion)
+            }
+            
             return self
         }
     }
