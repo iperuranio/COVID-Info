@@ -31,6 +31,7 @@ class ViewEditor {
     private var centering: [Bool] = [false, false]
     
     private var innerLabelEditor: LabelEditor? = nil
+    private var innerImageEditor: ImageEditor? = nil
     
     init() {
         
@@ -46,6 +47,19 @@ class ViewEditor {
         if let label = view as? UILabel {
             innerLabelEditor = LabelEditor(label, self)
         }
+        
+        if let image = view as? UIImageView {
+            innerImageEditor = ImageEditor(image, self)
+        }
+    }
+    
+    func attachToSuperView() -> ViewEditor {
+        mainView.addSubview(view)
+        return self
+    }
+    
+    func imageEditor() -> ImageEditor {
+        return innerImageEditor!
     }
     
     func labelEditor() -> LabelEditor {
@@ -84,6 +98,19 @@ class ViewEditor {
 //        print("request \(percentage) value: \(value) calcol: \(value * percentage) on \(whichFramePosition.rawValue) \(onWhichDestinationFrameValue.rawValue)")
         
         return updateArrayWithFrameMeasures(value * percentage, onWhichDestinationFrameValue)
+    }
+    
+    func backgroundColor(named name: String) -> ViewEditor {
+        return backgroundColor(UIColor(named: name)!)
+    }
+    
+    func backgroundColor(_ color: UIColor) -> ViewEditor {
+        view.backgroundColor = color
+        return self
+    }
+    
+    func clearBackground() -> ViewEditor {
+        return backgroundColor(.clear)
     }
     
     func percentageFrameRelativeX(_ percentage: CGFloat) -> ViewEditor {
@@ -126,6 +153,13 @@ class ViewEditor {
         return self
     }
     
+    func asBackground() -> ViewEditor {
+        return updateArrayWithFrameMeasures(mainView.frame.minX, .x)
+            .updateArrayWithFrameMeasures(mainView.frame.minY, .y)
+            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.width.rawValue], .width)
+            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.height.rawValue], .height)
+    }
+    
     func applyFrameOnBounds() -> ViewEditor {
         self.shouldApplyFrameOnBounds = true
         return self
@@ -150,6 +184,14 @@ class ViewEditor {
         return view
     }
     
+    func attachToSuperviewAndBuild() -> UIView {
+        return attachToSuperView().build()
+    }
+    
+    func attachToSuperviewAndVoidBuild() {
+        return attachToSuperView().voidBuild()
+    }
+    
     func voidBuild() {
         let _ = build()
     }
@@ -161,6 +203,31 @@ class ViewEditor {
         
         func upperEditor() -> ViewEditor {
             preconditionFailure("must be overrided")
+        }
+    }
+    
+    class ImageEditor: SubEditor {
+        private var imageView: UIImageView
+        private var mainInstance: ViewEditor
+        
+        init(_ imageView: UIImageView, _ mainInstance: ViewEditor) {
+            self.imageView = imageView
+            self.mainInstance = mainInstance
+            
+            super.init()
+        }
+        
+        func image(named name: String) -> ImageEditor {
+            return image(UIImage(named: name)!)
+        }
+        
+        func image(_ image: UIImage) -> ImageEditor {
+            imageView.image = image
+            return self
+        }
+        
+        override func upperEditor() -> ViewEditor {
+            return mainInstance
         }
     }
     
@@ -177,6 +244,40 @@ class ViewEditor {
         
         override func upperEditor() -> ViewEditor {
             return mainInstance
+        }
+        
+        func emptyText() -> LabelEditor {
+            return text("")
+        }
+        
+        func blackText() -> LabelEditor {
+            return textColor(.black)
+        }
+        
+        func font(_ enumFont: Fonts, _ size: CGFloat) -> LabelEditor {
+            return font(enumFont.font(size))
+        }
+        
+        func font(named: String, size: CGFloat) -> LabelEditor {
+            return font(UIFont(name: named, size: size)!)
+        }
+        
+        func font(_ font: UIFont) -> LabelEditor {
+            label.font = font
+            return self
+        }
+        
+        func textColor(named name: String) -> LabelEditor {
+            return textColor(UIColor(named: name)!)
+        }
+        
+        func textColor(_ color: UIColor) -> LabelEditor {
+            label.textColor = color
+            return self
+        }
+        
+        func centerText() -> LabelEditor {
+            return textAlignment(.center)
         }
         
         func textAlignment(_ alignment: NSTextAlignment) -> LabelEditor {

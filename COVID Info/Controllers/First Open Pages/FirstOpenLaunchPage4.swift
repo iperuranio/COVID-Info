@@ -21,24 +21,18 @@ class FirstOpenLaunchPage4: UIViewController {
     @IBOutlet weak var midView: UIView!
     @IBOutlet weak var botView: UIView!
     
-    var frame = CGRect()
-    var midFrame = CGRect()
-    
     var initialized: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let _ = GeneralPageUI(topView, midView, botView, false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if(initialized) {
             return
         }
-        
-        frame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
-        
-        let _ = GeneralPageUI(topView, midView, botView, false)
-        midFrame = midView.frame
         
         setupTitle()
         setupSubtitle()

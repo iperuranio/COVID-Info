@@ -27,6 +27,12 @@ class GeneralPageUI {
         prepareFrames()
     }
     
+    func attachSuperView(_ superView: UIView) {
+        superView.addSubview(topView)
+        superView.addSubview(midView)
+        superView.addSubview(botView)
+    }
+    
     func prepareFrames() {
         if debug {
             topView.backgroundColor = .red
