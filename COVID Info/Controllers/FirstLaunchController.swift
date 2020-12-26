@@ -94,7 +94,7 @@ class FirstLaunchController: UIViewController {
         super.viewWillDisappear(animated)
         if isBeingDismissed {
             if let instance = MainScreenController.instance {
-                instance.removeBlur()
+                instance.view.removeBlur()
             }
         }
     }
@@ -113,8 +113,7 @@ class FirstLaunchController: UIViewController {
 //        }
         
         FirstLaunchController.frame = view.bounds //sono messi qui perché in questa funzione frame assume un valore diverso di quello in viewDidLoad
-        MainScreenController.instance?.blurScreen()
-        
+        MainScreenController.instance?.view.blurScreen()
         Page.initialize()
         self.setupPageController()
     }

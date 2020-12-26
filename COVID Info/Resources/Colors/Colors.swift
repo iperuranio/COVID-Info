@@ -13,6 +13,7 @@ struct Colors {
     static let LIGHT_BLUE = named("Verdino-1")
     static let VERDINO = named("Verdino-2")
     static let ACCENT_COLOR = named("AccentColor")
+    static let SECOND_TEXT_COLOR = named("SecondTextColor")
     
     
     static func named(_ name: String) -> UIColor {

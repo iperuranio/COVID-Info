@@ -23,12 +23,14 @@ class ViewEditor {
 
     var view: UIView = UIView()
     private var mainView: UIView = UIView()
+    private var mainFrame: CGRect = CGRect()
     private var frameToApply = CGRect()
     private var shouldApplyFrameOnBounds = false
     
     private var frameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var absoluteFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
+    private var viewBackground = false
     
     private var innerLabelEditor: LabelEditor? = nil
     private var innerImageEditor: ImageEditor? = nil
@@ -41,8 +43,9 @@ class ViewEditor {
         self.view = view
         frameToApply = view.frame
         self.mainView = mainView
+        mainFrame = mainView.frame
         
-        absoluteFrameMeasures = [mainView.frame.maxX, mainView.frame.maxY, mainView.frame.width, mainView.frame.height]
+        absoluteFrameMeasures = [mainFrame.maxX, mainFrame.maxY, mainFrame.width, mainFrame.height]
         
         if let label = view as? UILabel {
             innerLabelEditor = LabelEditor(label, self)
@@ -51,6 +54,14 @@ class ViewEditor {
         if let image = view as? UIImageView {
             innerImageEditor = ImageEditor(image, self)
         }
+    }
+    
+    func debug() -> ViewEditor {
+        return debug(true)
+    }
+    
+    func debug(_ value: Bool) -> ViewEditor {
+        return !value ? self : backgroundColor(.random)
     }
     
     func attachToSuperView() -> ViewEditor {
@@ -81,16 +92,16 @@ class ViewEditor {
         
         switch whichFramePosition.rawValue {
         case 0:
-            value = mainView.frame.maxX
+            value = mainFrame.maxX
             break
         case 1:
-            value = mainView.frame.maxY
+            value = mainFrame.maxY
             break
         case 2:
-            value = mainView.frame.width
+            value = mainFrame.width
             break
         case 3:
-            value = mainView.frame.height
+            value = mainFrame.height
             break
         default:
             break
@@ -153,11 +164,16 @@ class ViewEditor {
         return self
     }
     
-    func asBackground() -> ViewEditor {
-        return updateArrayWithFrameMeasures(mainView.frame.minX, .x)
-            .updateArrayWithFrameMeasures(mainView.frame.minY, .y)
-            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.width.rawValue], .width)
-            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.height.rawValue], .height)
+    func asViewBackground() -> ViewEditor {
+        self.viewBackground = true
+        return self
+    }
+    
+    func asScreenBackground() -> ViewEditor {
+        return updateArrayWithFrameMeasures(0, .x)
+            .updateArrayWithFrameMeasures(0, .y)
+            .updateArrayWithFrameMeasures(MainScreenController.fullscreenFrame.width, .width)
+            .updateArrayWithFrameMeasures(MainScreenController.fullscreenFrame.height, .height)
     }
     
     func applyFrameOnBounds() -> ViewEditor {
@@ -166,8 +182,12 @@ class ViewEditor {
     }
     
     func build() -> UIView {
-        updateFrame()
-        view.frame = frameToApply
+        if(self.viewBackground) {
+            view.frame = mainFrame
+        } else {
+            updateFrame()
+            view.frame = frameToApply
+        }
         
         if(centering[FramePosition.x.rawValue]) {
             view.center.x = mainView.center.x
@@ -226,6 +246,11 @@ class ViewEditor {
             return self
         }
         
+        func contentMode(_ contentMode: UIView.ContentMode) -> ImageEditor {
+            imageView.contentMode = contentMode
+            return self
+        }
+        
         override func upperEditor() -> ViewEditor {
             return mainInstance
         }
@@ -264,6 +289,26 @@ class ViewEditor {
         
         func font(_ font: UIFont) -> LabelEditor {
             label.font = font
+            return self
+        }
+        
+        func lines(_ lines: Int) -> LabelEditor {
+            label.numberOfLines = lines
+            return self
+        }
+        
+        func adjustsFontSizeToFitWidth(_ value: Bool) -> LabelEditor {
+            label.adjustsFontSizeToFitWidth = value
+            return self
+        }
+        
+        func baselineAdjustment(_ value: UIBaselineAdjustment) -> LabelEditor {
+            label.baselineAdjustment = value
+            return self
+        }
+        
+        func lineBreak(_ value: NSLineBreakMode) -> LabelEditor {
+            label.lineBreakMode = value
             return self
         }
         

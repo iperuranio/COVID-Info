@@ -13,8 +13,6 @@ class MainScreenController: UITabBarController {
     @IBOutlet weak var tabBarUI: UITabBar!
     static var fullscreenFrame = CGRect()
     
-    var blurEffectView: UIVisualEffectView?
-    
     required init(coder: NSCoder) {
         super.init(coder: coder)!
         
@@ -48,17 +46,7 @@ class MainScreenController: UITabBarController {
         self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
     }
     
-    func blurScreen() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView?.frame = view.bounds
-        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView!)
-    }
     
-    func removeBlur() {
-        blurEffectView!.removeFromSuperview()
-    }
 }
 
 extension UITabBar {

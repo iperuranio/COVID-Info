@@ -22,6 +22,8 @@ class FirstOpenLaunchPage1: UIViewController {
     var midView: UIView = UIView()
     var botView: UIView = UIView()
     
+    var blurView: UIView = UIView()
+    
     var initialized: Bool = false
     
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class FirstOpenLaunchPage1: UIViewController {
         
         generalPage.attachSuperView(mainView)
         
+        setupBlurView()
+        
         setupTitle()
         setupSubtitle()
         setupImage()
@@ -48,12 +52,20 @@ class FirstOpenLaunchPage1: UIViewController {
         initialized = true
     }
     
+    func setupBlurView() {
+        let viewEditor = ViewEditor(blurView, midView)
+        viewEditor
+            .debug()
+            .asViewBackground()
+            .attachToSuperviewAndVoidBuild()
+    }
+    
     func setupBackground() {
         let viewEditor = ViewEditor(background, mainView)
         viewEditor.imageEditor()
             .image(Images.BACKGROUND_BLUE_1)
             .upperEditor()
-            .asBackground()
+            .asViewBackground()
             .attachToSuperviewAndVoidBuild()
     }
     
@@ -70,8 +82,10 @@ class FirstOpenLaunchPage1: UIViewController {
             .labelEditor()
             .emptyText()
             .centerText()
+            .adjustsFontSizeToFitWidth(true)
+            .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
             .blackText()
-            
+            .font(Fonts.EUCLID_CIRCULAR_B_BOLD, 32)
             .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
@@ -82,13 +96,17 @@ class FirstOpenLaunchPage1: UIViewController {
         let text = "Benvenuto in COVID Info!"
         
         viewEditor.clearBackground()
-            .percentageFrameRelativeY(0.17)
+            .percentageFrameRelativeY(0.16)
             .percentageFrameWidth(0.58)
             .percentageFrameHeight(0.05)
             .centerX()
             .labelEditor()
             .emptyText()
             .centerText()
+            .textColor(Colors.SECOND_TEXT_COLOR)
+            .adjustsFontSizeToFitWidth(true)
+            .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
+            .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 18)
             .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
@@ -99,6 +117,7 @@ class FirstOpenLaunchPage1: UIViewController {
         
         viewEditor.percentageFrameRelativeY(0.285)
             .imageEditor()
+            .contentMode(.scaleAspectFit)
             .image(Images.GIRL_WITH_MASK)
             .upperEditor()
             .percentageFrameWidth(0.6)
@@ -118,7 +137,12 @@ class FirstOpenLaunchPage1: UIViewController {
             .centerX()
             .labelEditor()
             .emptyText()
+            .textColor(Colors.SECOND_TEXT_COLOR)
             .centerText()
+            .adjustsFontSizeToFitWidth(true)
+            .lines(0)
+            .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
+            .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 22)
             .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
