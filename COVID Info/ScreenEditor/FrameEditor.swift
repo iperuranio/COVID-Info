@@ -8,13 +8,12 @@
 import UIKit
 
 class FrameEditor {
-    
     static func correctFrameWithCustomHeight(_ frame: CGRect, _ percentageFloat: CGFloat) -> CGRect {
-        return correctFrameFromHeight(frame, (FirstLaunchController.frame?.height)!, percentageFloat)
+        return correctFrameFromHeight(frame, (FirstLaunchController.frame.height), percentageFloat)
     }
     
     static func correctFrame(_ frame: CGRect, _ percentageFloat: CGFloat) -> CGRect {
-        return correctFrameFromHeight(frame, (MainScreenController.instance?.fullscreenFrame.height)!, percentageFloat)
+        return correctFrameFromHeight(frame, (MainScreenController.fullscreenFrame.height), percentageFloat)
     }
     
     static func correctFrameFromHeight(_ frame: CGRect, _ screenHeight: CGFloat, _ percentageFloat: CGFloat) -> CGRect {

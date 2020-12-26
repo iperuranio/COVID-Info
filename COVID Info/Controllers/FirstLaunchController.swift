@@ -82,7 +82,7 @@ class FirstLaunchController: UIViewController {
     private var pages: [Pages] = Pages.allCases
     private var currentIndex: Int = 0
     
-    static var frame = MainScreenController.instance?.fullscreenFrame
+    static var frame = MainScreenController.fullscreenFrame
     
     override func viewDidLoad() {
         super.viewDidLoad()

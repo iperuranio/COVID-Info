@@ -38,7 +38,7 @@ class FirstOpenLaunchPage1: UIViewController {
 //        let topFrame = topView.frame
         frame = CGRect(x: 0, y: 0, width: mainView.frame.width, height: mainView.frame.height)
         
-        GeneralPageUI(topView, midView, botView, true) //debug mode con true
+        let _ = GeneralPageUI(topView, midView, botView, true) //debug mode con true
         midFrame = midView.frame
         
         setupTitle()
@@ -61,13 +61,17 @@ class FirstOpenLaunchPage1: UIViewController {
     }
     
     func setupTitle() {
-//        let x = 0.15 * midFrame.width
-        let y = (0 * midFrame.height) //non c'è bisogno di aggiungere nulla perché è dentro la view e x e y di CGRect sono relativi alla view di appartenenza
-        let width = 0.65 * midFrame.width
-        let height = (0.25 * midFrame.height)
-
-        titleLabel.frame = CGRect(x: 0, y: y, width: width, height: height)
-        titleLabel.center.x = self.view.center.x
+        let viewEditor = ViewEditor(titleLabel, midView)
+        print("\(midFrame.maxX) \(midFrame.maxY) \(midFrame.width) \(midFrame.height)")
+        viewEditor.percentageFrameMaxX(0).percentageFrameRelativeY(0).percentageFrameWidth(0.65).percentageFrameHeight(0.25).centerX().build()
+        print(titleLabel.frame)
+//
+//        let y = (0 * midFrame.height) //non c'è bisogno di aggiungere nulla perché è dentro la view e x e y di CGRect sono relativi alla view di appartenenza
+//        let width = 0.65 * midFrame.width
+//        let height = (0.25 * midFrame.height)
+//
+//        titleLabel.frame = CGRect(x: 0, y: y, width: width, height: height)
+//        titleLabel.center.x = self.view.center.x
         titleLabel.textAlignment = .center
         
 //        self.view.addSubview(a)
@@ -99,6 +103,7 @@ class FirstOpenLaunchPage1: UIViewController {
 
         text2.frame = CGRect(x: 0, y: y, width: width, height: height)
         text2.center.x = self.view.center.x
+        text2.textAlignment = .center
     }
     
     //fare un configuratore a cascata

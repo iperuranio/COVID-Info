@@ -11,7 +11,7 @@ class MainScreenController: UITabBarController {
     static var instance: MainScreenController?
     let storyboardUI = UIStoryboard(name: "Main", bundle: nil)
     @IBOutlet weak var tabBarUI: UITabBar!
-    var fullscreenFrame = CGRect()
+    static var fullscreenFrame = CGRect()
     
     var blurEffectView: UIVisualEffectView?
     
@@ -24,7 +24,7 @@ class MainScreenController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullscreenFrame = UIScreen.main.bounds
+        MainScreenController.fullscreenFrame = UIScreen.main.bounds
         
         tabBarUI.backgroundColor = .clear
 
