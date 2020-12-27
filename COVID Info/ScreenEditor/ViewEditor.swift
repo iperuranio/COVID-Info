@@ -30,10 +30,12 @@ class ViewEditor {
     private var frameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var absoluteFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
-    private var viewBackground = false
+    private var shouldBlur = false
     
     private var innerLabelEditor: LabelEditor? = nil
     private var innerImageEditor: ImageEditor? = nil
+    private var innerButtonEditor: ButtonEditor? = nil
+    private var innerLayerEditor: LayerEditor? = nil
     
     init() {
         
@@ -54,6 +56,17 @@ class ViewEditor {
         if let image = view as? UIImageView {
             innerImageEditor = ImageEditor(image, self)
         }
+        
+        if let button = view as? UIButton {
+            innerButtonEditor = ButtonEditor(button, self)
+        }
+        
+        innerLayerEditor = LayerEditor(view.layer, self)
+    }
+    
+    func tag(_ value: Int) -> ViewEditor {
+        view.tag = value
+        return self
     }
     
     func debug() -> ViewEditor {
@@ -69,12 +82,25 @@ class ViewEditor {
         return self
     }
     
+    func buttonEditor() -> ButtonEditor {
+        return innerButtonEditor!
+    }
+    
     func imageEditor() -> ImageEditor {
         return innerImageEditor!
     }
     
     func labelEditor() -> LabelEditor {
         return innerLabelEditor!
+    }
+    
+    func layerEditor() -> LayerEditor {
+        return innerLayerEditor!
+    }
+    
+    func clipToBounds() -> ViewEditor {
+        view.clipsToBounds = true
+        return self
     }
 
     private func updateFrame() {
@@ -159,14 +185,21 @@ class ViewEditor {
         return center(.y)
     }
     
+    func blur() -> ViewEditor {
+        self.shouldBlur = true
+        return self
+    }
+    
     func center(_ position: FramePosition) -> ViewEditor {
         centering[position.rawValue] = true
         return self
     }
     
     func asViewBackground() -> ViewEditor {
-        self.viewBackground = true
-        return self
+        return updateArrayWithFrameMeasures(0, .x)
+            .updateArrayWithFrameMeasures(0, .y)
+            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.width.rawValue], .width)
+            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.height.rawValue], .height)
     }
     
     func asScreenBackground() -> ViewEditor {
@@ -181,13 +214,14 @@ class ViewEditor {
         return self
     }
     
+    func contentMode(_ contentMode: UIView.ContentMode) -> ViewEditor {
+        view.contentMode = contentMode
+        return self
+    }
+    
     func build() -> UIView {
-        if(self.viewBackground) {
-            view.frame = mainFrame
-        } else {
-            updateFrame()
-            view.frame = frameToApply
-        }
+        updateFrame()
+        view.frame = frameToApply
         
         if(centering[FramePosition.x.rawValue]) {
             view.center.x = mainView.center.x
@@ -199,6 +233,11 @@ class ViewEditor {
         
         if(shouldApplyFrameOnBounds) {
             view.bounds = frameToApply
+        }
+        
+        if(shouldBlur) {
+            let blurView = UIView.getBlurView(view)
+            view.addSubview(blurView)
         }
         
         return view
@@ -227,14 +266,12 @@ class ViewEditor {
     }
     
     class ImageEditor: SubEditor {
-        private var imageView: UIImageView
-        private var mainInstance: ViewEditor
+        private var imageView: UIImageView = UIImageView()
+        private var mainInstance: ViewEditor = ViewEditor()
         
         init(_ imageView: UIImageView, _ mainInstance: ViewEditor) {
             self.imageView = imageView
             self.mainInstance = mainInstance
-            
-            super.init()
         }
         
         func image(named name: String) -> ImageEditor {
@@ -246,8 +283,171 @@ class ViewEditor {
             return self
         }
         
-        func contentMode(_ contentMode: UIView.ContentMode) -> ImageEditor {
-            imageView.contentMode = contentMode
+        override func upperEditor() -> ViewEditor {
+            return mainInstance
+        }
+    }
+    
+    class LayerEditor: SubEditor {
+        private var layer: CALayer = CALayer()
+        private var mainInstance: ViewEditor = ViewEditor()
+        
+        init(_ layer: CALayer, _ mainInstance: ViewEditor) {
+            self.layer = layer
+            self.mainInstance = mainInstance
+        }
+        
+        func shadowColor(named name: String) -> LayerEditor {
+            return shadowColor(UIColor(named: name)!)
+        }
+        
+        func shadowColor(_ color: UIColor) -> LayerEditor {
+            layer.shadowColor = color.cgColor
+            return self
+        }
+        
+        func shadowOffset(_ width: CGFloat, _ height: CGFloat) -> LayerEditor {
+            layer.shadowOffset = CGSize(width: width, height: height)
+            return self
+        }
+        
+        func shadowOpacity(_ opacity: Float) -> LayerEditor {
+            layer.shadowOpacity = opacity
+            return self
+        }
+        
+        func shadowRadius(_ value: CGFloat) -> LayerEditor {
+            layer.shadowRadius = value
+            return self
+        }
+        
+        func maskToBounds(_ value: Bool) -> LayerEditor {
+            layer.masksToBounds = value
+            return self
+        }
+        
+        func cornerRadius(_ value: CGFloat) -> LayerEditor {
+            layer.cornerRadius = value
+            return self
+        }
+        
+        func cornerCurve(_ value: CALayerCornerCurve) -> LayerEditor {
+            layer.cornerCurve = value
+            return self
+        }
+        
+        override func upperEditor() -> ViewEditor {
+            return mainInstance
+        }
+    }
+    
+    class ButtonEditor: SubEditor {
+        private var button: UIButton = UIButton()
+        private var mainInstance: ViewEditor = ViewEditor()
+        
+        init(_ button: UIButton, _ mainInstance: ViewEditor) {
+            self.button = button
+            self.mainInstance = mainInstance
+        }
+        
+        func image(named name: String) -> ButtonEditor {
+            return image(UIImage(named: name)!)
+        }
+        
+        func image(_ image: UIImage) -> ButtonEditor {
+            button.setImage(image, for: .normal)
+            return self
+        }
+        
+        func backgroundImage(named name: String) -> ButtonEditor {
+            return image(UIImage(named: name)!)
+        }
+        
+        func titleEdge(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> ButtonEditor {
+            return titleEdge(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
+        }
+        
+        func titleEdge(_ edge: UIEdgeInsets) -> ButtonEditor {
+            button.titleEdgeInsets = edge
+            return self
+        }
+        
+        func contentEdge(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> ButtonEditor {
+            return contentEdge(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
+        }
+        
+        func contentEdge(_ edge: UIEdgeInsets) -> ButtonEditor {
+            button.contentEdgeInsets = edge
+            return self
+        }
+        
+        func imageEdge(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> ButtonEditor {
+            return imageEdge(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
+        }
+        
+        func imageEdge(_ edge: UIEdgeInsets) -> ButtonEditor {
+            button.imageEdgeInsets = edge
+            return self
+        }
+        
+        func title(_ title: String) -> ButtonEditor {
+            button.setTitle(title, for: .normal)
+            return self
+        }
+        
+        func backgroundColor(named name: String) -> ButtonEditor {
+            return backgroundColor(UIColor(named: name)!)
+        }
+        
+        func backgroundColor(_ color: UIColor) -> ButtonEditor {
+            button.backgroundColor = color
+            return self
+        }
+        
+        func shadowColor(named name: String) -> ButtonEditor {
+            return shadowColor(UIColor(named: name)!)
+        }
+        
+        func shadowColor(_ color: UIColor) -> ButtonEditor {
+            button.setTitleShadowColor(color, for: .normal)
+            return self
+        }
+        
+        func showsTouchOnHighlight() -> ButtonEditor {
+            button.showsTouchWhenHighlighted = true
+            return self
+        }
+        
+        func reversesTitleShadowWhenHighlighted() -> ButtonEditor {
+            button.reversesTitleShadowWhenHighlighted = true
+            return self
+        }
+
+        func buttonLabelEditor() -> LabelEditor {
+            return LabelEditor(button.titleLabel!, mainInstance)
+        }
+        
+        func titleColor(named name: String) -> ButtonEditor {
+            return titleColor(UIColor(named: name)!)
+        }
+        
+        func titleColor(_ color: UIColor) -> ButtonEditor {
+            button.setTitleColor(color, for: .normal)
+            return self
+        }
+        
+        func horizontalAlignment(_ alignment: UIControl.ContentHorizontalAlignment) -> ButtonEditor {
+            button.contentHorizontalAlignment = alignment
+            return self
+        }
+        
+        func verticalAlignment(_ alignment: UIControl.ContentVerticalAlignment) -> ButtonEditor {
+            button.contentVerticalAlignment = alignment
+            return self
+        }
+        
+        func backgroundImage(_ image: UIImage) -> ButtonEditor {
+            button.setBackgroundImage(image, for: .normal)
             return self
         }
         
@@ -257,14 +457,12 @@ class ViewEditor {
     }
     
     class LabelEditor: SubEditor {
-        private var label: UILabel
-        private var mainInstance: ViewEditor
+        private var label: UILabel = UILabel()
+        private var mainInstance: ViewEditor = ViewEditor()
         
         init(_ label: UILabel, _ mainInstance: ViewEditor) {
             self.label = label
             self.mainInstance = mainInstance
-            
-            super.init()
         }
         
         override func upperEditor() -> ViewEditor {

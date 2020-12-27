@@ -14,6 +14,7 @@ class FirstOpenLaunchPage1: UIViewController {
     var titleLabel = UILabel()
     var subTitleLabel = UILabel()
     var bigLabel = UILabel()
+    var forwardButton = UIButton()
     
     var imageCenter = UIImageView()
     var background = UIImageView()
@@ -48,15 +49,31 @@ class FirstOpenLaunchPage1: UIViewController {
         setupSubtitle()
         setupImage()
         setupBottomTitle()
+        setupForwardButton()
         
         initialized = true
     }
     
     func setupBlurView() {
-        let viewEditor = ViewEditor(blurView, midView)
-        viewEditor
-            .debug()
+//        let subViewEditor = ViewEditor(blurView, midView)
+//        let subView = subViewEditor.backgroundColor(Colors.ACCENT_COLOR)
+//            .cornerCurve(.continuous)
+//            .cornerRadius(40)
+//            .asViewBackground()
+//            .percentageFrameWidth(0.92)
+//            .centerX()
+//            .attachToSuperviewAndBuild()
+        
+        let blurViewEditor = ViewEditor(blurView, midView)
+        blurViewEditor.clearBackground()
+            .layerEditor()
+            .cornerCurve(.continuous)
+            .cornerRadius(40)
+            .upperEditor()
             .asViewBackground()
+            .percentageFrameWidth(0.92)
+            .centerX()
+            .blur()
             .attachToSuperviewAndVoidBuild()
     }
     
@@ -74,18 +91,20 @@ class FirstOpenLaunchPage1: UIViewController {
         let text = "COVID-Info" //prendere dal file translate
         
         viewEditor.clearBackground()
+            .clipToBounds()
             .percentageFrameMaxX(0)
-            .percentageFrameRelativeY(0)
+            .percentageFrameRelativeY(0.03)
             .percentageFrameWidth(0.65)
-            .percentageFrameHeight(0.25)
+            .percentageFrameHeight(0.15)
             .centerX()
             .labelEditor()
             .emptyText()
             .centerText()
+            .lines(1)
             .adjustsFontSizeToFitWidth(true)
-            .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
+            .baselineAdjustment(UIBaselineAdjustment.alignCenters)
             .blackText()
-            .font(Fonts.EUCLID_CIRCULAR_B_BOLD, 32)
+            .font(Fonts.EUCLID_CIRCULAR_B_BOLD, 50)
             .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
@@ -96,13 +115,14 @@ class FirstOpenLaunchPage1: UIViewController {
         let text = "Benvenuto in COVID Info!"
         
         viewEditor.clearBackground()
-            .percentageFrameRelativeY(0.16)
+            .percentageFrameRelativeY(0.15)
             .percentageFrameWidth(0.58)
             .percentageFrameHeight(0.05)
             .centerX()
             .labelEditor()
             .emptyText()
             .centerText()
+            .lines(1)
             .textColor(Colors.SECOND_TEXT_COLOR)
             .adjustsFontSizeToFitWidth(true)
             .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
@@ -115,9 +135,9 @@ class FirstOpenLaunchPage1: UIViewController {
     func setupImage() {
         let viewEditor = ViewEditor(imageCenter, midView)
         
-        viewEditor.percentageFrameRelativeY(0.285)
-            .imageEditor()
+        viewEditor.percentageFrameRelativeY(0.260)
             .contentMode(.scaleAspectFit)
+            .imageEditor()
             .image(Images.GIRL_WITH_MASK)
             .upperEditor()
             .percentageFrameWidth(0.6)
@@ -131,8 +151,8 @@ class FirstOpenLaunchPage1: UIViewController {
         let text = "All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)."
         
         viewEditor.clearBackground()
-            .percentageFrameRelativeY(0.57)
-            .percentageFrameWidth(0.9)
+            .percentageFrameRelativeY(0.50)
+            .percentageFrameWidth(0.87)
             .percentageFrameHeight(0.30)
             .centerX()
             .labelEditor()
@@ -144,6 +164,44 @@ class FirstOpenLaunchPage1: UIViewController {
             .baselineAdjustment(UIBaselineAdjustment.alignBaselines)
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 22)
             .transitionText(0.10, false, 0.40, .transitionFlipFromBottom, text)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+    }
+    
+    func setupForwardButton() {
+        let title = "Avanti"
+        let viewEditor = ViewEditor(forwardButton, midView)
+        viewEditor
+            .clipToBounds()
+            .contentMode(.scaleToFill)
+            .percentageFrameRelativeY(0.815)
+            .percentageFrameWidth(0.50)
+            .percentageFrameHeight(0.15)
+            .centerX()
+            .layerEditor()
+            .cornerCurve(.continuous)
+            .cornerRadius(25) //https://stackoverflow.com/questions/24644802/swift-problems-with-corner-radius-and-drop-shadow
+            .shadowColor(Colors.GRIGIO)
+            .shadowOffset(0, 2)
+            .shadowOpacity(1)
+            .maskToBounds(false)
+            .upperEditor()
+            .buttonEditor()
+            .title(title)
+            .titleColor(Colors.SECOND_TEXT_COLOR)
+            .backgroundColor(.white)
+            .buttonLabelEditor()
+//            .blackText()
+            .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 18)
+            .lines(0)
+            .adjustsFontSizeToFitWidth(true)
+            .upperEditor()
+            .buttonEditor()
+            .backgroundImage(Images.BACKGROUND_GREEN_3)
+            .imageEdge(0, 150, 0, 0)
+            .image(Images.ARROW)
+            .horizontalAlignment(.leading)
+            .verticalAlignment(.center)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
     }

@@ -26,7 +26,7 @@ class MainScreenController: UITabBarController {
         
         tabBarUI.backgroundColor = .clear
 
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light)) //se è tema scuro mette scuro altrimenti chiaro
         blur.frame = tabBarUI.correctBounds()
         blur.autoresizingMask = .flexibleWidth
         tabBarUI.insertSubview(blur, at: 0)
@@ -45,8 +45,6 @@ class MainScreenController: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
     }
-    
-    
 }
 
 extension UITabBar {
