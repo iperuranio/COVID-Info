@@ -10,6 +10,10 @@ import UIKit
 class GeneralPage: UIViewController {
     var page: Pages
     
+    convenience init(_ value: Int) {
+        self.init(with: Pages.allCases[value])
+    }
+    
     init(with page: Pages) {
         self.page = page
         

@@ -41,6 +41,15 @@ class ViewEditor {
         
     }
     
+    convenience init(_ view: UIView, _ superEditor: ViewEditor) {
+        self.init(view, superEditor.mainView)
+        
+        innerLabelEditor = superEditor.innerLabelEditor
+        innerImageEditor = superEditor.innerImageEditor
+        innerButtonEditor = superEditor.innerButtonEditor
+        innerLayerEditor = superEditor.innerLayerEditor
+    }
+    
     init(_ view: UIView, _ mainView: UIView) {
         self.view = view
         frameToApply = view.frame
@@ -62,6 +71,14 @@ class ViewEditor {
         }
         
         innerLayerEditor = LayerEditor(view.layer, self)
+    }
+    
+    func disableGestureRecognizers() -> ViewEditor {
+        for gesture in view.gestureRecognizers! {
+            gesture.isEnabled = false
+        }
+        
+        return self
     }
     
     func tag(_ value: Int) -> ViewEditor {
@@ -177,6 +194,11 @@ class ViewEditor {
         return percentage * value
     }
     
+    func translatesAutoresizingMaskIntoConstraints(_ value: Bool) -> ViewEditor {
+        view.translatesAutoresizingMaskIntoConstraints = value
+        return self
+    }
+    
     func centerX() -> ViewEditor {
         return center(.x)
     }
@@ -216,6 +238,16 @@ class ViewEditor {
     
     func contentMode(_ contentMode: UIView.ContentMode) -> ViewEditor {
         view.contentMode = contentMode
+        return self
+    }
+    
+    func isUserInteractionEnabled(_ value: Bool) -> ViewEditor {
+        view.isUserInteractionEnabled = value
+        return self
+    }
+    
+    func chainBuild() -> ViewEditor {
+        let _  = build()
         return self
     }
     
@@ -350,6 +382,40 @@ class ViewEditor {
             self.mainInstance = mainInstance
         }
         
+        func preMadeLeftToRightAndReturnAnimation(_ after: TimeInterval, _ repeats: Bool, _ duration: TimeInterval, _ options: UIView.AnimationOptions, _ resultText: String? /*(() -> Void)?*/ = nil, completion: ((Bool) -> Void)? = nil) -> ButtonEditor {
+            let min: CGFloat = button.frame.width * 0.7971014492753623 //una percentuale dell'asse X
+            var offset:CGFloat = min
+            let max:CGFloat = button.frame.width * 0.8454106280193237 //una percentuale dell'asse X 0.8454106280193237
+            var forward: Bool = true
+            
+            _ = Timer.scheduledTimer(withTimeInterval: after, repeats: repeats) { timer in
+                UIView.transition(with: self.button,
+                                  duration: duration,
+                                  options: options,
+                            animations: { [weak self] in
+                                let increment: CGFloat = 0.1
+                                
+                                if(!forward) {
+                                    if(offset < min) {
+                                        forward = true
+                                    }
+                                    
+                                    offset = offset - increment
+                                } else {
+                                    if(offset > max) {
+                                        forward = false
+                                    }
+                                    
+                                    offset = offset + increment
+                                }
+                                
+                                let _ = self?.imageEdge(0, offset, 0, 0)
+                            }, completion: completion)
+            }
+            
+            return self
+        }
+        
         func image(named name: String) -> ButtonEditor {
             return image(UIImage(named: name)!)
         }
@@ -363,6 +429,41 @@ class ViewEditor {
             return image(UIImage(named: name)!)
         }
         
+        func centerTitleX() -> ButtonEditor { //button.imageView?.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -8.0).isActive = true
+            button.imageView?.centerXAnchor.constraint(equalTo: button.centerXAnchor, constant: 0.0).isActive = true
+            return self
+        }
+        
+        func centerTitleY() -> ButtonEditor {
+            button.imageView?.centerYAnchor.constraint(equalTo: button.centerYAnchor, constant: 0.0).isActive = true
+            return self
+        }
+        
+//
+//
+//        func titleEdgeLeftPercentage(_ top: CGFloat, percentage: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> ButtonEditor {
+//            let rect = button.titleLabel?.attributedText?.size()
+//
+//            let w = rect!.width
+//            let h = rect!.height
+//
+//            let v = UIView(frame: CGRect())
+//            v.backgroundColor = .red
+//            self.upperEditor().mainView.addSubview(v)
+//
+////            button.titleLabel?.backgroundColor = .red
+//
+//            return titleEdge(top,
+//                             0,
+//                             bottom,
+//                             right)
+//
+////            return titleEdge(top * (button.frame.height),
+////                             left * (button.frame.width),
+////                             bottom * (button.frame.height),
+////                             right * (button.frame.width))
+//        }
+//
         func titleEdge(_ top: CGFloat, _ left: CGFloat, _ bottom: CGFloat, _ right: CGFloat) -> ButtonEditor {
             return titleEdge(UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
         }
@@ -404,6 +505,15 @@ class ViewEditor {
             return self
         }
         
+        func tintColor(named name: String) -> ButtonEditor {
+            return tintColor(UIColor(named: name)!)
+        }
+        
+        func tintColor(_ color: UIColor) -> ButtonEditor {
+            button.tintColor = color
+            return self
+        }
+        
         func shadowColor(named name: String) -> ButtonEditor {
             return shadowColor(UIColor(named: name)!)
         }
@@ -425,6 +535,14 @@ class ViewEditor {
 
         func buttonLabelEditor() -> LabelEditor {
             return LabelEditor(button.titleLabel!, mainInstance)
+        }
+        
+        func buttonImageViewEditor() -> ViewEditor {
+            return innerViewEditor(button.imageView!)
+        }
+        
+        private func innerViewEditor(_ view: UIView) -> ViewEditor {
+            return ViewEditor(view, mainInstance)
         }
         
         func titleColor(named name: String) -> ButtonEditor {
@@ -457,6 +575,18 @@ class ViewEditor {
     }
     
     class LabelEditor: SubEditor {
+        
+        enum TextTransitions: Int {
+            case classicFlipBottom
+            
+            var transition: Transition {
+                switch self {
+                    case .classicFlipBottom:
+                        return Transition(0.10, false, 0.40, .transitionFlipFromBottom, nil)
+                }
+            }
+        }
+        
         private var label: UILabel = UILabel()
         private var mainInstance: ViewEditor = ViewEditor()
         
@@ -533,14 +663,18 @@ class ViewEditor {
             return self
         }
         
-        func transitionText(_ after: TimeInterval, _ repeats: Bool, _ duration: TimeInterval, _ options: UIView.AnimationOptions, _ resultText: String /*(() -> Void)?*/, completion: ((Bool) -> Void)? = nil) -> LabelEditor {
-            _ = Timer.scheduledTimer(withTimeInterval: after, repeats: repeats) { timer in
+        func classicFlipBottomTransitionText(_ resultText: String) -> LabelEditor {
+            return transitionText(TextTransitions.classicFlipBottom.transition.withAnimation({ [weak self] in
+                self?.label.text = resultText
+            }))
+        }
+        
+        func transitionText(_ transition: Transition) -> LabelEditor {
+            _ = Timer.scheduledTimer(withTimeInterval: transition.after, repeats: transition.repeats) { timer in
                 UIView.transition(with: self.label,
-                                  duration: duration,
-                                  options: options,
-                            animations: { [weak self] in
-                                self?.label.text = resultText
-                            }, completion: completion)
+                                  duration: transition.duration,
+                                  options: transition.options,
+                                  animations: transition.animation, completion: transition.completion)
             }
             
             return self

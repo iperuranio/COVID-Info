@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1249.0654205607475" y="246.86825053995682"/>
+            <point key="canvasLocation" x="-1218" y="247"/>
         </scene>
         <!--VC2-->
         <scene sceneID="Fu8-jH-OKM">
@@ -79,64 +79,9 @@
                     <view key="view" contentMode="scaleToFill" id="gG5-4W-nLh">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-oh-qoi" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGl-gH-qqp" userLabel="Top">
-                                <rect key="frame" x="0.0" y="308" width="428" height="308.66666666666669"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZV-zQ-KFB" userLabel="Mid">
-                                <rect key="frame" x="0.0" y="308" width="428" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="pisa" translatesAutoresizingMaskIntoConstraints="NO" id="bBX-bP-ZfL" userLabel="IMAGE">
-                                        <rect key="frame" x="-411" y="77.333333333333314" width="1250" height="154"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="L'app riporta i dati che fornisce la Protezione Civile Italiana e li organizza per migliorare l'esperienza dell'utente." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kqi-4L-WCL" userLabel="TEXT3">
-                                        <rect key="frame" x="10.666666666666657" y="238.66666666666669" width="407" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="App italiana, dati italiani." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-IR-Gfs" userLabel="TEXT2">
-                                        <rect key="frame" x="113.33333333333333" y="50.666666666666629" width="201.33333333333337" height="21.666666666666671"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" fixedFrame="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hRl-iT-CTP" userLabel="TEXT1">
-                                        <rect key="frame" x="106.66666666666667" y="10" width="214.66666666666663" height="40.666666666666664"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-R9-PFq" userLabel="Bottom">
-                                <rect key="frame" x="0.0" y="308" width="428" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0fs-Rl-f7G"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="botView" destination="bpO-R9-PFq" id="OCO-MT-96U"/>
-                        <outlet property="imageCenter" destination="bBX-bP-ZfL" id="eQF-gb-zJ2"/>
-                        <outlet property="mainView" destination="gG5-4W-nLh" id="fk0-Bs-BAE"/>
-                        <outlet property="midView" destination="XZV-zQ-KFB" id="Y8t-LR-nRq"/>
-                        <outlet property="text1" destination="ILA-IR-Gfs" id="rwR-eC-aVJ"/>
-                        <outlet property="text2" destination="kqi-4L-WCL" id="Qfu-3F-z8V"/>
-                        <outlet property="titleLabel" destination="hRl-iT-CTP" id="HWZ-49-3L3"/>
-                        <outlet property="topView" destination="bGl-gH-qqp" id="qd2-7y-ZwC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDZ-3f-MRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -222,69 +167,13 @@
                     <view key="view" contentMode="scaleToFill" id="Oim-lb-gBc">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="evW-cD-ZgM" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="irK-Ws-PQ1" userLabel="Top">
-                                <rect key="frame" x="-388" y="308" width="1203" height="308.66666666666669"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y5i-hG-pEH" userLabel="Mid">
-                                <rect key="frame" x="-388" y="308" width="1203" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="foglio" translatesAutoresizingMaskIntoConstraints="NO" id="meO-tK-QSQ" userLabel="IMAGE">
-                                        <rect key="frame" x="-411" y="118" width="1250" height="73"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VeT-S5-MCd" userLabel="TEXT3">
-                                        <rect key="frame" x="23.666666666666657" y="217.33333333333334" width="380.66666666666674" height="86.333333333333343"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Selezionando la regione di appartenenza, l'app mostrerà le disposizioni in vigore e cercherà di evidenziare eventuali raccomandazioni, limiti o divieti.</string>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Tiene conto delle disposizioni in vigore." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ya9-Nh-4yZ" userLabel="TEXT2">
-                                        <rect key="frame" x="59.333333333333343" y="50.666666666666629" width="309.33333333333326" height="21.666666666666671"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" fixedFrame="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ism-eg-ELG" userLabel="TEXT1">
-                                        <rect key="frame" x="106.66666666666669" y="10" width="214.66666666666663" height="40.666666666666664"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eCG-D2-KcU" userLabel="Bottom">
-                                <rect key="frame" x="-388" y="308" width="1203" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="43e-qJ-6US"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="botView" destination="eCG-D2-KcU" id="ovS-W7-82w"/>
-                        <outlet property="imageCenter" destination="meO-tK-QSQ" id="Qpd-bj-35u"/>
-                        <outlet property="mainView" destination="Oim-lb-gBc" id="tta-0K-9lg"/>
-                        <outlet property="midView" destination="Y5i-hG-pEH" id="EcN-ts-YxT"/>
-                        <outlet property="text1" destination="ya9-Nh-4yZ" id="hFN-zO-GzF"/>
-                        <outlet property="text2" destination="VeT-S5-MCd" id="9s3-jx-PNW"/>
-                        <outlet property="titleLabel" destination="Ism-eg-ELG" id="AcO-to-JXP"/>
-                        <outlet property="topView" destination="irK-Ws-PQ1" id="8ro-zg-xRo"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCB-BV-1HA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="247"/>
+            <point key="canvasLocation" x="119" y="247"/>
         </scene>
         <!--VC4-->
         <scene sceneID="Aw0-c5-qzb">
@@ -293,65 +182,9 @@
                     <view key="view" contentMode="scaleToFill" id="M3U-hY-mSo">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg-blue" translatesAutoresizingMaskIntoConstraints="NO" id="uWm-ej-GdE" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a99-R8-dek" userLabel="Top">
-                                <rect key="frame" x="-555" y="308" width="1536.3333333333333" height="308.66666666666669"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85N-Xx-PUj" userLabel="Mid">
-                                <rect key="frame" x="-555" y="308" width="1536.3333333333333" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" fixedFrame="YES" image="campana" translatesAutoresizingMaskIntoConstraints="NO" id="Zep-oL-sJ3" userLabel="IMAGE">
-                                        <rect key="frame" x="-368" y="109" width="112" height="82"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="none" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AXb-VM-gvw" userLabel="TEXT3">
-                                        <rect key="frame" x="10.666666666666657" y="217.33333333333334" width="406.66666666666674" height="86.333333333333343"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <string key="text">Una volta che avrai consentito all'applicazione di mandarti delle notifiche, essa ti avvertirà qualora i dati dovessero essere stati aggiornati o nel caso in cui dovessero cambiare le disposizioni.</string>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Ti avvisa ad ogni cambiamento." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOD-vy-KJS" userLabel="TEXT2">
-                                        <rect key="frame" x="86.666666666666686" y="50.666666666666629" width="255" height="21.666666666666671"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Light" family="Euclid Circular B" pointSize="17"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="749" fixedFrame="YES" text="COVID-19 Info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKN-HK-h8S" userLabel="TEXT1">
-                                        <rect key="frame" x="106.66666666666669" y="10" width="214.66666666666663" height="40.666666666666664"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="EuclidCircularB-Bold" family="Euclid Circular B" pointSize="32"/>
-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8JH-H4-8JP" userLabel="Bottom">
-                                <rect key="frame" x="-555" y="308" width="1536.3333333333333" height="308.66666666666663"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="NKf-Zb-igW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <connections>
-                        <outlet property="botView" destination="8JH-H4-8JP" id="3qb-8f-ypY"/>
-                        <outlet property="imageCenter" destination="Zep-oL-sJ3" id="6MR-de-Xf8"/>
-                        <outlet property="mainView" destination="M3U-hY-mSo" id="Zkd-1j-ECN"/>
-                        <outlet property="midView" destination="85N-Xx-PUj" id="0rO-NI-JaE"/>
-                        <outlet property="text1" destination="TOD-vy-KJS" id="4rs-7y-pj9"/>
-                        <outlet property="text2" destination="AXb-VM-gvw" id="35m-NR-2MG"/>
-                        <outlet property="titleLabel" destination="hKN-HK-h8S" id="V1b-WH-GjH"/>
-                        <outlet property="topView" destination="a99-R8-dek" id="8kf-N5-hxu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gXA-rN-YfN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -492,13 +325,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bg-blue" width="1250" height="1250"/>
-        <image name="campana" width="1164.6666259765625" height="1221"/>
-        <image name="foglio" width="1250" height="1079"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="heart.text.square.fill" catalog="system" width="128" height="114"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="pisa" width="1250" height="1250"/>
         <image name="text.book.closed.fill" catalog="system" width="115" height="128"/>
         <namedColor name="BarButtonColors">
             <color red="0.73299998044967651" green="0.74900001287460327" blue="0.79199999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -11,6 +11,7 @@ struct Images {
     static let BACKGROUND_BLUE_1 = named("bg-blue")
     static let GIRL_WITH_MASK = named("mask2")
     static let ARROW = named("arrow.right.circle")
+    static let ARROW_WHITE = named("arrow.right.circle-white")
     static let BACKGROUND_BLUE_2 = named("bg-azzurro")
     static let BACKGROUND_GREEN_1 = named("bg-verdino")
     static let BACKGROUND_GREEN_2 = named("Gradient1")

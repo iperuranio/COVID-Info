@@ -77,16 +77,17 @@ struct Page {
 }
 
 class FirstLaunchController: UIViewController {
-    
-    private var pageController: UIPageViewController?
+    static var instance: FirstLaunchController? = nil
+    static var pageController: UIPageViewController = UIPageViewController()
     private var pages: [Pages] = Pages.allCases
-    private var currentIndex: Int = 0
+    static var currentIndex: Int = 0
     
     static var frame = MainScreenController.fullscreenFrame
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        FirstLaunchController.instance = self
         //if primo avvio?
     }
     
@@ -118,27 +119,46 @@ class FirstLaunchController: UIViewController {
         self.setupPageController()
     }
     
+    static func presentController(_ previous: UIViewController, _ index: Int) {
+        let initialVC = GeneralPage(index)
+        FirstLaunchController.currentIndex = index
+        
+        FirstLaunchController.pageController.setViewControllers([initialVC.getPage()], direction: .forward, animated: false, completion: nil)
+        FirstLaunchController.pageController.didMove(toParent: previous)
+    }
+    
     private func setupPageController() {
         if let _ = MainScreenController.instance {
-            self.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-            self.pageController?.dataSource = self
-            self.pageController?.delegate = self
-            self.pageController?.view.backgroundColor = .clear
-            self.pageController?.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
-            self.pageController?.view.layer.masksToBounds = true
-            self.pageController?.view.layer.cornerRadius = 20
-            self.pageController?.view.layer.cornerCurve = .continuous
+            FirstLaunchController.pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            FirstLaunchController.pageController.dataSource = self //per togliere i pallini
+            FirstLaunchController.pageController.delegate = self
+            FirstLaunchController.pageController.view.backgroundColor = .clear
+            FirstLaunchController.pageController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.size.height)
+            FirstLaunchController.pageController.view.layer.masksToBounds = true
+            FirstLaunchController.pageController.view.layer.cornerRadius = 20
+            FirstLaunchController.pageController.view.layer.cornerCurve = .continuous
+//            FirstLaunchController.pageController.view.
             
-            self.addChild(self.pageController!)
-            self.view.addSubview(self.pageController!.view)
+            for subView in FirstLaunchController.pageController.view.subviews { //disable scroll laterale
+                if (subView as? UIScrollView != nil) {
+                    let scrollView = subView as! UIScrollView
+                    
+                    let panGestureRecognizer: UIPanGestureRecognizer = scrollView.panGestureRecognizer
+                    panGestureRecognizer.cancelsTouchesInView = false
+                    panGestureRecognizer.delaysTouchesBegan = false
+//                    panGestureRecognizer.cancelsTouchesInView = true
+                    panGestureRecognizer.removeTarget(nil, action: nil)
+                }
+            }
+//            FirstLaunchController.pageController.dimiss
+            
+            self.addChild(FirstLaunchController.pageController)
+            self.view.addSubview(FirstLaunchController.pageController.view)
             
             let initialVC = GeneralPage(with: Pages.pageOne)
-            let vc = initialVC.getPage()
-            _ = vc.view
-            vc.loadView()
             
-            self.pageController?.setViewControllers([vc], direction: .forward, animated: true, completion: nil)
-            self.pageController?.didMove(toParent: self)
+            FirstLaunchController.pageController.setViewControllers([initialVC.getPage()], direction: .forward, animated: true, completion: nil)
+            FirstLaunchController.pageController.didMove(toParent: self)
         }
     }
 }
@@ -158,6 +178,7 @@ extension FirstLaunchController: UIPageViewControllerDataSource, UIPageViewContr
         index -= 1
         
         let vc: GeneralPage = GeneralPage(with: pages[index])
+//        print("loaded \(index) --")
         
         return vc.getPage()
     }
@@ -181,7 +202,6 @@ extension FirstLaunchController: UIPageViewControllerDataSource, UIPageViewContr
 //        }
         
         let vc: GeneralPage = GeneralPage(with: pages[index])
-        
         return vc.getPage()
     }
     
@@ -190,12 +210,11 @@ extension FirstLaunchController: UIPageViewControllerDataSource, UIPageViewContr
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return self.currentIndex
+        return FirstLaunchController.currentIndex
     }
 }
 
 extension UIPageControl {
-
     func customPageControl(dotFillColor:UIColor, dotBorderColor:UIColor, dotBorderWidth:CGFloat) {
         for (pageIndex, dotView) in self.subviews.enumerated() {
             if self.currentPage == pageIndex {
