@@ -112,6 +112,17 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		243DC194259A31A400361C05 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */,
+				24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */,
+				24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */,
+				2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
 		245B14A3259775F8000EDD54 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,12 +225,9 @@
 		248151852592EB2100CC18DE /* First Open Pages */ = {
 			isa = PBXGroup;
 			children = (
+				243DC194259A31A400361C05 /* Implementation */,
 				248151862592EB4800CC18DE /* GeneralPage.swift */,
 				241582AB25958C0000F27E0C /* GeneralPageUI.swift */,
-				2481518A2592EBCB00CC18DE /* FirstOpenLaunchPage1.swift */,
-				24C702F22592F01E004AC78F /* FirstOpenLaunchPage2.swift */,
-				24C702F52592F49F004AC78F /* FirstOpenLaunchPage3.swift */,
-				2491B44E2592F56700F74C6A /* FirstOpenLaunchPage4.swift */,
 			);
 			path = "First Open Pages";
 			sourceTree = "<group>";

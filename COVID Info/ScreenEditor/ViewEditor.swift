@@ -582,7 +582,7 @@ class ViewEditor {
             var transition: Transition {
                 switch self {
                     case .classicFlipBottom:
-                        return Transition(0.10, false, 0.40, .transitionFlipFromBottom, nil)
+                        return Transition(0, false, 0.30, .transitionFlipFromBottom, nil)
                 }
             }
         }

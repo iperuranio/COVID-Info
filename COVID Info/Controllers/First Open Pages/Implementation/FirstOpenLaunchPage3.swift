@@ -1,5 +1,5 @@
 //
-//  FirstOpenLaunchPage4.swift
+//  FirstOpenLaunchPage3.swift
 //  COVID Info
 //
 //  Created by Claudio Portuesi on 23/12/2020.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FirstOpenLaunchPage4: UIViewController {
-    let currentPage = Pages.pageFour
+class FirstOpenLaunchPage3: UIViewController {
+    let currentPage = Pages.pageThree
     
     var topView: UIView = UIView()
     var midView: UIView = UIView()
@@ -17,11 +17,16 @@ class FirstOpenLaunchPage4: UIViewController {
     var blurView: UIView = UIView()
     
     var initialized: Bool = false
-    var generalPage: GeneralPageUI? = nil
     
+    override func awakeFromNib() {
+       super.awakeFromNib()
+        
+        self.title = "VC\(currentPage.index)"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if(initialized) {
             return
         }
@@ -33,20 +38,20 @@ class FirstOpenLaunchPage4: UIViewController {
         
         generalPage.setupBlurView()
         
-        generalPage.setupImage(Images.NOTIFY_BELL)
-        
         let title = "COVID-Info"
-        let subTitle = "Ti avvisa ad ogni cambiamento."
-        let bottomTitle = "Una volta che avrai consentito all'applicazione di mandarti delle notifiche, essa ti avvertirà qualora i dati dovessero essere stati aggiornati o nel caso in cui le disposizioni dovessero variare."
+        let subTitle = "Tiene conto delle disposizioni in vigore."
+        let bottomTitle = "Selezionando la regione di appartenenza, l'app mostrerà le disposizioni in vigore e cercherà di evidenziare eventuali raccomandazioni, limiti o divieti."
+        let buttonTitle = "Avanti"
         
         generalPage.setupTitle(title, true)
         generalPage.setupSubtitle(subTitle, true)
+        generalPage.setupImage(Images.LAW_BOOK)
         generalPage.setupBottomTitle(bottomTitle, true)
-        
-        generalPage.setupForwardButton()
-        let button = generalPage.setupForwardButton()
+
+        let button = generalPage.setupForwardButton(buttonTitle, Images.ARROW_WHITE, true)
         button.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         button.showsTouchWhenHighlighted = false
+
         
         initialized = true
     }
@@ -56,7 +61,8 @@ class FirstOpenLaunchPage4: UIViewController {
     }
     
     @objc func buttonClicked(_ sender: UIButton) {
-        FirstLaunchController.instance?.dismiss(animated: true, completion: nil)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+            FirstLaunchController.presentController(self, self.currentPage.index + 1)
+        }
     }
 }
-

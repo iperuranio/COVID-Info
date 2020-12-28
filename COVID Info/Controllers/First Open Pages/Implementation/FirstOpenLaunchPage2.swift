@@ -18,6 +18,12 @@ class FirstOpenLaunchPage2: UIViewController {
     
     var initialized: Bool = false
     
+    override func awakeFromNib() {
+       super.awakeFromNib()
+        
+        self.title = "VC\(currentPage.index)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +41,14 @@ class FirstOpenLaunchPage2: UIViewController {
         let title = "COVID-Info"
         let subTitle = "App italiana, dati italiani."
         let bottomTitle = "L'app riporta i dati che fornisce la Protezione Civile Italiana e li organizza per migliorare l'esperienza dell'utente."
+        let buttonTitle = "Avanti"
         
         generalPage.setupTitle(title, true)
         generalPage.setupSubtitle(subTitle, true)
         generalPage.setupImage(Images.PISA_TOWER)
         generalPage.setupBottomTitle(bottomTitle, true)
-        let button = generalPage.setupForwardButton()
+        
+        let button = generalPage.setupForwardButton(buttonTitle, Images.ARROW_WHITE, true)
         button.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         button.showsTouchWhenHighlighted = false
         
@@ -52,6 +60,8 @@ class FirstOpenLaunchPage2: UIViewController {
     }
     
     @objc func buttonClicked(_ sender: UIButton) {
-        FirstLaunchController.presentController(self, currentPage.index + 1)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+            FirstLaunchController.presentController(self, self.currentPage.index + 1)
+        }
     }
 }

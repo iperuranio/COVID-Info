@@ -11,7 +11,7 @@ class CustomBlueButton: UIButton {
 
     override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? Colors.SELECTED_BUTTON : .systemBlue
+            backgroundColor = isHighlighted ? .blue : Colors.SELECTED_BUTTON
         }
     }
 }

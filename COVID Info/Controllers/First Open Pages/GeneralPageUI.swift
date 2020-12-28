@@ -209,8 +209,7 @@ class GeneralPageUI {
         return bigLabel
     }
     
-    func setupForwardButton() -> UIButton {
-        let title = "Avanti"
+    func setupForwardButton(_ title: String, _ image: UIImage, _ animate: Bool) -> UIButton {
         var viewEditor = ViewEditor(forwardButton, midView)
         viewEditor = viewEditor
             .clipToBounds()
@@ -232,8 +231,8 @@ class GeneralPageUI {
             .chainBuild()
             .buttonEditor()
             .backgroundColor(.blue)
-
-            .image(Images.ARROW_WHITE)
+            .imageEdge(0, viewEditor.view.frame.width * 0.7971014492753623, 0, 0)
+            .image(image)
             .tintColor(.white)
             .horizontalAlignment(.leading)
             .verticalAlignment(.center)
@@ -241,9 +240,10 @@ class GeneralPageUI {
             .attachToSuperView()
             .chainBuild()
         
-        let _ = viewEditor.buttonEditor()
-            .imageEdge(0, viewEditor.view.frame.width * 0.7971014492753623, 0, 0)
-            .preMadeLeftToRightAndReturnAnimation(0.0043, true, 0.1, .allowUserInteraction)
+        if animate {
+            let _ = viewEditor.buttonEditor()
+                .preMadeLeftToRightAndReturnAnimation(0.0043, true, 0.1, .allowUserInteraction)
+        }
 
         let viewInTheMiddle = UIView(frame: forwardButton.frame)
         let viewInTheMiddleEditor = ViewEditor(viewInTheMiddle, forwardButton)

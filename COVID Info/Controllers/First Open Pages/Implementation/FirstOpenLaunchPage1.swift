@@ -18,6 +18,12 @@ class FirstOpenLaunchPage1: UIViewController {
     
     var initialized: Bool = false
     
+    override func awakeFromNib() {
+       super.awakeFromNib()
+        
+        self.title = "VC\(currentPage.index)"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,6 +36,7 @@ class FirstOpenLaunchPage1: UIViewController {
         let title = "COVID-Info"
         let subtitle = "Benvenuto in COVID Info!"
         let bottomTitle = "All'interno dell'app troverai tutto il necessario per rimanere informato riguardo la malattia da coronavirus (COVID-19)."
+        let buttonTitle = "Avanti"
         
         let generalPage = GeneralPageUI(self.view, topView, midView, botView, false) //debug mode con true
         generalPage.setupBackground(Images.BACKGROUND_BLUE_1)
@@ -42,7 +49,8 @@ class FirstOpenLaunchPage1: UIViewController {
         generalPage.setupSubtitle(subtitle, true)
         generalPage.setupImage(Images.GIRL_WITH_MASK)
         generalPage.setupBottomTitle(bottomTitle, true)
-        let button = generalPage.setupForwardButton()
+        
+        let button = generalPage.setupForwardButton(buttonTitle, Images.ARROW_WHITE, true)
         button.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         button.showsTouchWhenHighlighted = false //fargli una cascata
         
@@ -50,7 +58,9 @@ class FirstOpenLaunchPage1: UIViewController {
     }
     
     @objc func buttonClicked(_ sender: UIButton) {
-        FirstLaunchController.presentController(self, currentPage.index + 1)
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { timer in
+            FirstLaunchController.presentController(self, self.currentPage.index + 1)
+        }
     }
     
 }
