@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = Colors.ACCENT_INTERFACE_COLOR
     }
     
     override func viewDidAppear(_ animated: Bool) {
