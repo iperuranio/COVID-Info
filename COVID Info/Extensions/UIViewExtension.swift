@@ -15,7 +15,7 @@ extension UIView {
         let vibrancyEffect = UIVibrancyEffect(blurEffect: blur)
         let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
         
-        vibrancyEffectView.frame = superView.frame
+        vibrancyEffectView.bounds = superView.bounds
         vibrancyEffectView.tag = 900 //enum?
         vibrancyEffectView.clipsToBounds = true
         vibrancyEffectView.layer.cornerCurve = superView.layer.cornerCurve

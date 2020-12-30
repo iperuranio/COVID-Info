@@ -265,11 +265,11 @@ class ViewEditor {
         view.frame = frameToApply
         
         if(centering[FramePosition.x.rawValue]) {
-            view.center.x = mainView.center.x
+            view.center.x = mainView.frame.size.width / 2
         }
         
         if(centering[FramePosition.y.rawValue]) {
-            view.center.y = mainView.center.y
+            view.center.y = mainView.frame.size.height / 2
         }
         
         if(shouldApplyFrameOnBounds) {
@@ -299,6 +299,10 @@ class ViewEditor {
     
     func attachToSuperviewAndVoidBuild() {
         return attachToSuperView().voidBuild()
+    }
+    
+    func void() {
+        
     }
     
     func voidBuild() {

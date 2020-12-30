@@ -18,8 +18,12 @@ class HomeViewController: UIViewController {
     var regionErrorTitleEditor: ViewEditor? = nil
     var regionTitleLabel = UILabel()
     var squareMainView = UIImageView()
+    var squareMainPhantomView = UIView()
+    
     var nationalSquareView = UIView()
     var regionSquareView = UIView()
+    var nationalSquareInsideView = UIView()
+    var regionSquareInsideView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +51,12 @@ class HomeViewController: UIViewController {
         loadSquareView()
         
         loadNationalSquare()
+        loadRegionSquare()
     }
     
     func loadSquareView() {
-        let squareMainViewEditor = ViewEditor(squareMainView, mainView)
+        let squareMainViewEditor = ViewEditor(squareMainView(squareMainView), mainView)
         squareMainViewEditor
-            .clearBackground()
-            .percentageFrameRelativeX(0)
-            .percentageFrameRelativeY(0.170)
-            .percentageFrameWidth(0.9)
-            .percentageFrameHeight(0.800)
-            .centerX()
             .layerEditor()
             .cornerRadius(20)
             .cornerCurve(.continuous)
@@ -66,27 +65,74 @@ class HomeViewController: UIViewController {
             .imageEditor()
             .image(Images.BACKGROUND_DARK_1)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .void()
         
         let views = UIView.getVibrancyAndBlurView(squareMainView)
         let blurView = views[0]
         let vibranceView = views[1]
         mainView.addSubview(blurView)
-//        mainView.addSubview(vibranceView)
+        mainView.addSubview(vibranceView)
+//        vibranceView.backgroundColor = .red
         
-        let spacing = 1.5
+        squareMainPhantomView = squareMainView(squareMainPhantomView)
+
+//        let spacing = 1.5
         
-        let nationalSquareViewEditor = ViewEditor(nationalSquareView, squareMainView)
-        nationalSquareViewEditor
-            .asViewBackground().debug()
+        loadMainViewsInsideSquare(nationalSquareView)
+        loadMainViewsInsideSquare(regionSquareView, true)
+    }
+    
+    private func squareMainView(_ view: UIView) -> UIView {
+        let squareMainViewEditor = ViewEditor(view, mainView)
+        return squareMainViewEditor
+            .clearBackground()
+            .percentageFrameRelativeX(0)
+            .percentageFrameRelativeY(0.170)
+            .percentageFrameWidth(0.9)
+            .percentageFrameHeight(0.800)
             .centerX()
-            .percentageFrameWidth(0.98)
+            .attachToSuperviewAndBuild()
+    }
+    
+    private func loadMainViewsInsideSquare(_ view: UIView, _ secondView: Bool = false) {
+        let nationalSquareViewEditor = ViewEditor(view, squareMainPhantomView)
+        nationalSquareViewEditor.debug()
+            .centerX()
+            .percentageFrameWidth(0.90)
             .percentageFrameHeight(0.5)
             .attachToSuperviewAndVoidBuild()
+        
+        if(secondView) {
+            nationalSquareViewEditor.percentageFrameRelativeY(0.5).voidBuild()
+        }
     }
     
     func loadNationalSquare() {
+        let viewEditor = loadRawTopSquare(nationalSquareInsideView, nationalSquareView)
+        viewEditor.attachToSuperView().void()
         
+        
+    }
+    
+    func loadRegionSquare() {
+        let viewEditor = loadRawTopSquare(regionSquareInsideView, regionSquareView)
+        viewEditor.attachToSuperView().void()
+        
+        
+    }
+    
+    func loadRawTopSquare(_ view: UIView, _ mainView: UIView) -> ViewEditor {
+        let viewEditor = ViewEditor(view, mainView)
+        return viewEditor.debug() //DEBUG
+            .centerX()
+            .centerY()
+            .percentageFrameWidth(1)
+            .percentageFrameHeight(0.93)
+            .layerEditor()
+            .cornerCurve(.continuous)
+            .cornerRadius(30)
+            .upperEditor()
+            .chainBuild()
     }
     
     
