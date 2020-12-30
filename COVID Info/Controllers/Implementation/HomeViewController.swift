@@ -28,15 +28,49 @@ class HomeViewController: UIViewController {
     var nationalSquareInsideView_TopBarView = UIView()
     var nationalSquareInsideView_BottomBarView = UIView()
     var nationalSquareInsideView_Image = UIImageView()
+    var nationalSquareInsideView_TopTitle = UILabel()
+    var nationalSquareInsideView_TopSquare = UIView()
+    var nationalSquareInsideView_BotSquareLeft = UIView()
+    var nationalSquareInsideView_BotSquareRight = UIView()
+    
+    var nationalArrayElements: [UIView] = []
     
     var regionSquareInsideView = UIView()
     var regionSquareInsideView_ImageView = UIView()
     var regionSquareInsideView_TopBarView = UIView()
     var regionSquareInsideView_BottomBarView = UIView()
     var regionSquareInsideView_Image = UIImageView()
+    var regionSquareInsideView_TopTitle = UILabel()
+    var regionSquareInsideView_TopSquare = UIView()
+    var regionSquareInsideView_BotSquareLeft = UIView()
+    var regionSquareInsideView_BotSquareRight = UIView()
+    
+    var regionArrayElements: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nationalArrayElements = [nationalSquareView,
+                                 nationalSquareInsideView,
+                                 nationalSquareInsideView_ImageView,
+                                 nationalSquareInsideView_TopBarView,
+                                 nationalSquareInsideView_BottomBarView,
+                                 nationalSquareInsideView_Image,
+                                 nationalSquareInsideView_TopTitle,
+                                 nationalSquareInsideView_TopSquare,
+                                 nationalSquareInsideView_BotSquareLeft,
+                                 nationalSquareInsideView_BotSquareRight]
+        
+        regionArrayElements = [regionSquareView,
+                               regionSquareInsideView,
+                               regionSquareInsideView_ImageView,
+                               regionSquareInsideView_TopBarView,
+                               regionSquareInsideView_BottomBarView,
+                               regionSquareInsideView_Image,
+                               regionSquareInsideView_TopTitle,
+                               regionSquareInsideView_TopSquare,
+                               regionSquareInsideView_BotSquareLeft,
+                               regionSquareInsideView_BotSquareRight]
     }
     
     override func viewSafeAreaInsetsDidChange() { //qui perché view.safeAreaInsets ha dei valori
@@ -118,7 +152,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadNationalSquare() {
-        loadRawTopSquare([nationalSquareView, nationalSquareInsideView, nationalSquareInsideView_ImageView, nationalSquareInsideView_TopBarView, nationalSquareInsideView_BottomBarView, nationalSquareInsideView_Image])
+        loadRawTopSquare(nationalArrayElements)
         nationalSquareInsideView_Image.image = Images.ITALY
         nationalSquareInsideView_Image.tintColor = .cyan
 //        viewEditor.attachToSuperView().void()
@@ -127,7 +161,7 @@ class HomeViewController: UIViewController {
     }
     
     func loadRegionSquare() {
-        loadRawTopSquare([regionSquareView, regionSquareInsideView, regionSquareInsideView_ImageView, regionSquareInsideView_TopBarView, regionSquareInsideView_BottomBarView, regionSquareInsideView_Image])
+        loadRawTopSquare(regionArrayElements)
 //        viewEditor.attachToSuperView().void()
         
         
@@ -139,6 +173,10 @@ class HomeViewController: UIViewController {
     //Index 3: topViewInside (la view dentro la baseView per il rettangolo superiore)
     //Index 4: botViewInside (la view dentro la baseView per il rettangolo inferiore)
     //Index 5: image (l'immagine dentro la imageViewInside)
+    //Index 6: topTitle (il titolo della view topViewInside)
+    //Index 7: topSquare (la view che contiene i dati dentro topViewInside)
+    //Index 8: botSquareLeft (la view che contiene i dati dentro botViewInside a sinistra)
+    //Index 9: botSquareRight (la view che contiene i dati dentro botViewInside a destra)
     func loadRawTopSquare(_ view: [UIView]) {
         let baseViewEditor = ViewEditor(view[1], view[0])
         let baseView = baseViewEditor.debug() //DEBUG
@@ -161,20 +199,22 @@ class HomeViewController: UIViewController {
             .attachToSuperviewAndBuild()
         
         let topViewInsideEditor = ViewEditor(view[3], baseView)
-        topViewInsideEditor.debug() //DEBUG
+        let topView = topViewInsideEditor.debug() //DEBUG
             .asViewBackground()
             .percentageFrameRelativeX(0.3)
+            .percentageFrameWidth(0.7)
             .percentageFrameHeight(0.5)
             .clipToBounds()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndBuild()
         
         let botViewInsideEditor = ViewEditor(view[4], baseView)
-        botViewInsideEditor.debug() //DEBUG
+        let botView = botViewInsideEditor.debug() //DEBUG
             .asViewBackground()
-            .percentageFrameRelativeX(0.3)
+            .percentageFrameRelativeY(0.5)
             .percentageFrameHeight(0.5)
+            .percentageFrameWidth(1)
             .clipToBounds()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndBuild()
         
         let image = view[5]
         let imageInsideEditor = ViewEditor(image, imageView)
@@ -188,6 +228,68 @@ class HomeViewController: UIViewController {
             .layerEditor()
             .cornerCurve(.continuous)
             .cornerRadius(50)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let titleTopEditor = ViewEditor(view[6], topView)
+        titleTopEditor.debug()
+            .percentageFrameRelativeY(0.05)
+            .centerX()
+            .percentageFrameWidth(0.75)
+            .percentageFrameHeight(0.21)
+            .labelEditor()
+            .lines(0)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let squareTopInsideTopEditor = ViewEditor(view[7], topView)
+        squareTopInsideTopEditor.debug()
+            .percentageFrameRelativeY(0.32)
+            .centerX()
+            .percentageFrameWidth(0.92)
+            .percentageFrameHeight(0.62)
+            .layerEditor()
+            .cornerRadius(25)
+            .cornerCurve(.continuous)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let botViewInsideLeftEditor = ViewEditor(UIView(), botView)
+        let botViewInsideLeft = botViewInsideLeftEditor.debug()
+            .percentageFrameWidth(0.5)
+            .percentageFrameHeight(1)
+            .attachToSuperviewAndBuild()
+        
+        let botViewInsideRightEditor = ViewEditor(UIView(), botView)
+        let botViewInsideRight = botViewInsideRightEditor.debug()
+            .percentageFrameRelativeX(0.5)
+            .percentageFrameWidth(0.5)
+            .percentageFrameHeight(1)
+            .attachToSuperviewAndBuild()
+        
+        let botViewInsideInnerLeftEditor = ViewEditor(view[8], botViewInsideLeft)
+        botViewInsideInnerLeftEditor.debug()
+            .asViewBackground()
+            .centerX()
+            .centerY()
+            .percentageFrameHeight(0.92)
+            .percentageFrameWidth(0.92)
+            .layerEditor()
+            .cornerRadius(30)
+            .cornerCurve(.continuous)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let botViewInsideInnerRightEditor = ViewEditor(view[9], botViewInsideRight)
+        botViewInsideInnerRightEditor.debug()
+            .asViewBackground()
+            .centerX()
+            .centerY()
+            .percentageFrameHeight(0.92)
+            .percentageFrameWidth(0.92)
+            .layerEditor()
+            .cornerRadius(30)
+            .cornerCurve(.continuous)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
     }
