@@ -25,6 +25,7 @@ struct Images {
     static let CHEVRON_RIGHT = named("chevron.right")
     static let MAP = named("map")
     static let BACKGROUND_DARK_1 = named("DarkBlueGradient")
+    static let ITALY = named("italy")
     
     
     static func named(_ name: String) -> UIImage {

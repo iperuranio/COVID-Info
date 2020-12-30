@@ -22,8 +22,18 @@ class HomeViewController: UIViewController {
     
     var nationalSquareView = UIView()
     var regionSquareView = UIView()
+    
     var nationalSquareInsideView = UIView()
+    var nationalSquareInsideView_ImageView = UIView()
+    var nationalSquareInsideView_TopBarView = UIView()
+    var nationalSquareInsideView_BottomBarView = UIView()
+    var nationalSquareInsideView_Image = UIImageView()
+    
     var regionSquareInsideView = UIView()
+    var regionSquareInsideView_ImageView = UIView()
+    var regionSquareInsideView_TopBarView = UIView()
+    var regionSquareInsideView_BottomBarView = UIView()
+    var regionSquareInsideView_Image = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +68,7 @@ class HomeViewController: UIViewController {
         let squareMainViewEditor = ViewEditor(squareMainView(squareMainView), mainView)
         squareMainViewEditor
             .layerEditor()
-            .cornerRadius(20)
+            .cornerRadius(30)
             .cornerCurve(.continuous)
             .upperEditor()
             .clipToBounds()
@@ -88,7 +98,7 @@ class HomeViewController: UIViewController {
             .clearBackground()
             .percentageFrameRelativeX(0)
             .percentageFrameRelativeY(0.170)
-            .percentageFrameWidth(0.9)
+            .percentageFrameWidth(0.94)
             .percentageFrameHeight(0.800)
             .centerX()
             .attachToSuperviewAndBuild()
@@ -96,7 +106,7 @@ class HomeViewController: UIViewController {
     
     private func loadMainViewsInsideSquare(_ view: UIView, _ secondView: Bool = false) {
         let nationalSquareViewEditor = ViewEditor(view, squareMainPhantomView)
-        nationalSquareViewEditor.debug()
+        nationalSquareViewEditor
             .centerX()
             .percentageFrameWidth(0.90)
             .percentageFrameHeight(0.5)
@@ -108,22 +118,30 @@ class HomeViewController: UIViewController {
     }
     
     func loadNationalSquare() {
-        let viewEditor = loadRawTopSquare(nationalSquareInsideView, nationalSquareView)
-        viewEditor.attachToSuperView().void()
+        loadRawTopSquare([nationalSquareView, nationalSquareInsideView, nationalSquareInsideView_ImageView, nationalSquareInsideView_TopBarView, nationalSquareInsideView_BottomBarView, nationalSquareInsideView_Image])
+        nationalSquareInsideView_Image.image = Images.ITALY
+        nationalSquareInsideView_Image.tintColor = .cyan
+//        viewEditor.attachToSuperView().void()
         
         
     }
     
     func loadRegionSquare() {
-        let viewEditor = loadRawTopSquare(regionSquareInsideView, regionSquareView)
-        viewEditor.attachToSuperView().void()
+        loadRawTopSquare([regionSquareView, regionSquareInsideView, regionSquareInsideView_ImageView, regionSquareInsideView_TopBarView, regionSquareInsideView_BottomBarView, regionSquareInsideView_Image])
+//        viewEditor.attachToSuperView().void()
         
         
     }
     
-    func loadRawTopSquare(_ view: UIView, _ mainView: UIView) -> ViewEditor {
-        let viewEditor = ViewEditor(view, mainView)
-        return viewEditor.debug() //DEBUG
+    //Index 0: mainView (la view di base del national o del region)
+    //Index 1: baseView (la view del quadrato del national o del region)
+    //Index 2: imageViewInside (la view dentro la baseView per l'immagine, non è UIImageView)
+    //Index 3: topViewInside (la view dentro la baseView per il rettangolo superiore)
+    //Index 4: botViewInside (la view dentro la baseView per il rettangolo inferiore)
+    //Index 5: image (l'immagine dentro la imageViewInside)
+    func loadRawTopSquare(_ view: [UIView]) {
+        let baseViewEditor = ViewEditor(view[1], view[0])
+        let baseView = baseViewEditor.debug() //DEBUG
             .centerX()
             .centerY()
             .percentageFrameWidth(1)
@@ -132,7 +150,46 @@ class HomeViewController: UIViewController {
             .cornerCurve(.continuous)
             .cornerRadius(30)
             .upperEditor()
-            .chainBuild()
+            .clipToBounds()
+            .attachToSuperviewAndBuild()
+        
+        let imageViewInsideEditor = ViewEditor(view[2], baseView)
+        let imageView = imageViewInsideEditor.debug() //DEBUG
+            .percentageFrameWidth(0.30)
+            .percentageFrameHeight(0.5)
+            .clipToBounds()
+            .attachToSuperviewAndBuild()
+        
+        let topViewInsideEditor = ViewEditor(view[3], baseView)
+        topViewInsideEditor.debug() //DEBUG
+            .asViewBackground()
+            .percentageFrameRelativeX(0.3)
+            .percentageFrameHeight(0.5)
+            .clipToBounds()
+            .attachToSuperviewAndVoidBuild()
+        
+        let botViewInsideEditor = ViewEditor(view[4], baseView)
+        botViewInsideEditor.debug() //DEBUG
+            .asViewBackground()
+            .percentageFrameRelativeX(0.3)
+            .percentageFrameHeight(0.5)
+            .clipToBounds()
+            .attachToSuperviewAndVoidBuild()
+        
+        let image = view[5]
+        let imageInsideEditor = ViewEditor(image, imageView)
+        imageInsideEditor.debug() //DEBUG
+            .asViewBackground()
+            .centerY()
+            .centerX()
+            .percentageFrameHeight(imageView.frame.width / imageView.frame.height) //cerchio
+            .contentMode(.scaleAspectFit)
+            .clipToBounds()
+            .layerEditor()
+            .cornerCurve(.continuous)
+            .cornerRadius(50)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
     }
     
     
@@ -142,7 +199,7 @@ class HomeViewController: UIViewController {
         regionErrorEditor
             .percentageFrameRelativeX(0)
             .percentageFrameRelativeY(0.009)
-            .percentageFrameWidth(0.9)
+            .percentageFrameWidth(0.94)
             .percentageFrameHeight(0.130)
             .centerX()
             .attachToSuperviewAndVoidBuild()
