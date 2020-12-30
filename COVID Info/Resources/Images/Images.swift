@@ -21,6 +21,10 @@ struct Images {
     static let PISA_TOWER = named("pisa")
     static let NOTIFY_BELL = named("campana")
     static let LAW = named("legge")
+    static let TRIANGLE_ERROR = named("exclamationmark.triangle")
+    static let CHEVRON_RIGHT = named("chevron.right")
+    static let MAP = named("map")
+    static let BACKGROUND_DARK_1 = named("DarkBlueGradient")
     
     
     static func named(_ name: String) -> UIImage {

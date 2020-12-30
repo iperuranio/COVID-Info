@@ -154,6 +154,15 @@ class ViewEditor {
         return updateArrayWithFrameMeasures(value * percentage, onWhichDestinationFrameValue)
     }
     
+    func tintColor(named name: String) -> ViewEditor {
+        return tintColor(UIColor(named: name)!)
+    }
+    
+    func tintColor(_ color: UIColor) -> ViewEditor {
+        view.tintColor = color
+        return self
+    }
+    
     func backgroundColor(named name: String) -> ViewEditor {
         return backgroundColor(UIColor(named: name)!)
     }
@@ -268,8 +277,17 @@ class ViewEditor {
         }
         
         if(shouldBlur) {
-            let blurView = UIView.getBlurView(view)
-            view.addSubview(blurView)
+            let blurView = UIView.getMaterialLightBlurView(view) as! UIVisualEffectView
+            
+            if(centering[FramePosition.x.rawValue]) {
+                blurView.center.x = mainView.center.x
+            }
+            
+            if(centering[FramePosition.y.rawValue]) {
+                blurView.center.y = mainView.center.y
+            }
+            
+            mainView.addSubview(blurView) //alla main view
         }
         
         return view
@@ -502,15 +520,6 @@ class ViewEditor {
         
         func backgroundColor(_ color: UIColor) -> ButtonEditor {
             button.backgroundColor = color
-            return self
-        }
-        
-        func tintColor(named name: String) -> ButtonEditor {
-            return tintColor(UIColor(named: name)!)
-        }
-        
-        func tintColor(_ color: UIColor) -> ButtonEditor {
-            button.tintColor = color
             return self
         }
         

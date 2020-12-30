@@ -15,6 +15,7 @@
 		243847012594D25F0016F6B8 /* DecretiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243847002594D25F0016F6B8 /* DecretiViewController.swift */; };
 		243A1DE62596CD66004465DD /* ViewEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243A1DE52596CD66004465DD /* ViewEditor.swift */; };
 		243DC197259A32B000361C05 /* GeneralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DC196259A32B000361C05 /* GeneralController.swift */; };
+		243DC19B259A342400361C05 /* SelectRegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DC19A259A342400361C05 /* SelectRegionController.swift */; };
 		245B14A52597760C000EDD54 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B14A42597760C000EDD54 /* FontExtension.swift */; };
 		245B14AB2597A7D0000EDD54 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B14AA2597A7D0000EDD54 /* Images.swift */; };
 		245B14AF2597A7E5000EDD54 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245B14AE2597A7E5000EDD54 /* Fonts.swift */; };
@@ -52,6 +53,7 @@
 		243847002594D25F0016F6B8 /* DecretiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecretiViewController.swift; sourceTree = "<group>"; };
 		243A1DE52596CD66004465DD /* ViewEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEditor.swift; sourceTree = "<group>"; };
 		243DC196259A32B000361C05 /* GeneralController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralController.swift; sourceTree = "<group>"; };
+		243DC19A259A342400361C05 /* SelectRegionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRegionController.swift; sourceTree = "<group>"; };
 		245B14A42597760C000EDD54 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
 		245B14AA2597A7D0000EDD54 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		245B14AE2597A7E5000EDD54 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				243846F82594CD940016F6B8 /* DatiViewController.swift */,
 				243846FC2594CE030016F6B8 /* SettingsViewController.swift */,
 				243847002594D25F0016F6B8 /* DecretiViewController.swift */,
+				243DC19A259A342400361C05 /* SelectRegionController.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				24C43F1E25996412002ADF9E /* Transition.swift in Sources */,
 				24C702F32592F01E004AC78F /* FirstOpenLaunchPage2.swift in Sources */,
 				24C43F1B2598DE99002ADF9E /* UIButtonExtension.swift in Sources */,
+				243DC19B259A342400361C05 /* SelectRegionController.swift in Sources */,
 				243846F92594CD940016F6B8 /* DatiViewController.swift in Sources */,
 				2467EB6F259178E300595939 /* FirstLaunchController.swift in Sources */,
 				245B14BA2597F670000EDD54 /* UIColorExtension.swift in Sources */,
