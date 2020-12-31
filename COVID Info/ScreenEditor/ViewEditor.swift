@@ -662,11 +662,6 @@ class ViewEditor {
             return self
         }
         
-        func lineBreak(_ value: NSLineBreakMode) -> LabelEditor {
-            label.lineBreakMode = value
-            return self
-        }
-        
         func textColor(named name: String) -> LabelEditor {
             return textColor(UIColor(named: name)!)
         }
@@ -678,6 +673,11 @@ class ViewEditor {
         
         func centerText() -> LabelEditor {
             return textAlignment(.center)
+        }
+        
+        func lineBreakMode(_ value: NSLineBreakMode) -> LabelEditor { // ByCharWrapping non taglia
+            label.lineBreakMode = value
+            return self
         }
         
         func textAlignment(_ alignment: NSTextAlignment) -> LabelEditor {

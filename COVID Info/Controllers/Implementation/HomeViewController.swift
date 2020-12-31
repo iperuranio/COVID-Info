@@ -109,7 +109,7 @@ class HomeViewController: UIViewController {
         
         mainView.clipsToBounds = true
         
-        let hasRegion = false //se ha selezionato la regione
+        let hasRegion = true //se ha selezionato la regione
         loadRegion()
         
         if(!hasRegion) {
@@ -192,13 +192,11 @@ class HomeViewController: UIViewController {
     
     func loadNationalSquare() {
         loadRawTopSquare(nationalArrayElements)
-        nationalSquareInsideView_Image.image = Images.ITALY
+        nationalSquareInsideView_Image.image = Images.ITALY_COLORED
         nationalSquareInsideView_Image.tintColor = .cyan
         
         nationalSquareInsideView_TopTitle.text = "Dati nazionali"
 //        viewEditor.attachToSuperView().void()
-        
-        
     }
     
     func loadRegionSquare() {
@@ -206,8 +204,6 @@ class HomeViewController: UIViewController {
         
         regionSquareInsideView_TopTitle.text = "Dati regionali"
 //        viewEditor.attachToSuperView().void()
-        
-        
     }
     
     //Index 0: mainView (la view di base del national o del region)
@@ -230,7 +226,7 @@ class HomeViewController: UIViewController {
         let mainView = view[0]
         let baseView = view[1]
         let baseViewEditor = ViewEditor(baseView, mainView)
-        baseViewEditor.debug() //DEBUG
+        baseViewEditor //DEBUG
             .centerX()
             .centerY()
             .percentageFrameHeight(0.93)
@@ -243,19 +239,83 @@ class HomeViewController: UIViewController {
             .clipToBounds()
             .attachToSuperviewAndVoidBuild()
         
-        let imageViewInsideEditor = ViewEditor(view[2], baseView)
-        let imageView = imageViewInsideEditor.debug() //DEBUG
-            .percentageFrameWidth(0.30)
+        let topViewInsideEditor = ViewEditor(UIView(), baseView)
+        let topView = topViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
+            .asViewBackground()
             .percentageFrameHeight(0.5)
             .clipToBounds()
             .attachToSuperviewAndBuild()
         
-        let topViewInsideEditor = ViewEditor(view[3], baseView)
-        let topView = topViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
+        let titleTopStripEditor = ViewEditor(UIView(), topView)
+        let titleTopStrip = titleTopStripEditor
+            .backgroundColor(Colors.TOP_STRIP)
+            .asViewBackground()
+            .centerX()
+            .percentageFrameHeight(0.26)
+            .attachToSuperviewAndBuild()
+        
+        let titleTopEditor = ViewEditor(view[6], titleTopStrip)
+        titleTopEditor
+            .percentageFrameRelativeY(0.2)
+            .percentageFrameRelativeX(0.28)
+            .percentageFrameWidth(0.60)
+            .percentageFrameHeight(0.70)
+            .labelEditor()
+            .lines(1)
+            .textColor(.white)
+            .baselineAdjustment(.none)
+            .font(Fonts.SOURCE_CODE_PRO_BOLD, 30)
+            .adjustsFontSizeToFitWidth(true)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let imageViewInsideEditor = ViewEditor(view[2], topView)
+        let imageView = imageViewInsideEditor
+            .percentageFrameWidth(0.30)
+            .percentageFrameHeight(1)
+            .clipToBounds()
+            .attachToSuperviewAndBuild()
+        
+        let imageInsideOutlineView = UIView()
+        let imageInsideOutlineEditor = ViewEditor(imageInsideOutlineView, imageView)
+        imageInsideOutlineEditor
+            .backgroundColor(Colors.INTERFACE_COLOR_1)
+            .asViewBackground()
+            .centerY()
+            .percentageFrameRelativeX(0.1)
+            .percentageFrameWidth(0.9)
+            .chainBuild()
+            .percentageFrameHeight(imageInsideOutlineView.frame.width / imageView.frame.height) //fare un cerchio
+            .contentMode(.scaleAspectFit)
+            .clipToBounds()
+            .layerEditor()
+            .cornerCurve(.circular)
+            .cornerRadius(imageInsideOutlineView.frame.width / 2)
+            .borderColor(.white)
+            .borderWidth(2)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let image = view[5]
+        let imageInsideEditor = ViewEditor(image, imageInsideOutlineView)
+        imageInsideEditor //DEBUG
+            .backgroundColor(Colors.TOP_STRIP)
+            .asViewBackground()
+            .layerEditor()
+            .borderWidth(4)
+            .cornerCurve(.circular)
+            .cornerRadius(imageInsideOutlineView.frame.width / 2)
+            .borderColor(.black)
+            .upperEditor()
+            .clipToBounds()
+            .attachToSuperviewAndVoidBuild()
+        
+        let topViewLeftInsideEditor = ViewEditor(view[3], topView)
+        let topViewLeft = topViewLeftInsideEditor
             .asViewBackground()
             .percentageFrameRelativeX(0.3)
             .percentageFrameWidth(0.7)
-            .percentageFrameHeight(0.5)
+            .percentageFrameHeight(1)
             .clipToBounds()
             .attachToSuperviewAndBuild()
         
@@ -268,37 +328,7 @@ class HomeViewController: UIViewController {
             .clipToBounds()
             .attachToSuperviewAndBuild()
         
-        let image = view[5]
-        let imageInsideEditor = ViewEditor(image, imageView)
-        imageInsideEditor.debug() //DEBUG
-            .asViewBackground()
-            .centerY()
-            .centerX()
-            .percentageFrameHeight(imageView.frame.width / imageView.frame.height) //fare un cerchio
-            .contentMode(.scaleAspectFit)
-            .clipToBounds()
-            .layerEditor()
-            .cornerCurve(.continuous)
-            .cornerRadius(50)
-            .upperEditor()
-            .attachToSuperviewAndVoidBuild()
-        
-        let titleTopEditor = ViewEditor(view[6], topView)
-        titleTopEditor
-            .percentageFrameRelativeY(0.05)
-            .centerX()
-            .percentageFrameWidth(0.75)
-            .percentageFrameHeight(0.21)
-            .labelEditor()
-            .lines(0)
-            .centerText()
-            .textColor(Colors.GRIGIO)
-            .font(Fonts.SOURCE_CODE_PRO_BOLD, 30)
-            .adjustsFontSizeToFitWidth(true)
-            .upperEditor()
-            .attachToSuperviewAndVoidBuild()
-        
-        let squareTopInsideTopEditor = ViewEditor(view[7], topView)
+        let squareTopInsideTopEditor = ViewEditor(view[7], topViewLeft)
         let squareTopInsideTop = squareTopInsideTopEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
             .percentageFrameRelativeY(0.32)
             .centerX()
@@ -399,7 +429,7 @@ class HomeViewController: UIViewController {
             .void()
     }
     
-    private func rawInnerSquareTitleAndValue(_ title: UIView, _ value: UIView, _ superView: UIView) -> [ViewEditor] {
+    private func rawInnerSquareTitleAndValue(_ title: UIView, _ value: UIView, _ superView: UIView) -> [ViewEditor] { //fare una funzione per i riquadri del top e una per i riquadri del bottom
         let titleEditor = ViewEditor(title, superView)
         titleEditor
             .asViewBackground()
@@ -485,7 +515,7 @@ class HomeViewController: UIViewController {
             .lines(0)
             .baselineAdjustment(.alignCenters)
             .adjustsFontSizeToFitWidth(true)
-            .lineBreak(.byClipping)
+            .lineBreakMode(.byClipping)
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 18)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()

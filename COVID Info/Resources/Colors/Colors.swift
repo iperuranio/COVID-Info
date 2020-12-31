@@ -23,6 +23,8 @@ struct Colors {
     static let TEXT_GREEN = named("TextGreen")
     static let TEXT_RED = named("TextRed")
     static let TEXT_YELLOW = named("TextYellow")
+    static let TOP_STRIP = named("TopStrip")
+    static let TEXT_STRIP = named("TextStrip")
     
     static func named(_ name: String) -> UIColor {
         return UIColor(named: name)!
