@@ -107,6 +107,8 @@ class HomeViewController: UIViewController {
         view.backgroundColor = Colors.ACCENT_INTERFACE_COLOR
         view.addSubview(mainView)
         
+        mainView.clipsToBounds = true
+        
         let hasRegion = false //se ha selezionato la regione
         loadRegion()
         
@@ -123,26 +125,34 @@ class HomeViewController: UIViewController {
     }
     
     func loadSquareView() {
-        let squareMainViewEditor = ViewEditor(squareMainView(squareMainView), mainView)
-        squareMainViewEditor
-            .layerEditor()
-            .cornerRadius(30)
-            .cornerCurve(.continuous)
-            .upperEditor()
+        let squareMainViewEditor = squareMainView(squareMainView)
+        squareMainViewEditor.backgroundColor(Colors.INTERFACE_COLOR_2) //INTERFACE_COLOR_2
             .clipToBounds()
             .imageEditor()
-            .image(Images.BACKGROUND_DARK_1)
+//            .image(Images.BACKGROUND_DARK_1)
             .upperEditor()
             .void()
         
         let views = UIView.getVibrancyAndBlurView(squareMainView)
-        let blurView = views[0]
-        let vibranceView = views[1]
-        mainView.addSubview(blurView)
-        mainView.addSubview(vibranceView)
-//        vibranceView.backgroundColor = .red
+        let blurView = views[1]
+//        let vibranceView = views[0]
         
-        squareMainPhantomView = squareMainView(squareMainPhantomView)
+        mainView.addSubview(blurView)
+//        mainView.addSubview(vibranceView)
+        
+//        blurView.backgroundColor = .clear
+//        vibranceView.backgroundColor = .clear
+        
+        let phantomViewEditor = squareMainView(squareMainPhantomView)
+        phantomViewEditor
+//            .layerEditor()
+//            .borderWidth(1)
+//            .borderColor(.white)
+//            .upperEditor()
+//            .clipToBounds()
+            .void()
+
+//        squareMainPhantomView.backgroundColor = .red
 
 //        let spacing = 1.5
         
@@ -150,7 +160,7 @@ class HomeViewController: UIViewController {
         loadMainViewsInsideSquare(regionSquareView, true)
     }
     
-    private func squareMainView(_ view: UIView) -> UIView {
+    private func squareMainView(_ view: UIView) -> ViewEditor { //una funzione perché c'è la phantomView che è identica ma è messa sopra
         let squareMainViewEditor = ViewEditor(view, mainView)
         return squareMainViewEditor
             .clearBackground()
@@ -159,7 +169,12 @@ class HomeViewController: UIViewController {
             .percentageFrameWidth(0.94)
             .percentageFrameHeight(0.800)
             .centerX()
-            .attachToSuperviewAndBuild()
+            .layerEditor()
+            .cornerRadius(30)
+            .cornerCurve(.continuous)
+            .upperEditor()
+            .attachToSuperView()
+            .chainBuild()
     }
     
     private func loadMainViewsInsideSquare(_ view: UIView, _ secondView: Bool = false) {
@@ -236,7 +251,7 @@ class HomeViewController: UIViewController {
             .attachToSuperviewAndBuild()
         
         let topViewInsideEditor = ViewEditor(view[3], baseView)
-        let topView = topViewInsideEditor.backgroundColor(.blue) //DEBUG
+        let topView = topViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
             .asViewBackground()
             .percentageFrameRelativeX(0.3)
             .percentageFrameWidth(0.7)
@@ -245,7 +260,7 @@ class HomeViewController: UIViewController {
             .attachToSuperviewAndBuild()
         
         let botViewInsideEditor = ViewEditor(view[4], baseView)
-        let botView = botViewInsideEditor.backgroundColor(.blue) //DEBUG
+        let botView = botViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
             .asViewBackground()
             .percentageFrameRelativeY(0.5)
             .percentageFrameHeight(0.5)
@@ -259,7 +274,7 @@ class HomeViewController: UIViewController {
             .asViewBackground()
             .centerY()
             .centerX()
-            .percentageFrameHeight(imageView.frame.width / imageView.frame.height) //cerchio
+            .percentageFrameHeight(imageView.frame.width / imageView.frame.height) //fare un cerchio
             .contentMode(.scaleAspectFit)
             .clipToBounds()
             .layerEditor()
@@ -278,13 +293,13 @@ class HomeViewController: UIViewController {
             .lines(0)
             .centerText()
             .textColor(Colors.GRIGIO)
-            .font(Fonts.EUCLID_CIRCULAR_B_Semibold, 30)
+            .font(Fonts.SOURCE_CODE_PRO_BOLD, 30)
             .adjustsFontSizeToFitWidth(true)
             .upperEditor()
             .attachToSuperviewAndVoidBuild()
         
         let squareTopInsideTopEditor = ViewEditor(view[7], topView)
-        let squareTopInsideTop = squareTopInsideTopEditor.debug()
+        let squareTopInsideTop = squareTopInsideTopEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
             .percentageFrameRelativeY(0.32)
             .centerX()
             .percentageFrameWidth(0.92)
@@ -309,7 +324,7 @@ class HomeViewController: UIViewController {
             .attachToSuperviewAndBuild()
         
         let botViewInsideInnerLeftEditor = ViewEditor(view[8], botViewInsideLeft)
-        botViewInsideInnerLeftEditor.debug()
+        let botViewInsideInnerLeftSquare = botViewInsideInnerLeftEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
             .asViewBackground()
             .centerX()
             .centerY()
@@ -319,10 +334,10 @@ class HomeViewController: UIViewController {
             .cornerRadius(30)
             .cornerCurve(.continuous)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndBuild()
         
         let botViewInsideInnerRightEditor = ViewEditor(view[9], botViewInsideRight)
-        botViewInsideInnerRightEditor.debug()
+        let botViewInsideInnerRightSquare = botViewInsideInnerRightEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
             .asViewBackground()
             .centerX()
             .centerY()
@@ -332,28 +347,92 @@ class HomeViewController: UIViewController {
             .cornerRadius(30)
             .cornerCurve(.continuous)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndBuild()
         
-        let topViewInnerTitleEditor = ViewEditor(view[10], squareTopInsideTop)
-        topViewInnerTitleEditor.debug()
-            .asViewBackground()
-            .percentageFrameRelativeY(0.05)
-            .percentageFrameRelativeX(0.25)
-            .percentageFrameHeight(0.3)
-            .percentageFrameWidth(0.7)
-            .attachToSuperviewAndVoidBuild()
+        let topViewInnerTitleAndValueEditorArray = rawInnerSquareTitleAndValue(view[10], view[11], squareTopInsideTop)
+        let topViewInnerTitleEditor = topViewInnerTitleAndValueEditorArray[0]
+        let topViewInnerValueEditor = topViewInnerTitleAndValueEditorArray[1]
         
-        let topViewInnerValueEditor = ViewEditor(view[11], squareTopInsideTop)
-        topViewInnerValueEditor.debug()
-            .asViewBackground()
-            .percentageFrameRelativeY(0.5)
-            .percentageFrameRelativeX(0.25)
-            .percentageFrameHeight(0.4)
-            .percentageFrameWidth(0.7)
-            .attachToSuperviewAndVoidBuild()
+        topViewInnerTitleEditor.labelEditor()
+            .text("Casi totali confermati")
+            .upperEditor()
+            .void()
+        
+        topViewInnerValueEditor.labelEditor()
+            .text("84.234.353")
+            .textColor(.cyan)
+            .upperEditor()
+            .void()
+        
+        //
+        
+        let botViewLeftInnerTitleAndValueEditorArray = rawInnerSquareTitleAndValue(view[12], view[13], botViewInsideInnerLeftSquare)
+        let botLeftViewInnerTitleEditor = botViewLeftInnerTitleAndValueEditorArray[0]
+        let botLeftViewInnerValueEditor = botViewLeftInnerTitleAndValueEditorArray[1]
+        
+        botLeftViewInnerTitleEditor.labelEditor()
+            .text("Decessi totali confermati")
+            .upperEditor()
+            .void()
+        
+        botLeftViewInnerValueEditor.labelEditor()
+            .text("84.234.353")
+            .textColor(Colors.TEXT_YELLOW)
+            .upperEditor()
+            .void()
+        
+        //
+        
+        let botViewRightInnerTitleAndValueEditorArray = rawInnerSquareTitleAndValue(view[14], view[15], botViewInsideInnerRightSquare)
+        let botRightViewInnerTitleEditor = botViewRightInnerTitleAndValueEditorArray[0]
+        let botRightViewInnerValueEditor = botViewRightInnerTitleAndValueEditorArray[1]
+        
+        botRightViewInnerTitleEditor.labelEditor()
+            .text("Guariti totali confermati")
+            .upperEditor()
+            .void()
+        
+        botRightViewInnerValueEditor.labelEditor()
+            .text("84.234.353")
+            .textColor(Colors.TEXT_GREEN)
+            .upperEditor()
+            .void()
     }
     
-    
+    private func rawInnerSquareTitleAndValue(_ title: UIView, _ value: UIView, _ superView: UIView) -> [ViewEditor] {
+        let titleEditor = ViewEditor(title, superView)
+        titleEditor
+            .asViewBackground()
+            .percentageFrameRelativeY(0.07)
+            .percentageFrameRelativeX(0.12) //la differenza è 8
+            .percentageFrameHeight(0.3)
+            .percentageFrameWidth(0.80) //
+            .labelEditor()
+            .lines(0)
+            .textAlignment(.right)
+            .textColor(Colors.GRIGIO)
+            .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 30)
+            .adjustsFontSizeToFitWidth(true)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        let valueEditor = ViewEditor(value, superView)
+        valueEditor
+            .asViewBackground()
+            .percentageFrameRelativeY(0.45)
+            .percentageFrameRelativeX(0.32)
+            .percentageFrameHeight(0.45)
+            .percentageFrameWidth(0.60)
+            .labelEditor()
+            .lines(1)
+            .textAlignment(.right)
+            .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 30)
+            .adjustsFontSizeToFitWidth(true)
+            .upperEditor()
+            .attachToSuperviewAndVoidBuild()
+        
+        return [titleEditor, valueEditor]
+    }
     
     func loadRegion() {
         let regionErrorEditor = ViewEditor(regionErrorView, mainView)

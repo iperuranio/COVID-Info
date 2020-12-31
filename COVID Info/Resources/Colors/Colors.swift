@@ -18,7 +18,11 @@ struct Colors {
     static let SELECTED_BUTTON = named("SelectedButton")
     static let ACCENT_BUTTONS_COLOR_1 = named("AccentButtonColor1")
     static let BUTTON_TINT_COLOR = named("ButtonTintColor")
-    
+    static let INTERFACE_COLOR_1 = named("InterfaceColor-1")
+    static let INTERFACE_COLOR_2 = named("InterfaceColor-2")
+    static let TEXT_GREEN = named("TextGreen")
+    static let TEXT_RED = named("TextRed")
+    static let TEXT_YELLOW = named("TextYellow")
     
     static func named(_ name: String) -> UIColor {
         return UIColor(named: name)!

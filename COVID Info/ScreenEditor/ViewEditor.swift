@@ -370,6 +370,20 @@ class ViewEditor {
             return self
         }
         
+        func borderWidth(_ value: CGFloat) -> LayerEditor {
+            layer.borderWidth = value
+            return self
+        }
+        
+        func borderColor(_ color: UIColor) -> LayerEditor {
+            layer.borderColor = color.cgColor
+            return self
+        }
+        
+        func borderColor(named name: String) -> LayerEditor {
+            return borderColor(UIColor(named: name)!)
+        }
+        
         func shadowRadius(_ value: CGFloat) -> LayerEditor {
             layer.shadowRadius = value
             return self

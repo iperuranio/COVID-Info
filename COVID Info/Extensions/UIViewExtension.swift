@@ -12,15 +12,19 @@ extension UIView {
     static func getVibrancyAndBlurView(_ superView: UIView) -> [UIView] {
         let blur = getBlurEffect(.regular)
         let blurView = getBlurView(superView, blur)
+        
+//        blurView.frame = superView.frame
+//        blurView.bounds = superView.bounds
+        
         let vibrancyEffect = UIVibrancyEffect(blurEffect: blur)
         let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
         
-        vibrancyEffectView.bounds = superView.bounds
+        vibrancyEffectView.frame = blurView.bounds//CGRect(x: 0, y: 0, width: blurView.frame.width, height: blurView.frame.height)
         vibrancyEffectView.tag = 900 //enum?
         vibrancyEffectView.clipsToBounds = true
         vibrancyEffectView.layer.cornerCurve = superView.layer.cornerCurve
         vibrancyEffectView.layer.cornerRadius = superView.layer.cornerRadius
-        vibrancyEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        vibrancyEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
 //        vibrancyEffectView.contentView.addSubview(superView)
         blurView.contentView.addSubview(vibrancyEffectView)
@@ -43,7 +47,7 @@ extension UIView {
         blurEffectView.layer.cornerCurve = superView.layer.cornerCurve
         blurEffectView.layer.cornerRadius = superView.layer.cornerRadius
         blurEffectView.clipsToBounds = true
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         return blurEffectView
     }
@@ -51,12 +55,14 @@ extension UIView {
     func blurScreen() { //deprecato
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        
         blurEffectView.tag = 1000 //enum?
         blurEffectView.frame = self.bounds
         blurEffectView.layer.cornerCurve = self.layer.cornerCurve
         blurEffectView.layer.cornerRadius = self.layer.cornerRadius
         blurEffectView.clipsToBounds = true
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         self.addSubview(blurEffectView)
     }
     
