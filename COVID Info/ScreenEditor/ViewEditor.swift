@@ -21,14 +21,16 @@ class ViewEditor {
         case height
     }
 
+    let tag = 4000
+    let maxTag = 10000
     var view: UIView = UIView()
     private var mainView: UIView = UIView()
     private var mainFrame: CGRect = CGRect()
-    private var frameToApply = CGRect()
+    var frameToApply = CGRect()
     private var shouldApplyFrameOnBounds = false
     
     private var frameMeasures: [CGFloat] = [0, 0, 0, 0]
-    private var absoluteFrameMeasures: [CGFloat] = [0, 0, 0, 0]
+    private var mainViewFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
     private var shouldBlur = false
     
@@ -37,12 +39,27 @@ class ViewEditor {
     private var innerButtonEditor: ButtonEditor? = nil
     private var innerLayerEditor: LayerEditor? = nil
     
+    private var isAddedOnView = false
+    
+    private let xConstraintIdentifier = "xCostraint"
+    private var xConstraint: NSLayoutConstraint?
+    private let yConstraintIdentifier = "yConstraint"
+    private var yConstraint: NSLayoutConstraint?
+    private let widthConstraintIdentifier = "widthConstraint"
+    private var widthConstraint: NSLayoutConstraint?
+    private let heightConstraintIdentifier = "heightConstraint"
+    private var heightConstraint: NSLayoutConstraint?
+    private let centerXConstraintIdentifier = "centerXConstraint"
+    private var centerXConstraint: NSLayoutConstraint?
+    private let centerYConstraintIdentifier = "centerYConstraint"
+    private var centerYConstraint: NSLayoutConstraint?
+    
     init() {
         
     }
     
     convenience init(_ view: UIView, _ superEditor: ViewEditor) {
-        self.init(view, superEditor.mainView)
+        self.init(view, superEditor.view)
         
         innerLabelEditor = superEditor.innerLabelEditor
         innerImageEditor = superEditor.innerImageEditor
@@ -52,11 +69,37 @@ class ViewEditor {
     
     init(_ view: UIView, _ mainView: UIView) {
         self.view = view
+        let _ = tag(Int.random(in: tag...maxTag))
+        
         frameToApply = view.frame
         self.mainView = mainView
         mainFrame = mainView.frame
         
-        absoluteFrameMeasures = [mainFrame.maxX, mainFrame.maxY, mainFrame.width, mainFrame.height]
+        if let xConstraint = view.constraintWithIdentifier(xConstraintIdentifier) {
+            self.xConstraint = xConstraint
+        }
+        
+        if let yConstraint = view.constraintWithIdentifier(yConstraintIdentifier) {
+            self.yConstraint = yConstraint
+        }
+        
+        if let widthConstraint = view.constraintWithIdentifier(widthConstraintIdentifier) {
+            self.widthConstraint = widthConstraint
+        }
+        
+        if let heightConstraint = view.constraintWithIdentifier(heightConstraintIdentifier) {
+            self.heightConstraint = heightConstraint
+        }
+        
+        if let centerXConstraint = view.constraintWithIdentifier(centerXConstraintIdentifier) {
+            self.centerXConstraint = centerXConstraint
+        }
+        
+        if let centerYConstraint = view.constraintWithIdentifier(centerYConstraintIdentifier) {
+            self.centerYConstraint = centerYConstraint
+        }
+
+        mainViewFrameMeasures = [getMainMaxX(), getMainMaxY(), getMainWidth(), getMainHeight()]
         
         if let label = view as? UILabel {
             innerLabelEditor = LabelEditor(label, self)
@@ -86,6 +129,25 @@ class ViewEditor {
         return self
     }
     
+    func tagDebug() -> ViewEditor {
+        print("DEBUG VIEW WITH TAG \(view.tag)")
+        return self
+    }
+    
+    func constraintDebug() -> ViewEditor {
+        var toReturn = "\n---------\nConstraints for view \(view.tag)\n"
+        var i = 0
+        for constraint in view.constraints {
+            toReturn.append("(\(i)) \(constraint.toString())\n")
+            i += 1
+        }
+        
+        toReturn.append("_________\n")
+        
+        print(toReturn)
+        return self
+    }
+    
     func debug() -> ViewEditor {
         return debug(true)
     }
@@ -96,6 +158,7 @@ class ViewEditor {
     
     func attachToSuperView() -> ViewEditor {
         mainView.addSubview(view)
+        isAddedOnView = true
         return self
     }
     
@@ -131,28 +194,105 @@ class ViewEditor {
     }
     
     func percentageCustomFramePosition(_ percentage: CGFloat, _ whichFramePosition: FramePosition, _ onWhichDestinationFrameValue: FramePosition) -> ViewEditor {
-        var value: CGFloat = 0
-        
-        switch whichFramePosition.rawValue {
-        case 0:
-            value = mainFrame.maxX
-            break
-        case 1:
-            value = mainFrame.maxY
-            break
-        case 2:
-            value = mainFrame.width
-            break
-        case 3:
-            value = mainFrame.height
-            break
-        default:
-            break
-        }
+//        var value: CGFloat = 0
+//
+//        switch whichFramePosition.rawValue {
+//        case 0:
+//            value = getMainMaxX(); //mainFrame.maxX
+//            break
+//        case 1:
+//            value = getMainMaxY(); //mainFrame.maxY
+//            break
+//        case 2:
+//            value = getMainWidth(); //mainFrame.width
+//            break
+//        case 3:
+//            value = getMainHeight(); //mainFrame.height
+//            break
+//        default:
+//            break
+//        }
 //        print("request \(percentage) value: \(value) calcol: \(value * percentage) on \(whichFramePosition.rawValue) \(onWhichDestinationFrameValue.rawValue)")
         
-        return updateArrayWithFrameMeasures(value * percentage, onWhichDestinationFrameValue)
+        return updateArrayWithFrameMeasures(mainViewFrameMeasures[whichFramePosition.rawValue] * percentage, onWhichDestinationFrameValue)
     }
+    
+    func getMainFrameMaxX() -> CGFloat {
+        return mainViewFrameMeasures[FramePosition.x.rawValue]
+    }
+    
+    func getMainFrameMaxY() -> CGFloat {
+        return mainViewFrameMeasures[FramePosition.y.rawValue]
+    }
+    
+    func getMainFrameWidth() -> CGFloat {
+        return mainViewFrameMeasures[FramePosition.width.rawValue]
+    }
+    
+    func getMainFrameHeight() -> CGFloat {
+        return mainViewFrameMeasures[FramePosition.height.rawValue]
+    }
+    
+    private func getMainMaxX() -> CGFloat {
+        let constraint = mainView.constraintWithIdentifier(xConstraintIdentifier)
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.maxX
+    }
+    
+    private func getMainMaxY() -> CGFloat {
+        let constraint = mainView.constraintWithIdentifier(yConstraintIdentifier)
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.maxY
+    }
+    
+    private func getMainWidth() -> CGFloat {
+        let constraint = mainView.constraintWithIdentifier(widthConstraintIdentifier)
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.width
+    }
+    
+    private func getMainHeight() -> CGFloat {
+        let constraint = mainView.constraintWithIdentifier(heightConstraintIdentifier)
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.height
+    }
+    
+    private func isTag() -> Bool {
+        return mainView.tag >= tag
+    }
+    
+    func getViewMinX() -> CGFloat {
+        return frameMeasures[FramePosition.x.rawValue]
+    }
+    
+    func getViewMinY() -> CGFloat {
+        return frameMeasures[FramePosition.y.rawValue]
+    }
+    
+    func getViewWidth() -> CGFloat {
+        return frameMeasures[FramePosition.width.rawValue]
+    }
+    
+    func getViewHeight() -> CGFloat {
+        return frameMeasures[FramePosition.height.rawValue]
+    }
+    
+    func setMinX(_ value: CGFloat) -> ViewEditor {
+        return setFrameValue(value, .x)
+    }
+    
+    func setMinY(_ value: CGFloat) -> ViewEditor {
+        return setFrameValue(value, .y)
+    }
+    
+    func setMinHeight(_ value: CGFloat) -> ViewEditor {
+        return setFrameValue(value, .height)
+    }
+    
+    func setMinWidth(_ value: CGFloat) -> ViewEditor {
+        return setFrameValue(value, .width)
+    }
+    
+    func setFrameValue(_ value: CGFloat, _ framePosition: FramePosition) -> ViewEditor {
+        return updateArrayWithFrameMeasures(value, framePosition)
+    }
+    
     
     func tintColor(named name: String) -> ViewEditor {
         return tintColor(UIColor(named: name)!)
@@ -229,8 +369,8 @@ class ViewEditor {
     func asViewBackground() -> ViewEditor {
         return updateArrayWithFrameMeasures(0, .x)
             .updateArrayWithFrameMeasures(0, .y)
-            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.width.rawValue], .width)
-            .updateArrayWithFrameMeasures(absoluteFrameMeasures[FramePosition.height.rawValue], .height)
+            .updateArrayWithFrameMeasures(mainViewFrameMeasures[FramePosition.width.rawValue], .width)
+            .updateArrayWithFrameMeasures(mainViewFrameMeasures[FramePosition.height.rawValue], .height)
     }
     
     func asScreenBackground() -> ViewEditor {
@@ -260,21 +400,66 @@ class ViewEditor {
         return self
     }
     
+    private func updateConstraint(_ constraint: inout NSLayoutConstraint?, _ toConstraint: NSLayoutConstraint, _ fallBackValue: CGFloat) {
+        if(constraint == nil) {
+            constraint = toConstraint
+            constraint!.isActive = true
+//            print("aggiorno \(constraint!.toString())")
+        } else {
+            constraint!.constant = fallBackValue
+//            view.layoutIfNeeded()
+        }
+        
+        view.updateConstraints()
+    }
+    
     func build() -> UIView {
         updateFrame()
-        view.frame = frameToApply
+//        view.frame = frameToApply
         
+        let _ = translatesAutoresizingMaskIntoConstraints(false)
+        
+        if(!isAddedOnView) {
+            let _ = attachToSuperView()
+        }
+        
+        let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: mainView, attribute: .leading, multiplier: 1, constant: frameMeasures[FramePosition.x.rawValue])
+        leading.identifier = xConstraintIdentifier
+        
+        let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: mainView, attribute: .top, multiplier: 1, constant: frameMeasures[FramePosition.y.rawValue])
+        top.identifier = yConstraintIdentifier
+        
+        let width = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: frameMeasures[FramePosition.width.rawValue])
+        width.identifier = widthConstraintIdentifier
+        
+        let height = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: frameMeasures[FramePosition.height.rawValue])
+        height.identifier = heightConstraintIdentifier
+        
+        let centerX = NSLayoutConstraint(item: view, attribute: .centerX, relatedBy: .equal, toItem: mainView, attribute: .centerX, multiplier: 1, constant: 0)
+        centerX.identifier = centerXConstraintIdentifier
+        
+        let centerY = NSLayoutConstraint(item: view, attribute: .centerY, relatedBy: .equal, toItem: mainView, attribute: .centerY, multiplier: 1, constant: 0)
+        centerY.identifier = centerYConstraintIdentifier
+        
+        updateConstraint(&widthConstraint, width, frameMeasures[FramePosition.width.rawValue])
+        updateConstraint(&heightConstraint, height, frameMeasures[FramePosition.height.rawValue])
+
         if(centering[FramePosition.x.rawValue]) {
-            view.center.x = mainView.frame.size.width / 2
+            updateConstraint(&centerXConstraint, centerX, 0)
+        } else {
+            updateConstraint(&xConstraint, leading, frameMeasures[FramePosition.x.rawValue])
         }
-        
+
         if(centering[FramePosition.y.rawValue]) {
-            view.center.y = mainView.frame.size.height / 2
+            updateConstraint(&centerYConstraint, centerY, 0)
+        } else {
+            updateConstraint(&yConstraint, top, frameMeasures[FramePosition.y.rawValue])
         }
         
-        if(shouldApplyFrameOnBounds) {
-            view.bounds = frameToApply
-        }
+        print("processed view \(view)")
+//        if(shouldApplyFrameOnBounds) {
+//            view.bounds = frameToApply
+//        }
         
         if(shouldBlur) {
             let blurView = UIView.getMaterialLightBlurView(view) as! UIVisualEffectView
@@ -654,6 +839,11 @@ class ViewEditor {
         
         func adjustsFontSizeToFitWidth(_ value: Bool) -> LabelEditor {
             label.adjustsFontSizeToFitWidth = value
+            return self
+        }
+        
+        func minimumScaleFactor(_ value: CGFloat) -> LabelEditor {
+            label.minimumScaleFactor = value
             return self
         }
         

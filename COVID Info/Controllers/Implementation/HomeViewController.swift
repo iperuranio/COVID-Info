@@ -109,19 +109,23 @@ class HomeViewController: UIViewController {
         
         mainView.clipsToBounds = true
         
+//        view.translatesAutoresizingMaskIntoConstraints = false NON FARLO MAI
+//        mainView.translatesAutoresizingMaskIntoConstraints = false
+        
         let hasRegion = true //se ha selezionato la regione
         loadRegion()
-        
+
         if(!hasRegion) {
             loadRegionError()
         } else {
             loadRegionChange()
         }
-        
+
         loadSquareView()
-        
+
         loadNationalSquare()
         loadRegionSquare()
+        
     }
     
     func loadSquareView() {
@@ -230,8 +234,7 @@ class HomeViewController: UIViewController {
             .centerX()
             .centerY()
             .percentageFrameHeight(0.93)
-            .chainBuild()
-            .percentageFrameWidth(baseView.frame.height / (mainView.frame.height))
+            .percentageFrameWidth(baseViewEditor.getViewHeight() / (baseViewEditor.getMainFrameHeight())) //
             .layerEditor()
             .cornerCurve(.continuous)
             .cornerRadius(30)
@@ -239,6 +242,7 @@ class HomeViewController: UIViewController {
             .clipToBounds()
             .attachToSuperviewAndVoidBuild()
         
+        let _ = UILabel()
         let topViewInsideEditor = ViewEditor(UIView(), baseView)
         let topView = topViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
             .asViewBackground()
@@ -285,12 +289,12 @@ class HomeViewController: UIViewController {
             .percentageFrameRelativeX(0.1)
             .percentageFrameWidth(0.9)
             .chainBuild()
-            .percentageFrameHeight(imageInsideOutlineView.frame.width / imageView.frame.height) //fare un cerchio
+            .percentageFrameHeight(imageInsideOutlineEditor.getViewWidth() / imageInsideOutlineEditor.getMainFrameHeight()) //fare un cerchio imageInsideOutlineView.frame.width / imageView.frame.height
             .contentMode(.scaleAspectFit)
             .clipToBounds()
             .layerEditor()
             .cornerCurve(.circular)
-            .cornerRadius(imageInsideOutlineView.frame.width / 2)
+            .cornerRadius(imageInsideOutlineEditor.getViewWidth() / 2)
             .borderColor(.white)
             .borderWidth(2)
             .upperEditor()
@@ -304,7 +308,7 @@ class HomeViewController: UIViewController {
             .layerEditor()
             .borderWidth(4)
             .cornerCurve(.circular)
-            .cornerRadius(imageInsideOutlineView.frame.width / 2)
+            .cornerRadius(imageInsideEditor.getViewWidth() / 2)
             .borderColor(.black)
             .upperEditor()
             .clipToBounds()
@@ -486,9 +490,9 @@ class HomeViewController: UIViewController {
             .cornerCurve(.continuous)
             .cornerRadius(30)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndVoidBuild() //ha problemi
         
-        let width = regionErrorView.frame.width
+        let width = regionErrorEditor.getViewWidth()
         regionErrorIconEditor = ViewEditor(buttonIcon, regionButton)
         regionErrorIconEditor!
             .centerY()
@@ -498,10 +502,12 @@ class HomeViewController: UIViewController {
             .contentMode(.scaleAspectFit)
             .isUserInteractionEnabled(false)
             .attachToSuperviewAndVoidBuild()
+        
         regionErrorButtonEditor!
+            .isUserInteractionEnabled(false)
             .buttonEditor()
             .imageEdge(0, width * 0.78, 0, 0)
-            .buttonImageViewEditor().isUserInteractionEnabled(false)
+            .upperEditor()
             .voidBuild()
         
         regionErrorTitleEditor = ViewEditor(regionTitleLabel, regionButton)
@@ -518,7 +524,7 @@ class HomeViewController: UIViewController {
             .lineBreakMode(.byClipping)
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 18)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .attachToSuperviewAndVoidBuild() //poblema
     }
     
     func loadRegionChange() {

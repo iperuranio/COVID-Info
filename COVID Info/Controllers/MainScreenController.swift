@@ -19,6 +19,8 @@ class MainScreenController: UITabBarController {
         MainScreenController.instance = self
     }
     
+    var isFirstOpen = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,10 +28,12 @@ class MainScreenController: UITabBarController {
         
         tabBarUI.backgroundColor = .clear
 
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light)) //se è tema scuro mette scuro altrimenti chiaro
-        blur.frame = tabBarUI.correctBounds()
-        blur.autoresizingMask = .flexibleWidth
-        tabBarUI.insertSubview(blur, at: 0)
+        if(isFirstOpen) {
+            let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light)) //se è tema scuro mette scuro altrimenti chiaro
+            blur.frame = tabBarUI.correctBounds()
+            blur.autoresizingMask = .flexibleWidth
+            tabBarUI.insertSubview(blur, at: 0)
+        }
         
         
 //        preview()
@@ -43,7 +47,9 @@ class MainScreenController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
+        if(isFirstOpen) {
+            self.performSegue(withIdentifier: "FIRST_APP_OPEN", sender: self)
+        }
     }
 }
 

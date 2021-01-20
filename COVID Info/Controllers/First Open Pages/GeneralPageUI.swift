@@ -212,10 +212,9 @@ class GeneralPageUI {
     
     func setupForwardButton(_ title: String, _ image: UIImage, _ animate: Bool) -> UIButton {
         var viewEditor = ViewEditor(forwardButton, midView)
-        viewEditor = viewEditor
+        viewEditor
             .clipToBounds()
             .isUserInteractionEnabled(true)
-//            .translatesAutoresizingMaskIntoConstraints(false)
             .contentMode(.scaleToFill)
             .percentageFrameRelativeY(0.815)
             .percentageFrameWidth(0.50)
@@ -230,23 +229,22 @@ class GeneralPageUI {
             .shadowOpacity(1)
             .maskToBounds(false)
             .upperEditor()
-            .chainBuild()
             .buttonEditor()
             .backgroundColor(.blue)
-            .imageEdge(0, viewEditor.view.frame.width * 0.7971014492753623, 0, 0)
+            .imageEdge(0, viewEditor.getViewWidth() * 0.7971014492753623, 0, 0)
             .image(image)
             .horizontalAlignment(.leading)
             .verticalAlignment(.center)
             .upperEditor()
             .attachToSuperView()
-            .chainBuild()
+            .voidBuild()
         
         if animate {
             let _ = viewEditor.buttonEditor()
                 .preMadeLeftToRightAndReturnAnimation(0.0043, true, 0.1, .allowUserInteraction)
         }
 
-        let viewInTheMiddle = UIView(frame: forwardButton.frame)
+        let viewInTheMiddle = UIView()
         let viewInTheMiddleEditor = ViewEditor(viewInTheMiddle, forwardButton)
         viewInTheMiddleEditor
             .asViewBackground()

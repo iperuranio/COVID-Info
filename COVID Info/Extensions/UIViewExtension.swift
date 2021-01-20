@@ -71,6 +71,10 @@ extension UIView {
 //        blurEffectView!.removeFromSuperview()
     }
     
+    func constraintWithIdentifier(_ identifier: String) -> NSLayoutConstraint? {
+        return self.constraints.first(where: {$0.identifier == identifier})
+    }
+    
     func getViewFromTag(_ tag: Int) -> UIView? {
         for view in self.subviews {
             if view.tag == 1000 {
