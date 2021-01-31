@@ -132,16 +132,17 @@ class HomeViewController: UIViewController {
         let squareMainViewEditor = squareMainView(squareMainView)
         squareMainViewEditor.backgroundColor(Colors.INTERFACE_COLOR_2) //INTERFACE_COLOR_2
             .clipToBounds()
-            .imageEditor()
+            .blur(withEffect: .systemMaterialDark)
+//            .imageEditor()
 //            .image(Images.BACKGROUND_DARK_1)
-            .upperEditor()
-            .void()
+//            .upperEditor()
+            .voidBuild()
         
-        let views = UIView.getVibrancyAndBlurView(squareMainView)
-        let blurView = views[1]
-//        let vibranceView = views[0]
-        
-        mainView.addSubview(blurView)
+//        let views = UIView.getVibrancyAndBlurView(squareMainView)
+//        let blurView = views[1]
+////        let vibranceView = views[0]
+//        
+//        mainView.addSubview(blurView)
 //        mainView.addSubview(vibranceView)
         
 //        blurView.backgroundColor = .clear
@@ -362,8 +363,8 @@ class HomeViewController: UIViewController {
             .asViewBackground()
             .centerX()
             .centerY()
-            .percentageFrameHeight(0.92)
-            .percentageFrameWidth(0.92)
+            .percentageFrameHeight(0.9)
+            .percentageFrameWidth(0.9)
             .layerEditor()
             .cornerRadius(30)
             .cornerCurve(.continuous)
@@ -375,8 +376,8 @@ class HomeViewController: UIViewController {
             .asViewBackground()
             .centerX()
             .centerY()
-            .percentageFrameHeight(0.92)
-            .percentageFrameWidth(0.92)
+            .percentageFrameHeight(0.9)
+            .percentageFrameWidth(0.9)
             .layerEditor()
             .cornerRadius(30)
             .cornerCurve(.continuous)

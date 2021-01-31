@@ -11,6 +11,7 @@
 //imageCenter.frame = CGRect(x: 0, y: y, width: width, height: height)
 //imageCenter.center.x = self.view.center.x
 import UIKit
+import DynamicBlurView
 
 class ViewEditor {
     
@@ -26,8 +27,9 @@ class ViewEditor {
     var view: UIView = UIView()
     private var mainView: UIView = UIView()
     private var mainFrame: CGRect = CGRect()
-    var frameToApply = CGRect()
+    private var frameToApply = CGRect()
     private var shouldApplyFrameOnBounds = false
+    private var blurView = UIVisualEffectView()
     
     private var frameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var mainViewFrameMeasures: [CGFloat] = [0, 0, 0, 0]
@@ -99,7 +101,8 @@ class ViewEditor {
             self.centerYConstraint = centerYConstraint
         }
 
-        mainViewFrameMeasures = [getMainMaxX(), getMainMaxY(), getMainWidth(), getMainHeight()]
+        mainViewFrameMeasures = [generateMainMinX(), generateMainMinY(), generateMainWidth(), generateMainHeight()]
+        mainFrame = CGRect(x: self.getMainFrameMinX(), y: self.getMainFrameMinY(), width: self.getMainFrameWidth(), height: self.getMainFrameHeight())
         
         if let label = view as? UILabel {
             innerLabelEditor = LabelEditor(label, self)
@@ -122,6 +125,11 @@ class ViewEditor {
         }
         
         return self
+    }
+    
+    func getFrame() -> CGRect {
+        updateFrame()
+        return frameToApply
     }
     
     func tag(_ value: Int) -> ViewEditor {
@@ -194,34 +202,14 @@ class ViewEditor {
     }
     
     func percentageCustomFramePosition(_ percentage: CGFloat, _ whichFramePosition: FramePosition, _ onWhichDestinationFrameValue: FramePosition) -> ViewEditor {
-//        var value: CGFloat = 0
-//
-//        switch whichFramePosition.rawValue {
-//        case 0:
-//            value = getMainMaxX(); //mainFrame.maxX
-//            break
-//        case 1:
-//            value = getMainMaxY(); //mainFrame.maxY
-//            break
-//        case 2:
-//            value = getMainWidth(); //mainFrame.width
-//            break
-//        case 3:
-//            value = getMainHeight(); //mainFrame.height
-//            break
-//        default:
-//            break
-//        }
-//        print("request \(percentage) value: \(value) calcol: \(value * percentage) on \(whichFramePosition.rawValue) \(onWhichDestinationFrameValue.rawValue)")
-        
         return updateArrayWithFrameMeasures(mainViewFrameMeasures[whichFramePosition.rawValue] * percentage, onWhichDestinationFrameValue)
     }
     
-    func getMainFrameMaxX() -> CGFloat {
+    func getMainFrameMinX() -> CGFloat {
         return mainViewFrameMeasures[FramePosition.x.rawValue]
     }
     
-    func getMainFrameMaxY() -> CGFloat {
+    func getMainFrameMinY() -> CGFloat {
         return mainViewFrameMeasures[FramePosition.y.rawValue]
     }
     
@@ -233,22 +221,22 @@ class ViewEditor {
         return mainViewFrameMeasures[FramePosition.height.rawValue]
     }
     
-    private func getMainMaxX() -> CGFloat {
+    private func generateMainMinX() -> CGFloat {
         let constraint = mainView.constraintWithIdentifier(xConstraintIdentifier)
-        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.maxX
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.minX
     }
     
-    private func getMainMaxY() -> CGFloat {
+    private func generateMainMinY() -> CGFloat {
         let constraint = mainView.constraintWithIdentifier(yConstraintIdentifier)
-        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.maxY
+        return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.minY
     }
     
-    private func getMainWidth() -> CGFloat {
+    private func generateMainWidth() -> CGFloat {
         let constraint = mainView.constraintWithIdentifier(widthConstraintIdentifier)
         return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.width
     }
     
-    private func getMainHeight() -> CGFloat {
+    private func generateMainHeight() -> CGFloat {
         let constraint = mainView.constraintWithIdentifier(heightConstraintIdentifier)
         return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.height
     }
@@ -339,6 +327,13 @@ class ViewEditor {
         return percentageCustomFramePosition(percentage, .height, .height)
     }
     
+    func frame(_ frame: CGRect) -> ViewEditor {
+        return updateArrayWithFrameMeasures(frame.minX, .x)
+            .updateArrayWithFrameMeasures(frame.minY, .y)
+            .updateArrayWithFrameMeasures(frame.width, .width)
+            .updateArrayWithFrameMeasures(frame.height, .height)
+    }
+    
     private func percentage(_ percentage: CGFloat, _ value: CGFloat) -> CGFloat {
         return percentage * value
     }
@@ -356,9 +351,20 @@ class ViewEditor {
         return center(.y)
     }
     
-    func blur() -> ViewEditor {
+    func blur(withEffect blurStyle: UIBlurEffect.Style) -> ViewEditor {
+//        blurView.blendColor = .white
+        let effect = UIBlurEffect(style: blurStyle)
+        
+        blurView.effect = effect
+//                bottomBlurView.blurRadius = CGFloat(slider.maximumValue)
+//        blurView.iterations = 10
+        
         self.shouldBlur = true
         return self
+    }
+    
+    func blur() -> ViewEditor {
+        return blur(withEffect: .systemMaterial)
     }
     
     func center(_ position: FramePosition) -> ViewEditor {
@@ -456,23 +462,27 @@ class ViewEditor {
             updateConstraint(&yConstraint, top, frameMeasures[FramePosition.y.rawValue])
         }
         
-        print("processed view \(view)")
+//        print("processed view \(view)")
+        
 //        if(shouldApplyFrameOnBounds) {
 //            view.bounds = frameToApply
 //        }
         
         if(shouldBlur) {
-            let blurView = UIView.getMaterialLightBlurView(view) as! UIVisualEffectView
-            
+            let blurEditor = ViewEditor(blurView, view)
+
             if(centering[FramePosition.x.rawValue]) {
-                blurView.center.x = mainView.center.x
+                blurEditor.centerX().void()
             }
-            
+
             if(centering[FramePosition.y.rawValue]) {
-                blurView.center.y = mainView.center.y
+                blurEditor.centerY().void()
             }
-            
-            mainView.addSubview(blurView) //alla main view
+
+            blurEditor
+                .asViewBackground()
+                .clipToBounds()
+                .attachToSuperviewAndVoidBuild()
         }
         
         return view
@@ -604,9 +614,9 @@ class ViewEditor {
         }
         
         func preMadeLeftToRightAndReturnAnimation(_ after: TimeInterval, _ repeats: Bool, _ duration: TimeInterval, _ options: UIView.AnimationOptions, _ resultText: String? /*(() -> Void)?*/ = nil, completion: ((Bool) -> Void)? = nil) -> ButtonEditor {
-            let min: CGFloat = button.frame.width * 0.7971014492753623 //una percentuale dell'asse X
-            var offset:CGFloat = min
-            let max:CGFloat = button.frame.width * 0.8454106280193237 //una percentuale dell'asse X 0.8454106280193237
+            let min: CGFloat = mainInstance.getViewWidth() * 0.7971014492753623 //una percentuale dell'asse X
+            var offset: CGFloat = min
+            let max: CGFloat = mainInstance.getViewWidth() * 0.8454106280193237 //una percentuale dell'asse X 0.8454106280193237
             var forward: Bool = true
             
             _ = Timer.scheduledTimer(withTimeInterval: after, repeats: repeats) { timer in

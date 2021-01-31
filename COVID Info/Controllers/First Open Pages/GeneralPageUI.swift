@@ -46,12 +46,6 @@ class GeneralPageUI {
     }
     
     func prepareFrames() {
-        if debug {
-            topView.backgroundColor = .random
-            midView.backgroundColor = .random
-            botView.backgroundColor = .random
-        }
-        
         topView.frame = FrameEditor.correctFrameWithCustomHeight(FrameEditor.maxScreenWidthSizeFrame(0, 0), 0.165)
         topView.bounds = topView.frame
         let startingTopPoint = topView.frame.height
@@ -82,10 +76,11 @@ class GeneralPageUI {
             .cornerRadius(40)
             .upperEditor()
             .asViewBackground()
+            .clipToBounds()
             .percentageFrameWidth(0.92)
             .centerX()
             .chainBuild()
-            .blur()
+            .blur(withEffect: .systemMaterialLight)
 //            .layerEditor()
 //            .shadowColor(Colors.GRIGIO)
 //            .shadowOffset(0, 2)
@@ -104,6 +99,7 @@ class GeneralPageUI {
             .image(image)
             .upperEditor()
             .asViewBackground()
+//            .blur()
             .attachToSuperviewAndVoidBuild()
         
         return background
@@ -211,7 +207,7 @@ class GeneralPageUI {
     }
     
     func setupForwardButton(_ title: String, _ image: UIImage, _ animate: Bool) -> UIButton {
-        var viewEditor = ViewEditor(forwardButton, midView)
+        let viewEditor = ViewEditor(forwardButton, midView)
         viewEditor
             .clipToBounds()
             .isUserInteractionEnabled(true)
@@ -236,8 +232,8 @@ class GeneralPageUI {
             .horizontalAlignment(.leading)
             .verticalAlignment(.center)
             .upperEditor()
-            .attachToSuperView()
-            .voidBuild()
+            .attachToSuperviewAndVoidBuild()
+//        viewEditor.constraintDebug()
         
         if animate {
             let _ = viewEditor.buttonEditor()
