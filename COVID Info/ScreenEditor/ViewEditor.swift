@@ -31,6 +31,9 @@ class ViewEditor {
     private var shouldApplyFrameOnBounds = false
     private var blurView = UIVisualEffectView()
     
+    private var unsetXVariable = false
+    private var unsetYVariable = false
+    
     private var frameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var mainViewFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
@@ -40,6 +43,7 @@ class ViewEditor {
     private var innerImageEditor: ImageEditor? = nil
     private var innerButtonEditor: ButtonEditor? = nil
     private var innerLayerEditor: LayerEditor? = nil
+    private var innerStackEditor: StackEditor? = nil
     
     private var isAddedOnView = false
     
@@ -67,6 +71,7 @@ class ViewEditor {
         innerImageEditor = superEditor.innerImageEditor
         innerButtonEditor = superEditor.innerButtonEditor
         innerLayerEditor = superEditor.innerLayerEditor
+        innerStackEditor = superEditor.innerStackEditor
     }
     
     init(_ view: UIView, _ mainView: UIView) {
@@ -114,6 +119,10 @@ class ViewEditor {
         
         if let button = view as? UIButton {
             innerButtonEditor = ButtonEditor(button, self)
+        }
+        
+        if let stack = view as? UIStackView {
+            innerStackEditor = StackEditor(stack, self)
         }
         
         innerLayerEditor = LayerEditor(view.layer, self)
@@ -186,6 +195,10 @@ class ViewEditor {
         return innerLayerEditor!
     }
     
+    func stackEditor() -> StackEditor {
+        return innerStackEditor!
+    }
+    
     func clipToBounds() -> ViewEditor {
         view.clipsToBounds = true
         return self
@@ -241,6 +254,10 @@ class ViewEditor {
         return isTag() ? constraint == nil ? 0 : constraint!.constant : mainFrame.height
     }
     
+    func getBestFontSize() -> CGFloat {
+        return self.getViewHeight() - 3
+    }
+    
     private func isTag() -> Bool {
         return mainView.tag >= tag
     }
@@ -269,11 +286,11 @@ class ViewEditor {
         return setFrameValue(value, .y)
     }
     
-    func setMinHeight(_ value: CGFloat) -> ViewEditor {
+    func setHeight(_ value: CGFloat) -> ViewEditor {
         return setFrameValue(value, .height)
     }
     
-    func setMinWidth(_ value: CGFloat) -> ViewEditor {
+    func setWidth(_ value: CGFloat) -> ViewEditor {
         return setFrameValue(value, .width)
     }
     
@@ -406,6 +423,28 @@ class ViewEditor {
         return self
     }
     
+    func unsetX() -> ViewEditor {
+        return unsetAxe(.x)
+    }
+    
+    func unsetY() -> ViewEditor {
+        return unsetAxe(.y)
+    }
+    
+    func unsetAxis() -> ViewEditor {
+        return unsetX().unsetY()
+    }
+    
+    func unsetAxe(_ axe: FramePosition) -> ViewEditor {
+        if(axe.rawValue == 0) {
+            unsetXVariable = true
+        } else if(axe.rawValue == 1) {
+            unsetYVariable = true
+        }
+        
+        return self
+    }
+    
     private func updateConstraint(_ constraint: inout NSLayoutConstraint?, _ toConstraint: NSLayoutConstraint, _ fallBackValue: CGFloat) {
         if(constraint == nil) {
             constraint = toConstraint
@@ -429,11 +468,17 @@ class ViewEditor {
             let _ = attachToSuperView()
         }
         
-        let leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: mainView, attribute: .leading, multiplier: 1, constant: frameMeasures[FramePosition.x.rawValue])
-        leading.identifier = xConstraintIdentifier
+        var leading = NSLayoutConstraint()
+        if(!unsetXVariable) {
+            leading = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: mainView, attribute: .leading, multiplier: 1, constant: frameMeasures[FramePosition.x.rawValue])
+            leading.identifier = xConstraintIdentifier
+        }
         
-        let top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: mainView, attribute: .top, multiplier: 1, constant: frameMeasures[FramePosition.y.rawValue])
-        top.identifier = yConstraintIdentifier
+        var top = NSLayoutConstraint()
+        if(!unsetYVariable) {
+            top = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal, toItem: mainView, attribute: .top, multiplier: 1, constant: frameMeasures[FramePosition.y.rawValue])
+            top.identifier = yConstraintIdentifier
+        }
         
         let width = NSLayoutConstraint(item: view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: frameMeasures[FramePosition.width.rawValue])
         width.identifier = widthConstraintIdentifier
@@ -453,13 +498,17 @@ class ViewEditor {
         if(centering[FramePosition.x.rawValue]) {
             updateConstraint(&centerXConstraint, centerX, 0)
         } else {
-            updateConstraint(&xConstraint, leading, frameMeasures[FramePosition.x.rawValue])
+            if(!unsetXVariable) {
+                updateConstraint(&xConstraint, leading, frameMeasures[FramePosition.x.rawValue])
+            }
         }
 
         if(centering[FramePosition.y.rawValue]) {
             updateConstraint(&centerYConstraint, centerY, 0)
         } else {
-            updateConstraint(&yConstraint, top, frameMeasures[FramePosition.y.rawValue])
+            if(!unsetYVariable) {
+                updateConstraint(&yConstraint, top, frameMeasures[FramePosition.y.rawValue])
+            }
         }
         
 //        print("processed view \(view)")
@@ -486,6 +535,11 @@ class ViewEditor {
         }
         
         return view
+    }
+    
+    func notAttachToSuperview() -> ViewEditor {
+        isAddedOnView = true
+        return self
     }
     
     func attachToSuperviewAndBuild() -> UIView {
@@ -596,6 +650,53 @@ class ViewEditor {
         
         func cornerCurve(_ value: CALayerCornerCurve) -> LayerEditor {
             layer.cornerCurve = value
+            return self
+        }
+        
+        override func upperEditor() -> ViewEditor {
+            return mainInstance
+        }
+    }
+    
+    class StackEditor: SubEditor {
+        private var stackView = UIStackView()
+        private var mainInstance: ViewEditor = ViewEditor()
+        
+        init(_ stackView: UIStackView, _ mainInstance: ViewEditor) {
+            self.stackView = stackView
+            self.mainInstance = mainInstance
+        }
+        
+        func addArrangedSubviews(_ views: [UIView]) -> StackEditor {
+            views.forEach { view in views
+                addArrangedSubview(view)
+            }
+            
+            return self
+        }
+        
+        func addArrangedSubview(_ view: UIView) -> StackEditor {
+            stackView.addArrangedSubview(view)
+            return self
+        }
+        
+        func axis(_ axis: NSLayoutConstraint.Axis) -> StackEditor {
+            stackView.axis = axis
+            return self
+        }
+        
+        func distribution(_ distribution: UIStackView.Distribution) -> StackEditor {
+            stackView.distribution = distribution
+            return self
+        }
+        
+        func alignment(_ alignment: UIStackView.Alignment) -> StackEditor {
+            stackView.alignment = alignment
+            return self
+        }
+        
+        func spacing(_ spacing: CGFloat) -> StackEditor {
+            stackView.spacing = spacing
             return self
         }
         

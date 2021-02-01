@@ -57,6 +57,8 @@ class HomeViewController: UIViewController {
     var regionSquareInsideView_BotSquareRightTitle = UILabel()
     var regionSquareInsideView_BotSquareRightValue = UILabel()
     
+    var initialized = false
+    
     var regionArrayElements: [UIView] = []
     
     override func viewDidLoad() {
@@ -97,13 +99,21 @@ class HomeViewController: UIViewController {
                                regionSquareInsideView_BotSquareRightValue]
     }
     
-    override func viewSafeAreaInsetsDidChange() { //qui perché view.safeAreaInsets ha dei valori
+    override func viewDidLayoutSubviews() {  //qui perché view.safeAreaInsets ha dei valori
+        super.viewDidLayoutSubviews()
+        // your layout code here
+        
+        if(initialized) {
+            return
+        }
+                    
+        initialized = true
+        
         let safeArea = view.safeAreaInsets
         let safeAreaFrame = CGRect(x: 0, y: safeArea.top, width: view.frame.width, height: view.frame.height - (safeArea.top + safeArea.bottom))
         let safeAreaView = UIView(frame: safeAreaFrame)
-
-        mainView = safeAreaView
         
+        mainView = safeAreaView
         view.backgroundColor = Colors.ACCENT_INTERFACE_COLOR
         view.addSubview(mainView)
         
@@ -125,7 +135,6 @@ class HomeViewController: UIViewController {
 
         loadNationalSquare()
         loadRegionSquare()
-        
     }
     
     func loadSquareView() {
@@ -188,7 +197,7 @@ class HomeViewController: UIViewController {
             .centerX()
             .percentageFrameWidth(1)
             .percentageFrameHeight(0.5)
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         if(secondView) {
             nationalSquareViewEditor.percentageFrameRelativeY(0.5).voidBuild()
@@ -241,7 +250,7 @@ class HomeViewController: UIViewController {
             .cornerRadius(30)
             .upperEditor()
             .clipToBounds()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         let _ = UILabel()
         let topViewInsideEditor = ViewEditor(UIView(), baseView)
@@ -249,7 +258,7 @@ class HomeViewController: UIViewController {
             .asViewBackground()
             .percentageFrameHeight(0.5)
             .clipToBounds()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let titleTopStripEditor = ViewEditor(UIView(), topView)
         let titleTopStrip = titleTopStripEditor
@@ -257,7 +266,7 @@ class HomeViewController: UIViewController {
             .asViewBackground()
             .centerX()
             .percentageFrameHeight(0.26)
-            .attachToSuperviewAndBuild()
+            .build()
         
         let titleTopEditor = ViewEditor(view[6], titleTopStrip)
         titleTopEditor
@@ -272,14 +281,14 @@ class HomeViewController: UIViewController {
             .font(Fonts.SOURCE_CODE_PRO_BOLD, 30)
             .adjustsFontSizeToFitWidth(true)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         let imageViewInsideEditor = ViewEditor(view[2], topView)
         let imageView = imageViewInsideEditor
             .percentageFrameWidth(0.30)
             .percentageFrameHeight(1)
             .clipToBounds()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let imageInsideOutlineView = UIView()
         let imageInsideOutlineEditor = ViewEditor(imageInsideOutlineView, imageView)
@@ -299,7 +308,7 @@ class HomeViewController: UIViewController {
             .borderColor(.white)
             .borderWidth(2)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         let image = view[5]
         let imageInsideEditor = ViewEditor(image, imageInsideOutlineView)
@@ -313,7 +322,7 @@ class HomeViewController: UIViewController {
             .borderColor(.black)
             .upperEditor()
             .clipToBounds()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         let topViewLeftInsideEditor = ViewEditor(view[3], topView)
         let topViewLeft = topViewLeftInsideEditor
@@ -322,7 +331,7 @@ class HomeViewController: UIViewController {
             .percentageFrameWidth(0.7)
             .percentageFrameHeight(1)
             .clipToBounds()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let botViewInsideEditor = ViewEditor(view[4], baseView)
         let botView = botViewInsideEditor.backgroundColor(Colors.INTERFACE_COLOR_1) //DEBUG
@@ -331,7 +340,7 @@ class HomeViewController: UIViewController {
             .percentageFrameHeight(0.5)
             .percentageFrameWidth(1)
             .clipToBounds()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let squareTopInsideTopEditor = ViewEditor(view[7], topViewLeft)
         let squareTopInsideTop = squareTopInsideTopEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
@@ -343,20 +352,20 @@ class HomeViewController: UIViewController {
             .cornerRadius(25)
             .cornerCurve(.continuous)
             .upperEditor()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let botViewInsideLeftEditor = ViewEditor(UIView(), botView)
         let botViewInsideLeft = botViewInsideLeftEditor
             .percentageFrameWidth(0.5)
             .percentageFrameHeight(1)
-            .attachToSuperviewAndBuild()
+            .build()
         
         let botViewInsideRightEditor = ViewEditor(UIView(), botView)
         let botViewInsideRight = botViewInsideRightEditor
             .percentageFrameRelativeX(0.5)
             .percentageFrameWidth(0.5)
             .percentageFrameHeight(1)
-            .attachToSuperviewAndBuild()
+            .build()
         
         let botViewInsideInnerLeftEditor = ViewEditor(view[8], botViewInsideLeft)
         let botViewInsideInnerLeftSquare = botViewInsideInnerLeftEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
@@ -369,7 +378,7 @@ class HomeViewController: UIViewController {
             .cornerRadius(30)
             .cornerCurve(.continuous)
             .upperEditor()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let botViewInsideInnerRightEditor = ViewEditor(view[9], botViewInsideRight)
         let botViewInsideInnerRightSquare = botViewInsideInnerRightEditor.backgroundColor(Colors.ACCENT_INTERFACE_COLOR)
@@ -382,7 +391,7 @@ class HomeViewController: UIViewController {
             .cornerRadius(30)
             .cornerCurve(.continuous)
             .upperEditor()
-            .attachToSuperviewAndBuild()
+            .build()
         
         let topViewInnerTitleAndValueEditorArray = rawInnerSquareTitleAndValue(view[10], view[11], squareTopInsideTop)
         let topViewInnerTitleEditor = topViewInnerTitleAndValueEditorArray[0]
@@ -449,7 +458,7 @@ class HomeViewController: UIViewController {
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 30)
             .adjustsFontSizeToFitWidth(true)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         let valueEditor = ViewEditor(value, superView)
         valueEditor
@@ -464,7 +473,7 @@ class HomeViewController: UIViewController {
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 30)
             .adjustsFontSizeToFitWidth(true)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         return [titleEditor, valueEditor]
     }
@@ -477,7 +486,7 @@ class HomeViewController: UIViewController {
             .percentageFrameWidth(0.94)
             .percentageFrameHeight(0.130)
             .centerX()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         regionErrorButtonEditor = ViewEditor(regionButton, regionErrorView)
         regionErrorButtonEditor!
@@ -491,7 +500,7 @@ class HomeViewController: UIViewController {
             .cornerCurve(.continuous)
             .cornerRadius(30)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild() //ha problemi
+            .voidBuild() //ha problemi
         
         let width = regionErrorEditor.getViewWidth()
         regionErrorIconEditor = ViewEditor(buttonIcon, regionButton)
@@ -502,7 +511,7 @@ class HomeViewController: UIViewController {
             .percentageFrameWidth(0.09)
             .contentMode(.scaleAspectFit)
             .isUserInteractionEnabled(false)
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         regionErrorButtonEditor!
             .isUserInteractionEnabled(false)
@@ -525,7 +534,7 @@ class HomeViewController: UIViewController {
             .lineBreakMode(.byClipping)
             .font(Fonts.EUCLID_CIRCULAR_B_LIGHT, 18)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild() //poblema
+            .voidBuild() //poblema
     }
     
     func loadRegionChange() {

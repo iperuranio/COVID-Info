@@ -67,7 +67,7 @@ class GeneralPageUI {
 //            .asViewBackground()
 //            .percentageFrameWidth(0.92)
 //            .centerX()
-//            .attachToSuperviewAndBuild()
+//            .build()
         
         let blurViewEditor = ViewEditor(blurView, midView)
         blurViewEditor.clearBackground()
@@ -87,7 +87,7 @@ class GeneralPageUI {
 //            .shadowOpacity(1)
 //            .maskToBounds(false)
 //            .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         return blurView
     }
@@ -100,7 +100,7 @@ class GeneralPageUI {
             .upperEditor()
             .asViewBackground()
 //            .blur()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         return background
     }
@@ -173,7 +173,7 @@ class GeneralPageUI {
             .percentageFrameWidth(0.6)
             .percentageFrameHeight(0.2)
             .centerX()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         return imageCenter
     }
@@ -232,7 +232,7 @@ class GeneralPageUI {
             .horizontalAlignment(.leading)
             .verticalAlignment(.center)
             .upperEditor()
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
 //        viewEditor.constraintDebug()
         
         if animate {
@@ -245,7 +245,7 @@ class GeneralPageUI {
         viewInTheMiddleEditor
             .asViewBackground()
             .isUserInteractionEnabled(false)
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
 
         let labelEditor = ViewEditor(UILabel(), viewInTheMiddle)
         labelEditor.isUserInteractionEnabled(false)
@@ -266,7 +266,7 @@ class GeneralPageUI {
             .percentageFrameWidth(0.4)
             .centerY()
             .percentageFrameRelativeX(0.25)
-            .attachToSuperviewAndVoidBuild()
+            .voidBuild()
         
         return forwardButton
 //        print(forwardButton.titleLabel?.frame)

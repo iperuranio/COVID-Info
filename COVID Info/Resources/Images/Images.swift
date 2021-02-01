@@ -27,6 +27,17 @@ struct Images {
     static let BACKGROUND_DARK_1 = named("DarkBlueGradient")
     static let ITALY = named("italy")
     static let ITALY_COLORED = named("italy_colored")
+    static let HOUSE = named("house.fill")
+    static let GEAR = named("gearshape.fill")
+    static let TEXT_BOOK_CLOSED = named("text.book.closed.fill")
+    static let HEART_TEXT = named("heart.text.square.fill")
+    static let ERROR = named("error")
+    static let INFO = named("info")
+    static let MAIL = named("mail")
+    static let POLICY = named("policy")
+    static let SHARE = named("share")
+    static let STAR = named("star")
+    static let TOS = named("tos")
     
     
     static func named(_ name: String) -> UIImage {
