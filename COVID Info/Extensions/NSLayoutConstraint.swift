@@ -10,6 +10,6 @@ import UIKit
 extension NSLayoutConstraint {
     func toString() -> String {
         let identifier = self.identifier == nil ? "NO" : self.identifier!
-        return "Identifier: \(identifier), Type: \(self.firstAnchor), Constant: \(self.constant)"
+        return "Identifier: \(identifier), Type: \(self.firstAnchor), Constant: \(self.constant), Priority: \(self.priority.rawValue), isActive: \(self.isActive)"
     }
 }

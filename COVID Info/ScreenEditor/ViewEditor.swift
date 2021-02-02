@@ -38,6 +38,7 @@ class ViewEditor {
     private var mainViewFrameMeasures: [CGFloat] = [0, 0, 0, 0]
     private var centering: [Bool] = [false, false]
     private var shouldBlur = false
+    private let debuffedConstraintPriority = UILayoutPriority(rawValue: 900)
     
     private var innerLabelEditor: LabelEditor? = nil
     private var innerImageEditor: ImageEditor? = nil
@@ -319,6 +320,39 @@ class ViewEditor {
     
     func clearBackground() -> ViewEditor {
         return backgroundColor(.clear)
+    }
+    
+    private func isViewEditorConstraint(_ constraint: NSLayoutConstraint) -> Bool {
+        let identifier = constraint.identifier
+        
+        guard identifier == xConstraintIdentifier || identifier == yConstraintIdentifier || identifier == heightConstraintIdentifier || identifier == widthConstraintIdentifier else {
+            return false
+        }
+
+        return true
+    }
+    
+    func clearPreviousConstraints()  -> ViewEditor {
+        view.removeConstraints(view.constraints)
+        return self
+    }
+    
+    func unactiveExternalConstraints() -> ViewEditor {
+        for constraint in view.constraints {
+            if(!isViewEditorConstraint(constraint)) {
+                constraint.isActive = false
+            }
+        }
+        return self
+    }
+    
+    func debuffPreviousConstraints()  -> ViewEditor {
+        for constraint in view.constraints {
+            if(!isViewEditorConstraint(constraint)) {
+                constraint.priority = debuffedConstraintPriority
+            }
+        }
+        return self
     }
     
     func percentageFrameRelativeX(_ percentage: CGFloat) -> ViewEditor {

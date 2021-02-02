@@ -8,10 +8,31 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    public enum Measures: Int {
+        case LEFT_OFFSET_PERCENTAGE
+        case ROW_WIDTH
+        case ROW_HEIGHT
+//        case SEPARATOR_ROW_HEIGHT
+        
+        var value: CGFloat {
+            switch self {
+            case .LEFT_OFFSET_PERCENTAGE:
+                return 0.05
+            case .ROW_WIDTH:
+                return MainScreenController.fullscreenFrame.width
+            case .ROW_HEIGHT:
+                return 57.312
+//            case .SEPARATOR_ROW_HEIGHT:
+//                return 37.0
+            }
+        }
+    }
+    
+    static let mainColor = Colors.ACCENT_INTERFACE_COLOR
+    static let separatorColor = Colors.ACCENT_BUTTONS_COLOR_1
+    
 //    var safeAreaInsets = UIEdgeInsets()
     let cellIdentifier = "settingsCell"
-    let rowHeight: CGFloat = 57.312
     var mainView = UIView()
     var scrollView = UIView()
     var topBarView = UIView()
@@ -30,15 +51,32 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     var horizontalMenusHeight: CGFloat = 0
     
     var horizontalMenus: [SettingCellData] = {
-        let privacyPolicy = SettingCellData(Images.POLICY, "Privacy Policy")
-        let tos = SettingCellData(Images.TOS, "Termini di utilizzo")
-        let info = SettingCellData(Images.INFO, "Informazioni")
-        let contact = SettingCellData(Images.MAIL, "Contatti")
-        let segnala = SettingCellData(Images.ERROR, "Segnala un problema")
-        let share = SettingCellData(Images.SHARE, "Condividi applicazione")
-        let review = SettingCellData(Images.STAR, "Lascia una recensione")
+        let info_separator = SettingCellData(nil, "Info", true)
+        let privacyPolicy = SettingCellData(Images.POLICY, "Privacy Policy", false, {
+            print("privacy")
+        })
+        let tos = SettingCellData(Images.TOS, "Termini di utilizzo", false, {
+            print("terms")
+        })
+        let info = SettingCellData(Images.INFO, "Informazioni", false, {
+            print("info")
+        })
+        let contact = SettingCellData(Images.MAIL, "Contatti", false, {
+            print("contact")
+        })
         
-        return [privacyPolicy, tos, info, contact, segnala, share, review]
+        let general_separator = SettingCellData(nil, "Generali", true)
+        let segnala = SettingCellData(Images.ERROR, "Segnala un problema", false, {
+            print("problem")
+        })
+        let share = SettingCellData(Images.SHARE, "Condividi applicazione", false, {
+            print("share")
+        })
+        let review = SettingCellData(Images.STAR, "Lascia una recensione", false, {
+            print("review")
+        })
+        
+        return [info_separator, privacyPolicy, tos, info, contact, general_separator, segnala, share, review]
     }()
     
     var initialized = false
@@ -60,7 +98,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         mainView = UIView(frame: safeAreaFrame)
         
         view.addSubview(mainView)
-        view.backgroundColor = Colors.ACCENT_INTERFACE_COLOR
+        view.backgroundColor = SettingsViewController.mainColor
 
         view.addSubview(tableView)
         
@@ -68,10 +106,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
-        tableView.backgroundColor = Colors.ACCENT_INTERFACE_COLOR
+        tableView.backgroundColor = SettingsViewController.separatorColor
         tableView.separatorColor = tableView.backgroundColor
+        tableView.clipsToBounds = true
         
-        tableView.rowHeight = rowHeight
+        tableView.rowHeight = Measures.ROW_HEIGHT.value
 //        self.tableView = UITableView()
 //        view.addSubview(mainView)
         
@@ -94,17 +133,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let topBarViewEditor = ViewEditor(topBarView, mainView)
         topBarViewEditor.asViewBackground()
-            .percentageFrameHeight(0.06)
+            .percentageFrameHeight(0.07)
             .voidBuild()
         
         let titleEditor = ViewEditor(titleLabel, topBarView)
+        let superHeight = titleEditor.getMainFrameHeight()
         titleEditor.percentageFrameRelativeX(0.05) //left padding let variable
             .percentageFrameWidth(0.6)
-            .percentageFrameHeight(0.9)
-            .centerY()
+            .percentageFrameHeight(0.55)
+            .setMinY(superHeight - titleEditor.getViewHeight() - (0.20 * superHeight))
             .labelEditor()
             .text(title)
-            .font(Fonts.EUCLID_CIRCULAR_B_Semibold.font(25))
+            .font(Fonts.EUCLID_CIRCULAR_B_Semibold, titleEditor.getBestFontSize())
             .adjustsFontSizeToFitWidth(true)
             .textColor(.white)
             .upperEditor()
@@ -195,18 +235,24 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return horizontalMenus.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-            return 2
+            return 1
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        horizontalMenus[indexPath.row].execute()
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return horizontalMenus[indexPath.row].isSeparator ? Measures.SEPARATOR_ROW_HEIGHT.value : Measures.ROW_HEIGHT.value
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingsCell
-        cell.backgroundColor = tableView.backgroundColor
-        let data = horizontalMenus[indexPath.row]
-        cell.setData(data.image, data.text)
+        cell.setData(horizontalMenus[indexPath.row], tableView.bounds.contains(tableView.rectForRow(at: indexPath))) //il secondo parametro verifica che il rettangolo della cella sia visibile e nella funzione se non è visibile non viene aggiornata la view
         return cell
     }
 }
